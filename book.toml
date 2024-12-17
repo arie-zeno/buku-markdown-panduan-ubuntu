@@ -3,7 +3,7 @@ authors = ["Ari Yono"]
 language = "id"
 multilingual = false
 src = "src"
-title = "Panduan Penggunaan Ubuntu 22.04 LTS"
+title = "Skripsi Ari Yono"
 
 [output.html]
 default-theme = "light"
