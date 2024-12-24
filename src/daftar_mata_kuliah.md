@@ -1,6 +1,6 @@
 # Kebutuhan Perangkat Lunak Kurikulum Prodi Pendidikan Komputer
 | No. | Mata Kuliah | Windows | Linux | 
-| :-: | ----------- | :---- | :---- |
+| :-: | ----------- | ---- | ---- |
 | 1 | Data Sains | <ol><li>Jupyter</li> <li>R</li> <li>Julia</li> <li>Python</li><li>Pip Python</li></ol> | <ol><li>Jupyter</li> <li>R</li> <li>Julia</li> <li>Python</li><li>Pip Python</li></ol> |
 | 2 | Pemrograman Dasar 1 | <ol><li>Python</li><li>Idle Pyhton</li><li>Pip Python</li></ol> | <ol><li>Python</li><li>Idle Pyhton</li><li>Pip Python</li></ol> |
 | 3 | Matematika Dasar | <ol><li>Microsoft Office</li></ol> | <ol><li>LibreOffice</li></ol> |
@@ -66,4 +66,4 @@
 | 63 | Pemrograman Logika | <ol><li>SWI-Prolog</li></ol> | <ol><li>SWI-Prolog</li></ol> |
 | 64 | Sistem Pakar | <ol></ol> | <ol></ol> |
 | 65 | Pengantar Akuntansi | <ol><li>Microsoft Office</li></ol> | <ol><li>LibreOffice</li></ol> |
-| 66 | Skripsi | <ol><li>Microsoft Office</li></ol> | <ol><li>LibreOffice</li></ol> |
+| 66 | Skripsi | <ol><li>Microsoft Office</li><li>Mendeley</li></ol> | <ol><li>LibreOffice</li><li>Mendeley</li></ol> |

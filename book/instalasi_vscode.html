@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Instalasi Sistem Operasi Ubuntu - Skripsi Ari Yono</title>
+        <title>Visual Studio Code - Skripsi Ari Yono</title>
 
 
         <!-- Custom HTML head -->
@@ -152,201 +152,44 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="instalasi-sistem-operasi-ubuntu"><a class="header" href="#instalasi-sistem-operasi-ubuntu">Instalasi Sistem Operasi Ubuntu</a></h1>
-<h2 id="tujuan"><a class="header" href="#tujuan">Tujuan</a></h2>
-<p>Setelah menyelesaikan bab ini pembaca diharapkan dapat:</p>
-<ul>
-<li>Memahami langkah-langkah dasar dalam instalasi sistem operasi Ubuntu.</li>
-<li>Menyiapkan lingkungan yang sesuai untuk instalasi Ubuntu pada perangkat keras.</li>
-<li>Melakukan instalasi sistem operasi Ubuntu pada PC/Laptop.</li>
-</ul>
-<p>Ubuntu adalah salah satu distribusi Linux yang populer, digunakan secara luas karena kemudahan penggunaannya dan dukungan komunitas yang besar. Pada bab ini anda akan mempelajari bagaimana mengunduh, menyiapkan, dan instalasi Ubuntu pada PC/Laptop.</p>
-<h2 id="persiapan-instalasi"><a class="header" href="#persiapan-instalasi">Persiapan Instalasi</a></h2>
-<p>Sebelum melakukan instalasi, ada beberapa hal yang perlu disiapkan :</p>
-<ul>
-<li>
-<p><strong>Spesifikasi Minimum:</strong></p>
-<ul>
-<li>Prosesor : Dual-core 2 GHz</li>
-<li>RAM : 4 GB (direkomendasikan 8 GB)</li>
-<li>Penyimpanan : 25 GB ruang kosong</li>
-<li>USB flash drive (minimal 8 GB)</li>
-<li>Koneksi internet (opsional)</li>
-</ul>
-</li>
-<li>
-<p><strong>Mengunduh ISO Ubuntu:</strong></p>
-<ol>
-<li>Buka situs resmi Ubuntu di <a href="http://ubuntu.com">http://ubuntu.com</a>.</li>
-<li>Pilih Ubuntu desktop, misalnya Ubuntu Desktop 22.04 LTS.</li>
-<li>Klik link yang tersedia untuk mendapatkan file ISO.</li>
-</ol>
-<center>    
-<p><img src="./img/download_ubuntu.png" alt="ubuntu" /></p>
-</center> 
-</li>
-<li>
-<p><strong>Membuat Bootable USB</strong> <br></p>
-<h4 id="alat-yang-diperlukan-untuk-membuat-bootable-usb"><a class="header" href="#alat-yang-diperlukan-untuk-membuat-bootable-usb">Alat yang diperlukan untuk membuat bootable USB</a></h4>
-<ul>
-<li>Perangkat Lunak
-<ul>
-<li>Etcher (tersedia untuk Windows, MacOS dan Linux), dapat didownload pada link berikut <a href="https://etcher.balena.io/">etcher.balena.io</a></li>
-</ul>
-</li>
-<li>Perangkat Keras
-<ul>
-<li>USB Flashdrive minimal 8 GB.</li>
-</ul>
-</li>
-</ul>
-<h4 id="langkah-langkah-membuat-bootable-usb"><a class="header" href="#langkah-langkah-membuat-bootable-usb">Langkah-Langkah Membuat Bootable USB</a></h4>
+                        <h1 id="instalasi-visual-studio-code"><a class="header" href="#instalasi-visual-studio-code">Instalasi Visual Studio Code</a></h1>
+<p>Untuk instalasi <em><strong>Visual Studio Code</strong></em> dapat menggunakan  <strong>GUI</strong> atau <strong>CLI</strong>.</p>
+<h2 id="instalasi-visual-studio-code-menggunakan-gui-ubuntu-software"><a class="header" href="#instalasi-visual-studio-code-menggunakan-gui-ubuntu-software">Instalasi Visual Studio Code menggunakan GUI (Ubuntu Software)</a></h2>
 <ol>
 <li>
-<p>Sambungkan USB flash drive minimal 8 GB ke komputer.</p>
-</li>
-<li>
-<p>Buka aplikasi Etcher yang sudah diunduh dan diinstal.</p>
-</li>
-<li>
-<p>Pada tampilan utama Etcher, klik Select Image dan pilih file ISO Ubuntu yang telah diunduh.</p>
-</li>
-<li>
-<p>Klik Select Target dan pilih USB yang akan digunakan sebagai media instalasi.</p>
-</li>
-<li>
-<p>Klik Flash! untuk memulai proses pembuatan bootable USB.</p>
-  <center> 
-<p><img src="img/bootable_etcher.png" alt="icon" /></p>
-  </center>
-</li>
-<li>
-<p>Tunggu hingga proses selesai, dan lepaskan USB setelah flash selesai.</p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="langkah-langkah-instalasi-sistem-operasi-ubuntu"><a class="header" href="#langkah-langkah-instalasi-sistem-operasi-ubuntu">Langkah-Langkah Instalasi Sistem Operasi Ubuntu</a></h2>
-<ol>
-<li>
-<p><strong>Booting dari USB</strong><br></p>
-<ul>
-<li>
-<p>Sambungkan USB bootable ke Laptop/PC.</p>
-</li>
-<li>
-<p>Restart komputer dan masuk ke BIOS/UEFI dengan menekan tombol seperti F2, F12, atau Del. Tombol akses BIOS/UEFI dapat dilihat pada tabel berikut : <br></p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Merk Laptop/PC</th><th>Tombol Akses</th></tr></thead><tbody>
-<tr><td style="text-align: center">Acer</td><td>F1, F2, atau CTRL+ALT+ESC</td></tr>
-<tr><td style="text-align: center">ASUS</td><td>f2</td></tr>
-<tr><td style="text-align: center">Axioo</td><td>f2</td></tr>
-<tr><td style="text-align: center">Dell</td><td>F2, Del, F12, F1, F3, atau Fn+F1</td></tr>
-<tr><td style="text-align: center">Fuijitsu</td><td>f2</td></tr>
-<tr><td style="text-align: center">HP/Compaq</td><td>ESC, F10, atau F1</td></tr>
-<tr><td style="text-align: center">Lenovo</td><td>F2 atau Fn+F2</td></tr>
-<tr><td style="text-align: center">MSI</td><td>Del</td></tr>
-<tr><td style="text-align: center">Samsung</td><td>f2</td></tr>
-<tr><td style="text-align: center">Sony Vaio</td><td>F1, F2, atau F3</td></tr>
-<tr><td style="text-align: center">Toshiba</td><td>F2, ESC+F1, atau F2+power</td></tr>
-<tr><td style="text-align: center">Zyrex</td><td>Del atau Esc</td></tr>
-</tbody></table>
-</div></li>
-<li>
-<p>Ubah urutan booting agar USB menjadi prioritas pertama.</p>
-</li>
-<li>
-<p>Simpan pengaturan dan keluar dari BIOS/UEFI.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Memulai Instalasi</strong><br></p>
-<ul>
-<li>
-<p>Setelah komputer melakukan booting dari USB, pilih Install Ubuntu.</p>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
 <center> 
-<p><img src="img/ubuntu_install.png" alt="icon" /></p>
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
 </center>
 </li>
 <li>
-<p>Pilih bahasa yang akan digunakan dan klik Continue.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Pengaturan Instalasi</strong><br></p>
-<ul>
-<li>
-<p>Keyboard Layout: Pilih tata letak keyboard yang sesuai dan tekan Continue.</p>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Visual Studio Code</em>".</p>
 <center> 
-<p><img src="img/ubuntu_keyboard.png" alt="icon" /></p>
+<p><img src="img/vscode/ubuntu_software_search.png" alt="icon" /></p>
 </center>
 </li>
 <li>
-<p>Updates and Other Software: Pilih apakah ingin menginstall pembaruan dan perangkat lunak pihak ketiga selama instalasi seperti codec multimedia.</p>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol install.</p>
 <center> 
-<p><img src="img/ubuntu_pembaruan.png" alt="icon" /></p>
+<p><img src="img/vscode/ubuntu_software_install.png" alt="icon" /></p>
 </center>
 </li>
 <li>
-<p>Installation Type :</p>
-<ul>
-<li>Install Ubuntu alongside [OS lama] untuk dual boot.</li>
-<li>Erase disk and install Ubuntu untuk menggantikan sistem operasi yang ada.</li>
-<li>Something else untuk membuat kustomisasi partisi instalasi secara  manual.</li>
-</ul>
-<center> 
-<p><img src="img/ubuntu_instalasi_tipe.png" alt="icon" /></p>
-</center>
-Klik Install Now untuk memulai proses instalasi.
-</li>
-<li>
-<p>Time Zone: Pilih zona waktu sesuai lokasi dan klik Continue.</p>
-<center> 
-<p><img src="img/ubuntu_zona_waktu.png" alt="icon" /></p>
-</center>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Konfigurasi Pengguna</strong><br></p>
-<ul>
-<li>
-<p>Masukkan nama pengguna dan password yang diinginkan.</p>
-</li>
-<li>
-<p>Pilih metode login, apakah otomatis atau manual kemudian klik Continue.</p>
-<center> 
-<p><img src="img/ubuntu_pengaturan_user.png" alt="icon" /></p>
-</center>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Proses Instalasi dan Penyelesaian</strong><br></p>
-<ul>
-<li>
-<p>Setelah semua pengaturan selesai, proses instalasi akan dimulai.</p>
-<center> 
-<p><img src="img/ubuntu_proses_instal.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga instalasi selesai. Setelah itu klik Restart Now.</p>
-</li>
-<li>
-<p>Lepaskan USB ketika komputer melakukan restart.</p>
-</li>
-</ul>
-</li>
+<p>Tunggu hingga proses instalasi selesai, <em>Visual Studio Code</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/vscode/img_2.png" alt="icon" /></p>
+</center></li>
 </ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="daftar_mata_kuliah.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="pengenalan_ubuntu_desktop.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="daftar_mata_kuliah.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -356,8 +199,11 @@ Klik Install Now untuk memulai proses instalasi.
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="daftar_mata_kuliah.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="pengenalan_ubuntu_desktop.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="daftar_mata_kuliah.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
