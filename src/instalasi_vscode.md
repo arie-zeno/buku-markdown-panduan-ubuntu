@@ -1,7 +1,5 @@
 # Instalasi Visual Studio Code
-Untuk instalasi ***Visual Studio Code*** dapat menggunakan  **GUI** atau **CLI**.
 
-## Instalasi Visual Studio Code menggunakan GUI (Ubuntu Software)
 1. Buka ***Ubuntu Software***.
    <center> 
 
@@ -14,7 +12,7 @@ Untuk instalasi ***Visual Studio Code*** dapat menggunakan  **GUI** atau **CLI**
    ![icon](img/vscode/ubuntu_software_search.png)
 
    </center>
-3. Pilih aplikasi yang sesuai kemudian tekan tombol install.
+3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
    <center> 
 
    ![icon](img/vscode/ubuntu_software_install.png)
