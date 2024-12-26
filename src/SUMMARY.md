@@ -32,6 +32,7 @@
   - [SWI-Prolog](./instalasi_prolog.md)
   - [Wireshark](./instalasi_wireshark.md)
   - [Figma](./instalasi_figma.md)
+  - [LibreOffice](./instalasi_libreoffice.md)
 
 # Hasil Uji Coba Perangkat Lunak
 - [Instalasi Perangkat Lunak](./daftar_mata_kuliah.md)
