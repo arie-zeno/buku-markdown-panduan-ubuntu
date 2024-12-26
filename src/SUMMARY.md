@@ -22,6 +22,16 @@
   - [Idle Python](./instalasi_idle%20python.md)
   - [Java](./instalasi_java.md)
   - [JupyterLab](./instalasi_jupyterlab.md)
+    - [Julia](./instalasi_julia.md)
+    - [R](./instalasi_r.md)
+    - [Golang](./instalasi_golang.md)
+  - [Netbeans](./instalasi_netbeans.md)
+  - [VirtualBox](./instalasi_vb.md)
+  - [GNU Octave](./instalasi_octave.md)
+  - [Android Studio](./instalasi_android.md)
+  - [SWI-Prolog](./instalasi_prolog.md)
+  - [Wireshark](./instalasi_wireshark.md)
+  - [Figma](./instalasi_figma.md)
 
 # Hasil Uji Coba Perangkat Lunak
 - [Instalasi Perangkat Lunak](./daftar_mata_kuliah.md)

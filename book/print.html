@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="id" class="light sidebar-visible" dir="ltr">
+<html lang="id" class="ayu sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -35,7 +35,7 @@
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -64,7 +64,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('light')
+            html.classList.remove('ayu')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -890,6 +890,208 @@ Setelah dependensi diperbaiki aplikasi siap digunakan. Buka dari menu Applicatio
 <p>Tunggu hingga proses instalasi selesai, <em><strong>JupyterLab</strong></em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
  <center> 
 <p><img src="img/jupyterLab/jupyter.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-julia-dan-menambahkan-kernel-julia"><a class="header" href="#instalasi-julia-dan-menambahkan-kernel-julia">Instalasi Julia dan Menambahkan Kernel Julia</a></h1>
+<p>Untuk menginstall <strong>julia</strong> pada terminal gunakan perintah <code>curl -fsSL https://install.julialang.org | sh</code>. Setelah installasi selesai masuk ke sesi <strong>julia RPEL</strong> dengan perintah <code>julia</code> pada terminal. Pada <strong>julia RPEL</strong> gunakan perintah <code>using Pkg</code> kemudian <code>Pkg.add(“Ijulia”)</code> untuk menambahkan <strong>kernel julia</strong> ke dalam <strong>jupyterLab</strong>.</p>
+<center> 
+<p><img src="img/julia/julia_ss.png" alt="julia" /></p>
+</center>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-r-dan-menambahkan-kernel-r"><a class="header" href="#instalasi-r-dan-menambahkan-kernel-r">Instalasi R dan Menambahkan Kernel R</a></h1>
+<p>Untuk menambahkan <strong>R</strong> kedalam <strong>jupyterLab</strong> pastikan sudah menginstall <strong>R</strong> terlebih dahulu, jika belum install <strong>R</strong> dengan perintah <code>sudo apt install r-base-core</code>. Setelah terinstall masuk ke session <strong>R</strong> dengan perintah <code>R</code> kemudian install paket yang diperlukan dengan perintah <code>install.packages(c('repr', 'IRdisplay', 'IRkernel'), type = 'source')</code> dan <code>Irkernel::installspec()</code>.</p>
+<center> 
+<p><img src="img/r/r_ss.png" alt="julia" /></p>
+</center>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-golang-dan-menambahkan-kernel-golang"><a class="header" href="#instalasi-golang-dan-menambahkan-kernel-golang">Instalasi Golang dan Menambahkan Kernel Golang</a></h1>
+<p>Untuk menambahkan Golang kedalam jupyter lab pastikan sudah menginstall <strong>Golang</strong> terlebih dahulu, jika belum install <strong>Golang</strong> dengan cara unduh file installer <strong>go</strong> pada link <a href="https://go.dev/doc/install">download golang</a>. Kemudian ekstrak file tersebut dengan perintah <code>tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz</code>, tambahkan PATH <strong>go</strong> dengan memodifikasi file <strong>.bashrc</strong> jika menggunakan terminal <strong>bash</strong> dan <strong>.zshrc</strong> jika menggunakan terminal <strong>zsh</strong> dengan menambahkan kode <code>export PATH=$PATH:/usr/local/go/bin</code> pada baris terakhir. Kemudian install <strong>Gophernotes</strong>, <strong>Gophernotes</strong> merupakan kernel <strong>golang</strong> untuk <strong>jupyterLab</strong>. <strong>Install</strong> dengan menggunakan perintah <code>go get github.com/gopherdata/gophernotes</code>. Kemudian konfigurasi dengan perintah :</p>
+<p><code>mkdir -p ~/.local/share/jupyter/kernels/gophernotes</code></p>
+<p><code>cp $(go env GOPATH)/pkg/mod/github.com/gopherdata/gophernotes@v0.7.5/kernel/* ~/.local/share/jupyter/kernels/gophernotes</code></p>
+<p><code>cd ~/.local/share/jupyter/kernels/gophernotes</code></p>
+<p><code>chmod +w ./kernel.json # in case copied kernel.json has no write permission</code></p>
+<p><code>$ sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" &lt; kernel.json.in &gt; kernel.json</code></p>
+<center> 
+<p><img src="img/golang/go_ss.png" alt="Go" /></p>
+</center>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-netbeans"><a class="header" href="#instalasi-netbeans">Instalasi NetBeans</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Netbeans</em>".</p>
+<center> 
+<p><img src="img/netbeans/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/netbeans/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>Netbeans</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/netbeans/done.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-virtualbox"><a class="header" href="#instalasi-virtualbox">Instalasi VirtualBox</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>VirtualBox</em>".</p>
+<center> 
+<p><img src="img/virtualbox/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/virtualbox/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>VirtualBox</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/virtualbox/done.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-gnu-octave"><a class="header" href="#instalasi-gnu-octave">Instalasi GNU Octave</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>GNU Octave</em>".</p>
+<center> 
+<p><img src="img/octave/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/octave/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>GNU Octave</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/octave/done.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-android-studio"><a class="header" href="#instalasi-android-studio">Instalasi Android Studio</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Android Studio</em>".</p>
+<center> 
+<p><img src="img/android/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/android/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>Android Studio</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/android/done.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-prolog"><a class="header" href="#instalasi-prolog">Instalasi Prolog</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Prolog</em>".</p>
+<center> 
+<p><img src="img/android/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/android/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>Prolog</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/android/done.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-wireshark"><a class="header" href="#instalasi-wireshark">Instalasi Wireshark</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>wireshark</em>".</p>
+<center> 
+<p><img src="img/android/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/android/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>wireshark</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/android/done.png" alt="icon" /></p>
+</center></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-figma"><a class="header" href="#instalasi-figma">Instalasi Figma</a></h1>
+<ol>
+<li>
+<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
+<center> 
+<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Figma</em>".</p>
+<center> 
+<p><img src="img/android/search.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
+<center> 
+<p><img src="img/android/install.png" alt="icon" /></p>
+</center>
+</li>
+<li>
+<p>Tunggu hingga proses instalasi selesai, <em>Figma</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
+ <center> 
+<p><img src="img/android/done.png" alt="icon" /></p>
 </center></li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="kebutuhan-perangkat-lunak-kurikulum-prodi-pendidikan-komputer-1"><a class="header" href="#kebutuhan-perangkat-lunak-kurikulum-prodi-pendidikan-komputer-1">Kebutuhan Perangkat Lunak Kurikulum Prodi Pendidikan Komputer</a></h1>
