@@ -9,13 +9,13 @@
 2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "*SWI-Prolog*".
    <center> 
 
-   ![icon](img/android/search.png)
+   ![icon](img/prolog/search.png)
 
    </center>
 3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
    <center> 
 
-   ![icon](img/android/install.png)
+   ![icon](img/prolog/install.png)
 
    </center>
 4. Tunggu hingga proses instalasi selesai, *SWI-Prolog* yang sudah terinstall dapat ditemukan pada menu ***Applications***.

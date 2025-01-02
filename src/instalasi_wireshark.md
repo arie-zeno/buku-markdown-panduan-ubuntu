@@ -9,13 +9,13 @@
 2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "*wireshark*".
    <center> 
 
-   ![icon](img/android/search.png)
+   ![icon](img/wireshark/search.png)
 
    </center>
 3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
    <center> 
 
-   ![icon](img/android/install.png)
+   ![icon](img/wireshark/install.png)
 
    </center>
 4. Tunggu hingga proses instalasi selesai, *wireshark* yang sudah terinstall dapat ditemukan pada menu ***Applications***.
