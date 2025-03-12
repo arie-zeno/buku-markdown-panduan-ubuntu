@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="id" class="ayu sidebar-visible" dir="ltr">
+<html lang="id" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -34,7 +34,7 @@
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
@@ -63,7 +63,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('ayu')
+            html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -156,31 +156,38 @@
 <h2 id="kebutuhan-perangkat-lunak"><a class="header" href="#kebutuhan-perangkat-lunak">Kebutuhan Perangkat Lunak</a></h2>
 <ol>
 <li>Python</li>
-<li>Idle Python</li>
-<li>Pip Python</li>
 </ol>
 <h2 id="hasil-uji-coba"><a class="header" href="#hasil-uji-coba">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-program-python-dengan-idle"><a class="header" href="#--membuat-program-python-dengan-idle">- Membuat Program Python dengan Idle</a></h3>
+<h3 id="--membuat-program-python"><a class="header" href="#--membuat-program-python">- Membuat Program Python</a></h3>
+<p>Pada Ubuntu 22.04 LTS secara bawaan sudah terdapat text editor <strong>gedit</strong> versi 41.0, <strong>gedit</strong> dapat digunakan untuk membuat program <strong>Python</strong>.</p>
 <ul>
 <li>Source Code :
-<img src="../matkul/img/Pemrograman%20Dasar%201/sc.png" alt="Source" /></li>
+<img src="../matkul/img/Pemrograman%20Dasar%201/sc_2.png" alt="Source" /></li>
 <li>Output :
-<img src="../matkul/img/Pemrograman%20Dasar%201/out.png" alt="Source" /></li>
+<img src="../matkul/img/Pemrograman%20Dasar%201/output_2.png" alt="Source" /></li>
 </ul>
+<!-- ### - Membuat Program Python dengan Idle
+- Source Code :
+  ![Source](../matkul/img/Pemrograman%20Dasar%201/sc.png)
+- Output :
+  ![Source](../matkul/img/Pemrograman%20Dasar%201/out.png) -->
 <h3 id="--memasang-library-numpy"><a class="header" href="#--memasang-library-numpy">- Memasang Library Numpy</a></h3>
 <p>Secara bawaan setelah memasang <strong>Pip Python</strong> library seperti numpy sudah otomatis terpasang, untuk melihat library yang sudah terpasang dapat menggunakan perintah <code>pip list</code>. Jika ingin memeasang library yang lain dapat menggunakan perintah <code>pip install &lt;nama library&gt;</code>.</p>
 <p><img src="../matkul/img/Pemrograman%20Dasar%201/numpy.png" alt="numpy" /></p>
 <h2 id="kesimpulan"><a class="header" href="#kesimpulan">Kesimpulan</a></h2>
-<p>Semua perangkat lunak bekerja dengan baik untuk kebutuhan mata kuliah Pemrograman Dasar 1. Hasil pengujian menunjukkan bahwa Ubuntu mendukung eksekusi program Python, instalasi library, dan penggunaan Idle.</p>
+<p>Semua perangkat lunak bekerja dengan baik untuk kebutuhan mata kuliah Pemrograman Dasar 1. Hasil pengujian menunjukkan bahwa Ubuntu mendukung pembuatan program Python, eksekusi program Python, dan instalasi library.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../matkul/pengantar lingkungan lahan basah.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../matkul/fisika dasar.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../matkul/pengantar sistem digital.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -188,10 +195,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../matkul/pengantar lingkungan lahan basah.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../matkul/fisika dasar.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../matkul/pengantar sistem digital.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

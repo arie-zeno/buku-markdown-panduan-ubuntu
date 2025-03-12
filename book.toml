@@ -6,5 +6,5 @@ src = "src"
 title = " "
 
 [output.html]
-default-theme = "ayu"
-preferred-dark-theme = "ayu"
+default-theme = "light"
+preferred-dark-theme = "light"

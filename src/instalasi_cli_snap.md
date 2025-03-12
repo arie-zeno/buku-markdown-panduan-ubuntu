@@ -42,4 +42,3 @@ Setelah menyelesaikan bab ini pembaca diharapkan dapat:
 4. **Instalasi Selesai**<br>
    Setelah proses selesai, aplikasi siap digunakan. Aplikasi yang telah diinstal dapat ditemukan di menu Applications, atau bisa langsung dibuka melalui terminal dengan mengetik nama aplikasi.
 
-<div style="display: flex; justify-content: space-between;">

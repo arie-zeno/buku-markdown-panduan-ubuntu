@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="id" class="ayu sidebar-visible" dir="ltr">
+<html lang="id" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -35,7 +35,7 @@
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -64,7 +64,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('ayu')
+            html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -619,7 +619,6 @@ Setelah menemukan aplikasi di Snapcraft, salin script instalasi yang ditampilkan
 Setelah proses selesai, aplikasi siap digunakan. Aplikasi yang telah diinstal dapat ditemukan di menu Applications, atau bisa langsung dibuka melalui terminal dengan mengetik nama aplikasi.</p>
 </li>
 </ol>
-<div style="display: flex; justify-content: space-between;">
 <div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-paket-deb-di-ubuntu--menggunakan-gui-dengan-ubuntu-software"><a class="header" href="#instalasi-paket-deb-di-ubuntu--menggunakan-gui-dengan-ubuntu-software">Instalasi Paket .deb di Ubuntu  Menggunakan GUI dengan Ubuntu Software</a></h1>
 <h2 id="tujuan-8"><a class="header" href="#tujuan-8">Tujuan</a></h2>
 <p>Setelah menyelesaikan bab ini pembaca diharapkan dapat:</p>
@@ -806,424 +805,132 @@ Setelah dependensi diperbaiki aplikasi siap digunakan. Buka dari menu Applicatio
 <tr><td style="text-align: center">65</td><td>Pengantar Akuntansi</td><td><ol><li>Microsoft Office</li></ol></td><td><ol><li>LibreOffice</li></ol></td></tr>
 <tr><td style="text-align: center">66</td><td>Skripsi</td><td><ol><li>Microsoft Office</li><li>Mendeley</li></ol></td><td><ol><li>LibreOffice</li><li>Mendeley</li></ol></td></tr>
 </tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-visual-studio-code"><a class="header" href="#instalasi-visual-studio-code">Instalasi Visual Studio Code</a></h1>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-gns3"><a class="header" href="#instalasi-gns3">Instalasi GNS3</a></h1>
+<h2 id="pendahuluan"><a class="header" href="#pendahuluan">Pendahuluan</a></h2>
+<p>GNS3 (Graphical Network Simulator 3) merupakan perangkat lunak yang memungkinkan simulasi jaringan komputer secara virtual tanpa memerlukan perangkat keras fisik. Perangkat lunak ini mendukung berbagai teknologi jaringan, seperti Cisco IOS, MikroTik, Juniper, dan perangkat lain yang kompatibel dengan virtualisasi.</p>
+<h3 id="1-perbarui-daftar-paket"><a class="header" href="#1-perbarui-daftar-paket">1. Perbarui Daftar Paket</a></h3>
+<p>Sebelum memulai proses instalasi perbarui daftar paket sistem dengan menjalankan perintah berikut:</p>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre>
+<h3 id="2-menambahkan-repository-resmi-gns3"><a class="header" href="#2-menambahkan-repository-resmi-gns3">2. Menambahkan Repository Resmi GNS3</a></h3>
+<p>Tambahkan repository resmi GNS3 untuk mendapatkan versi terbaru:
+<code>sudo add-apt-repository ppa:gns3/ppa -y</code>
+Kemudian perbarui kembali daftar paket:
+<code>sudo apt update</code></p>
+<h3 id="3-menginstal-gns3-dan-dependensi"><a class="header" href="#3-menginstal-gns3-dan-dependensi">3. Menginstal GNS3 dan Dependensi</a></h3>
+<p>Jalankan perintah berikut untuk menginstal GNS3:
+sudo apt install gns3-gui gns3-server -y
+Jika jendela configure ubridge muncul pilih yes. Kemudian jika instalasi berhasil output baris terakhirnya akan seperti berikut:</p>
+<pre><code class="language-bash">Processing triggers for libglib2.0-0:amd64 (2.72.4-0ubuntu2.4) ...
+Processing triggers for libglib2.0-0:i386 (2.72.4-0ubuntu2.4) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.9) ...
+Processing triggers for man-db (2.10.2-1) ...
+Setting up gns3-gui (2.2.53~jammy1) ...
+</code></pre>
+<h3 id="4-konfigurasi-izin-pengguna"><a class="header" href="#4-konfigurasi-izin-pengguna">4. Konfigurasi Izin Pengguna</a></h3>
+<p>Agar GNS3 dapat berjalan dengan optimal tambahkan pengguna ke grup berikut:</p>
+<pre><code>sudo usermod -aG ubridge $USER 
+sudo usermod -aG libvirt $USER 
+sudo usermod -aG kvm $USER 
+sudo usermod -aG wireshark $USER
+</code></pre>
+<p>Kemudian lakukan restart sistem agar perubahan diterapkan :</p>
+<pre><code>reboot
+</code></pre>
+<h3 id="5-install-dynamips"><a class="header" href="#5-install-dynamips">5. Install Dynamips</a></h3>
+<p>Jika ingin menggunakan Dynamips (Cisco Router Emulator) install dependensinya:</p>
+<pre><code>sudo apt install dynamips -y
+</code></pre>
+<h3 id="6-install-qemu"><a class="header" href="#6-install-qemu">6. Install Qemu</a></h3>
+<p>Jika ingin menggunakan appliance berbasis QEMU install paket qemu:</p>
+<pre><code>sudo apt install qemu-kvm qemu-utils libvirt-daemon-system virt-manager -y
+</code></pre>
+<h3 id="7-menjalankan-gns3"><a class="header" href="#7-menjalankan-gns3">7. Menjalankan GNS3</a></h3>
+<p>GNS3 yang sudah terinstall dapat ditemukan pada menu show applications atau dapat menggunakan perintah berikut pada terminal:</p>
+<pre><code>gns3
+</code></pre>
+<p>Pada saat pertama kali menjalankan GNS3 akan muncuk jendela wizard untuk konfigurasi server, pilih “run appliance on my local computer“ kemdian klik next.</p>
+<p><img src="img/gns3/wizard.png" alt="icon" /></p>
+<p>Pada jendela selanjutnya biarkan tetap default kemudian klik Next sampai terdapat tulisan:</p>
+<pre><code>Connection to the local GNS3 server has been successful!
+</code></pre>
+<h3 id="8-menambahkan-appliance"><a class="header" href="#8-menambahkan-appliance">8. Menambahkan Appliance</a></h3>
+<p>Agar dapat menggunakan berbagai perangkat jaringan tambahan perlu menambahkan appliance ke dalam GNS3.</p>
+<h4 id="menambahkan-appliance-dengan-kvmqemu"><a class="header" href="#menambahkan-appliance-dengan-kvmqemu">Menambahkan Appliance dengan KVM/QEMU.</a></h4>
 <ol>
 <li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
+<p><strong>Unduh appliance/perangkat</strong><br>
+Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance yang dapat ditambahkan ke GNS3 : <br>
+<a href="https://drive.google.com/drive/folders/11kxYYAD8n3Cxyt0CfGPoh1dDqR3BnVNu?usp=sharing">GNS3 Appliances</a></p>
 </li>
 <li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Visual Studio Code</em>".</p>
-<center> 
-<p><img src="img/vscode/ubuntu_software_search.png" alt="icon" /></p>
-</center>
+<p><strong>Import Aplliance File</strong><br>
+Klik file pada menu pojok kiri atas kemudian pilih new tamplate.</p>
+<p><img src="img/gns3/new_template.png" alt="vm" /></p>
+<p>Selanjutnya pilih Install an appliance from the GNS3 server (recommendation).</p>
+<p><img src="img/gns3/recomendation.png" alt="vm" /></p>
+<p>Kemudian jendela selanjutnya akan menampilkan daftar perangkat yang dapat ditambahkan (Firewalls, Guests, Routers dan Switches).
+Pilih perangkat yang akan di install (pada kasus ini Router Cisco 1700) kemudian klik install.</p>
+<p><img src="img/gns3/router_list.png" alt="vm" /></p>
+<p>Selanjutnya jika file appliance sudah di unduh sebelumnya maka statusnya akan Ready to install.</p>
+<p><img src="img/gns3/ready.png" alt="vm" /></p>
+<p>Kemudian klik next sampai terdapat pemberitahuan bahwa appliance telah berhasil di install.</p>
+<p><img src="img/gns3/success.png" alt="vm" /></p>
 </li>
 <li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/vscode/ubuntu_software_install.png" alt="icon" /></p>
-</center>
+<p><strong>Verifikasi Instalasi</strong><br>
+Jika appliance berhasil di install maka pada menu appliance kategori router akan terdapat appliance yang baru saja ditambahkan.</p>
+<p><img src="img/gns3/verif.png" alt="vm" /></p>
 </li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>Visual Studio Code</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/vscode/img_2.png" alt="icon" /></p>
-</center></li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-python"><a class="header" href="#instalasi-python">Instalasi Python</a></h1>
-<p>Secara bawaan Ubuntu versi 22.04 LTS sudah terpasang python versi 3.10.12. Gunakan perintah <code>python3 -V</code> pada terminal untuk memeriksa versi python yang sudah terpasang.</p>
-<center> 
-<p><img src="img/python/python_versi.png" alt="icon" /></p>
-</center>
-<p>Namun jika pada sistem operasi linux anda belum terpasang, anda dapat menggunakan perintah <code>sudo apt install python3</code> pada terminal.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-pip-python"><a class="header" href="#instalasi-pip-python">Instalasi Pip Python</a></h1>
-<p>Untuk memasang <strong>Pip Python</strong> pastikan <strong>Python</strong> sudah terpasang sebelumnya, gunakan perintah <code>python3 -V</code> untuk memastikan python sudah terpasang.</p>
-<center> 
-<p><img src="img/python/python_versi.png" alt="icon" /></p>
-</center>
-<p>Pada terminal masukkan perintah <code>sudo apt install python3-pip</code> untuk memasang <strong>pip python</strong>. Kemudian gunakan perintah <code>pip -V</code> untuk memeriksa versi pip yang sudah terpasang.</p>
-<center> 
-<p><img src="img/python/pip_versi.png" alt="icon" /></p>
-</center><div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-idle-python"><a class="header" href="#instalasi-idle-python">Instalasi Idle Python</a></h1>
-<p>Untuk memasang <strong>Idle Python</strong> Pastikan Python sudah terpasang sebelumnya, gunakan perintah <code>python3 -V</code> untuk memastikan python sudah terpasang.</p>
-<center> 
-<p><img src="img/python/python_versi.png" alt="icon" /></p>
-</center>
-<p>Pada terminal masukkan perintah <code>sudo apt install idle-python3.10</code> untuk memasang <strong>idle python</strong>. Gunakan perintah <code>idle-python3.10</code> pada terminal untuk menjalankan <strong>idle python</strong> atau dapat mengaksesnya pada menu <em><strong>applications</strong></em>.</p>
-<center> 
-<p><img src="img/python/idle.png" alt="icon" /></p>
-</center><div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-java"><a class="header" href="#instalasi-java">Instalasi Java</a></h1>
-<p>Untuk menjalankan program <strong>java</strong> diperlukan <strong>JDK (Java Development Kit)</strong>, unduh <strong>JDK</strong> pada halaman <a href="https://www.oracle.com/id/java/technologies/downloads/">Download Java</a>.</p>
-<center> 
-<p><img src="img/java/java_download.png" alt="icon" /></p>
-</center>
-<p>Setelah selesai mengunduh <strong>JDK</strong> install paket tersebut dengan perintah <code>sudo dpkg -i namafile.deb</code>.</p>
-<center> 
-<p><img src="img/java/java_dpkg.png" alt="icon" /></p>
-</center>
-<p>Setelah proses instalasi selesai gunakan perintah <code>java --version</code> untuk memeriksa versi <strong>java</strong> yang telah terinstall.</p>
-<center> 
-<p><img src="img/java/java_version.png" alt="icon" /></p>
-</center><div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-jupyterlab"><a class="header" href="#instalasi-jupyterlab">Instalasi JupyterLab</a></h1>
+<h4 id="menambahkan-appliance-dengan-virtualbox"><a class="header" href="#menambahkan-appliance-dengan-virtualbox">Menambahkan Appliance dengan VirtualBox</a></h4>
 <ol>
 <li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
+<p><strong>Unduh appliance/perangkat</strong><br>
+Unduh file appliance/perangkat jaringan yang ingin di install (dalam kasus ini router mikrotik CHR). Kunjungi laman <a href="https://mikrotik.com/download">https://mikrotik.com/download</a> kemudian unduh file OVA template.</p>
+<p><img src="img/gns3/unduh%20app.png" alt="vm" /></p>
 </li>
 <li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em><strong>JupyterLab</strong></em>".</p>
-<center> 
-<p><img src="img/jupyterLab/jupyter_search.png" alt="icon" /></p>
-</center>
+<p><strong>Import Aplliance File</strong><br>
+Pada VirtualBox klik file kemudian pilih import appliance.</p>
+<p><img src="img/gns3/import_vb.png" alt="vm" /></p>
+<p>Selanjutnya pada kolom source file pilih file mikrotik yang baru saja di downlod dengan ekstensi .OVA. Kemudian pada pilihan setting dapat mengganti nama appliance dengan Mikrotik CHR.</p>
+<p><img src="img/gns3/setting_vb.png" alt="vm" /></p>
+<p>Klik finish kemudian jika import berhasil maka appliance Mikrotik CHR akan ditambahkan.</p>
 </li>
 <li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/jupyterLab/jupyter_install.png" alt="icon" /></p>
-</center>
+<p><strong>Mengubungkan VirtualBox Appliance dengan GNS3</strong><br>
+Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VirtualBox VMs klik new kemudian pada pilihan VM List pilih nama machine router yang di install pada virtualBox kemudian klik finish.</p>
+<p><img src="img/gns3/new_vb.png" alt="vm" /></p>
+<p>Setelah berhasil menambahkan maka router akan ada pada list VirtualBox VMs Template.</p>
+<p><img src="img/gns3/succ_vb.png" alt="vm" /></p>
+<p>Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.</p>
 </li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em><strong>JupyterLab</strong></em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/jupyterLab/jupyter.png" alt="icon" /></p>
-</center></li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-julia-dan-menambahkan-kernel-julia"><a class="header" href="#instalasi-julia-dan-menambahkan-kernel-julia">Instalasi Julia dan Menambahkan Kernel Julia</a></h1>
-<p>Untuk menginstall <strong>julia</strong> pada terminal gunakan perintah <code>curl -fsSL https://install.julialang.org | sh</code>. Setelah installasi selesai masuk ke sesi <strong>julia RPEL</strong> dengan perintah <code>julia</code> pada terminal. Pada <strong>julia RPEL</strong> gunakan perintah <code>using Pkg</code> kemudian <code>Pkg.add(“Ijulia”)</code> untuk menambahkan <strong>kernel julia</strong> ke dalam <strong>jupyterLab</strong>.</p>
-<center> 
-<p><img src="img/julia/julia_ss.png" alt="julia" /></p>
-</center>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-r-dan-menambahkan-kernel-r"><a class="header" href="#instalasi-r-dan-menambahkan-kernel-r">Instalasi R dan Menambahkan Kernel R</a></h1>
-<p>Untuk menambahkan <strong>R</strong> kedalam <strong>jupyterLab</strong> pastikan sudah menginstall <strong>R</strong> terlebih dahulu, jika belum install <strong>R</strong> dengan perintah <code>sudo apt install r-base-core</code>. Setelah terinstall masuk ke session <strong>R</strong> dengan perintah <code>R</code> kemudian install paket yang diperlukan dengan perintah <code>install.packages(c('repr', 'IRdisplay', 'IRkernel'), type = 'source')</code> dan <code>Irkernel::installspec()</code>.</p>
-<center> 
-<p><img src="img/r/r_ss.png" alt="julia" /></p>
-</center>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-golang-dan-menambahkan-kernel-golang"><a class="header" href="#instalasi-golang-dan-menambahkan-kernel-golang">Instalasi Golang dan Menambahkan Kernel Golang</a></h1>
-<p>Untuk menambahkan Golang kedalam jupyter lab pastikan sudah menginstall <strong>Golang</strong> terlebih dahulu, jika belum install <strong>Golang</strong> dengan cara unduh file installer <strong>go</strong> pada link <a href="https://go.dev/doc/install">download golang</a>. Kemudian ekstrak file tersebut dengan perintah <code>tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz</code>, tambahkan PATH <strong>go</strong> dengan memodifikasi file <strong>.bashrc</strong> jika menggunakan terminal <strong>bash</strong> dan <strong>.zshrc</strong> jika menggunakan terminal <strong>zsh</strong> dengan menambahkan kode <code>export PATH=$PATH:/usr/local/go/bin</code> pada baris terakhir. Kemudian install <strong>Gophernotes</strong>, <strong>Gophernotes</strong> merupakan kernel <strong>golang</strong> untuk <strong>jupyterLab</strong>. <strong>Install</strong> dengan menggunakan perintah <code>go get github.com/gopherdata/gophernotes</code>. Kemudian konfigurasi dengan perintah :</p>
-<p><code>mkdir -p ~/.local/share/jupyter/kernels/gophernotes</code></p>
-<p><code>cp $(go env GOPATH)/pkg/mod/github.com/gopherdata/gophernotes@v0.7.5/kernel/* ~/.local/share/jupyter/kernels/gophernotes</code></p>
-<p><code>cd ~/.local/share/jupyter/kernels/gophernotes</code></p>
-<p><code>chmod +w ./kernel.json # in case copied kernel.json has no write permission</code></p>
-<p><code>$ sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" &lt; kernel.json.in &gt; kernel.json</code></p>
-<center> 
-<p><img src="img/golang/go_ss.png" alt="Go" /></p>
-</center>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-netbeans"><a class="header" href="#instalasi-netbeans">Instalasi NetBeans</a></h1>
+<h4 id="menambahkan-appliance-dengan-vmware"><a class="header" href="#menambahkan-appliance-dengan-vmware">Menambahkan Appliance dengan VMWare</a></h4>
 <ol>
 <li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
+<p><strong>Unduh appliance/perangkat</strong><br>
+Unduh file appliance/perangkat jaringan yang ingin di install (dalam kasus ini router mikrotik CHR). Kunjungi laman <a href="https://mikrotik.com/download">https://mikrotik.com/download</a> kemudian unduh file OVA template.</p>
+<p><img src="img/gns3/unduh%20app.png" alt="vm" /></p>
 </li>
 <li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Netbeans</em>".</p>
-<center> 
-<p><img src="img/netbeans/search.png" alt="icon" /></p>
-</center>
+<p><strong>Import Aplliance File</strong><br>
+Pada VMWare klik menu file kemudian open dan pilih file .OVA.</p>
+<p><img src="img/gns3/import_vmw.png" alt="vm" /></p>
+<p>Pada jendela selanjutnya sesuaikan nama appliance kemudian klik import.</p>
+<p><img src="img/gns3/new_vmw.png" alt="vm" /></p>
+<p>Klik finish kemudian jika import berhasil maka appliance Mikrotik CHR akan ditambahkan.</p>
 </li>
 <li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/netbeans/install.png" alt="icon" /></p>
-</center>
+<p><strong>Mengubungkan VirtualBox Appliance dengan GNS3</strong><br>
+Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VMWare VMs klik new kemudian pada pilihan VM List pilih nama appliance yang di sudah diimport lalu klik finish.</p>
+<p><img src="img/gns3/succ_vmw.png" alt="vm" /></p>
+<p>Setelah berhasil menambahkan maka router akan ada pada list VMWare VMs Template.</p>
+<p><img src="img/gns3/succ2_vmw.png" alt="vm" /></p>
+<p>Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.</p>
 </li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>Netbeans</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/netbeans/done.png" alt="icon" /></p>
-</center></li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-virtualbox"><a class="header" href="#instalasi-virtualbox">Instalasi VirtualBox</a></h1>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>VirtualBox</em>".</p>
-<center> 
-<p><img src="img/virtualbox/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/virtualbox/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>VirtualBox</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/virtualbox/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-gnu-octave"><a class="header" href="#instalasi-gnu-octave">Instalasi GNU Octave</a></h1>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>GNU Octave</em>".</p>
-<center> 
-<p><img src="img/octave/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/octave/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>GNU Octave</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/octave/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-android-studio"><a class="header" href="#instalasi-android-studio">Instalasi Android Studio</a></h1>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Android Studio</em>".</p>
-<center> 
-<p><img src="img/android/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/android/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>Android Studio</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/android/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-swi-prolog"><a class="header" href="#instalasi-swi-prolog">Instalasi SWI-Prolog</a></h1>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>SWI-Prolog</em>".</p>
-<center> 
-<p><img src="img/prolog/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/prolog/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>SWI-Prolog</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/android/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-wireshark"><a class="header" href="#instalasi-wireshark">Instalasi Wireshark</a></h1>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>wireshark</em>".</p>
-<center> 
-<p><img src="img/wireshark/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/wireshark/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>wireshark</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/android/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-figma"><a class="header" href="#instalasi-figma">Instalasi Figma</a></h1>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>Figma</em>".</p>
-<center> 
-<p><img src="img/figma/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/figma/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>Figma</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/android/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-libreoffice"><a class="header" href="#instalasi-libreoffice">Instalasi LibreOffice</a></h1>
-<p>Secara bawaan Ubuntu versi 22.04 LTS sudah terpasang <strong>LibreOffice</strong> versi 7.3.2.</p>
-<center> 
-<p><img src="img/office/libreOffice.png" alt="icon" /></p>
-</center>
-<p>Jika pada sistem operasi linux anda belum terpasang LibreOffice, ikuti langkah-langkah berikut untuk memasangnya.</p>
-<ol>
-<li>
-<p>Buka <em><strong>Ubuntu Software</strong></em>.</p>
-<center> 
-<p><img src="img/ubuntu_software_home.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Klik <em><strong>icon</strong></em> <em><strong>search</strong></em> pada pojok kiri atas aplikasi kemudian masukkan <em>keyword</em> "<em>LibreOffice</em>".</p>
-<center> 
-<p><img src="img/android/search.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Pilih aplikasi yang sesuai kemudian tekan tombol <strong>install</strong>.</p>
-<center> 
-<p><img src="img/android/install.png" alt="icon" /></p>
-</center>
-</li>
-<li>
-<p>Tunggu hingga proses instalasi selesai, <em>LibreOffice</em> yang sudah terinstall dapat ditemukan pada menu <em><strong>Applications</strong></em>.</p>
- <center> 
-<p><img src="img/android/done.png" alt="icon" /></p>
-</center></li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-mysql"><a class="header" href="#instalasi-mysql">Instalasi MySQL</a></h1>
-<h2 id="1-install-mysql-server"><a class="header" href="#1-install-mysql-server">1. Install MySQL Server</a></h2>
-<p>Setelah repository di update, install MySQL dengan perintah <code>sudo apt install mysql-server</code></p>
-<center>
-<p><img src="img/mysql/img_1.png" alt="mysql" /></p>
-</center>
-<p>Pastikan MySQL sudah terinstall dengan perintah <code>mysqld --version</code></p>
-<center>
-<p><img src="img/mysql/img_2.png" alt="mysql" /></p>
-</center>
-<h2 id="2-securing-mysql"><a class="header" href="#2-securing-mysql">2. Securing MySQL</a></h2>
-<p>Setelah menginstal MySQL langkah selanjutnya adalah melakukan pengaturan keamanan awal untuk instalasi MySQL. Pengamanan mencakup pengaturan kata sandi yang kuat, menghapus akun dan database yang tidak diperlukan dan membatasi akses untuk meningkatkan keamanan secara keseluruhan.
-Untuk mengamankan installasi jalankan perintah <code>sudo mysql_secure_installation</code>.</p>
-<h3 id="validasi-password"><a class="header" href="#validasi-password">Validasi Password</a></h3>
-<p>Bagian pertama mengamankan instllasi adalah validasi password. Tekan y untuk mengkonfirmasi validasi password.</p>
-<center>
-<p><img src="img/mysql/img_3.png" alt="mysql" /></p>
-</center>
-<p>Pengguna memiliki tiga opsi untuk kebijakan kata sandi:</p>
-<ul>
-<li>0 - low</li>
-<li>1 - medium</li>
-<li>2 - strong</li>
-</ul>
-<p>Pilih salah satu kemudian tekan enter.</p>
-<center>
-<p><img src="img/mysql/img_4.png" alt="mysql" /></p>
-</center>
-<h3 id="remove-anonymous-users"><a class="header" href="#remove-anonymous-users">Remove Anonymous Users</a></h3>
-<p>Setelah instalasi, MySQL secara otomatis menggabungkan pengguna anonim, memungkinkan akses tidak terbatas tanpa akun pengguna khusus. Meskipun awalnya dirancang untuk pengujian dan instalasi yang disederhanakan, disarankan untuk menghapus pengguna ini demi alasan keamanan.</p>
-<center>
-<p><img src="img/mysql/img_5.png" alt="mysql" /></p>
-</center>
-<h3 id="disallow-root-login-remotely"><a class="header" href="#disallow-root-login-remotely">Disallow Root Login Remotely</a></h3>
-<p>Secara bawaan membatasi koneksi pengguna root ke mesin lokal (localhost) disarankan untuk mengurangi potensi risiko keamanan, seperti serangan brute force kredensial.</p>
-<center>
-<p><img src="img/mysql/img_6.png" alt="mysql" /></p>
-</center>
-<h3 id="remove-test-database"><a class="header" href="#remove-test-database">Remove Test Database</a></h3>
-<center>
-<p><img src="img/mysql/img_7.png" alt="mysql" /></p>
-</center>
-<h3 id="reload-privilege-tables"><a class="header" href="#reload-privilege-tables">Reload Privilege Tables</a></h3>
-<center>
-<p><img src="img/mysql/img_8.png" alt="mysql" /></p>
-</center>
-<h2 id="3-cek-apakah-mysql-service-telah-berjalan"><a class="header" href="#3-cek-apakah-mysql-service-telah-berjalan">3. Cek apakah MySQL Service telah berjalan</a></h2>
-<p>Setelah instalasi, layanan MySQL akan dimulai secara otomatis. Untuk memverifikasi bahwa server bekerja, jalankan perintah berikut <code>sudo systemctl status mysql</code></p>
-<center>
-<p><img src="img/mysql/img_9.png" alt="mysql" /></p>
-</center>
-<h2 id="4-login-mysql"><a class="header" href="#4-login-mysql">4. Login MySQL</a></h2>
-<p>Untuk login ke MySQL gunakan perintah <code>sudo mysql -u root</code></p>
-<center>
-<p><img src="img/mysql/img_10.png" alt="mysql" /></p>
-</center><div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-xampp"><a class="header" href="#instalasi-xampp">Instalasi XAMPP</a></h1>
-<p>Kunjungi halaman <a href="https://www.apachefriends.org">XAMPP</a> untuk mengunduh paket installasi xampp.</p>
-<p><img src="img/xampp/img_3.png" alt="xampp" /></p>
-<p>Ubah permissions file agar bisa dieksekusi dengan perintah <code>chmod 755 xampp-linux-*-installer.run</code></p>
-<p><img src="img/xampp/img_4.png" alt="xampp" /></p>
-<p>Kemudian eksekusi installer dengan perintah <code>sudo ./xampp-linux-*-installer.run</code> maka jendela setup installasi akan muncul.</p>
-<p><img src="img/xampp/img_5.png" alt="xampp" /></p>
-<p>Setelah selesai setup, xampp akan terinstall pada folder /opt/lampp</p>
-<p>Untuk menjalankan service xampp melalui CLI dapat menggunakan perintah <code>sudo /opt/lampp/lampp start</code>. Untuk memeriksa service apakah sudah berjalan gunakan perintah <code> sudo /opt/lampp/lampp status</code>. Kemudian untuk menghentikan service xampp dapat menggunakan perintah <code>sudo /opt/lampp/lampp stop</code>.</p>
-<p><img src="img/xampp/img_6.png" alt="xampp" /></p>
-<p>Untuk menjalankan service xampp dengan GUI jalankan perintah <code>sudo /opt/lampp/manager-linux-x64.run</code></p>
-<p><img src="img/xampp/img_8.png" alt="xampp" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="install-php"><a class="header" href="#install-php">Install PHP</a></h1>
-<p>Untuk menginstall <strong>PHP</strong> gunakan perintah <code>sudo apt install php php-curl</code>. Setelah itu periksa versi <strong>PHP</strong> yang sudah terinstall dengan perintah <code>php -V</code>.</p>
-<p><img src="img/composer/img_9.png" alt="xampp" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-composer"><a class="header" href="#instalasi-composer">Instalasi Composer</a></h1>
-<p>Untuk menginstall <strong>Composer</strong> pastikan <strong>PHP</strong> sudah terinstall terlebih dahulu pada sistem operasi, periksa versi <strong>PHP</strong> yang sudah terinstall dengan perintah <code>php -V</code>.</p>
-<p><img src="img/composer/img_9.png" alt="xampp" /></p>
-<p>Kemudian download <strong>composer</strong> dengan perintah <code>curl -sS https://getcomposer.org/installer -o composer-setup.php</code>, setelah itu install <strong>composer</strong> menggunakan perintah <code>sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer</code>.</p>
-<p><img src="img/composer/img_10.png" alt="xampp" /></p>
-<p>Cek versi <strong>composer</strong> untuk memastikan <strong>composer</strong> sudah terinstall pada sistem operasi dengan perintah <code>composer -V</code>.</p>
-<p><img src="img/composer/img_11.png" alt="composer" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-open-elearning"><a class="header" href="#instalasi-open-elearning">Instalasi Open Elearning</a></h1>
-<p>Unduh paket instalasi pada halaman <a href="https://www.openelearning.org/download">Open Elearning</a>. Kemudian install paket tersebut dengan perintah <code>dpkg -i namafile.deb</code>, berikut gambar saat installasi  <strong>Open eLearning</strong> :</p>
-<p><img src="img/openelearning/img_1.png" alt="idle python" /></p>
-<p>Kemudian berikut adalah gambar dari aplikasi <strong>Open eLearning</strong> setelah terinstal yang digunakan untuk membuat slide presentasi interaktif :</p>
-<p><img src="img/openelearning/img_2.png" alt="vscode" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="instalasi-mendeley"><a class="header" href="#instalasi-mendeley">Instalasi Mendeley</a></h1>
-<p>Untuk mendeley versi desktop dapat di install melalui paket <strong>flatpak</strong>.</p>
-<p>kunjungi <a href="https://flathub.org">flathub.org</a> kemudian cari '<strong>mendeley</strong>' untuk melihat perintah instalasinya.</p>
-<p><img src="img/mendeley/img_6.png" alt="Draw" /></p>
-<p>install <strong>mendeley</strong> dengan perintah <code>flatpak install flathub com.elsevier.MendeleyDesktop</code>.</p>
-<p><img src="img/mendeley/img_7.png" alt="Draw" /></p>
-<p>Pada saat pertama kali membuka <strong>mendeley</strong> akan diminta login terlebih dahulu.</p>
-<p><img src="img/mendeley/img_8.png" alt="mendeley" /></p>
-<p>Berikut adalah gambar <strong>mendeley</strong> pada sistem operasi ubuntu.</p>
-<p><img src="img/mendeley/img_9.png" alt="mendeley" /></p>
-<h1 id="mengintegrasikan-libreoffice-writer-dengan-mendeley"><a class="header" href="#mengintegrasikan-libreoffice-writer-dengan-mendeley">Mengintegrasikan LibreOffice Writer dengan mendeley</a></h1>
-<p>Untuk mengintegrasikan <strong>LibreOffice Writer</strong> dengan <strong>mendeley</strong> buka terlebih dahulu <strong>libreOffice Writer</strong> kemudian pada tab tools pilih <strong>extension manager</strong> atau tekan shortcut <code>CTRL + ALT E</code>.</p>
-<p><img src="img/mendeley/img_10.png" alt="mendeley" /></p>
-<p>Tambahkan extension <strong>mendeley</strong> dengan mengklik tombol <code>add</code> kemudian pilih <strong>mendeley extension</strong> yang berada pada <code>/var/lib/flatpak/app/com.elsevier.MendeleyDesktop/current/active/files/extra/share/mendeleydesktop/openOfficePlugin/Mendeley-x.xx.x.oxt</code>.</p>
-<p><img src="img/mendeley/img_11.png" alt="mendeley" /></p>
-<p>Setelah itu buka kembali <strong>libreOffice Writer</strong> dan <strong>mendeley</strong> sudah terintegrasi dengan <strong>libreOffice Writer</strong>.</p>
-<p><img src="img/mendeley/img_12.png" alt="mendeley" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="agama"><a class="header" href="#agama">Agama</a></h1>
 <h2 id="kebutuhan-perangkat-lunak"><a class="header" href="#kebutuhan-perangkat-lunak">Kebutuhan Perangkat Lunak</a></h2>
 <p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
@@ -1256,40 +963,267 @@ Untuk mengamankan installasi jalankan perintah <code>sudo mysql_secure_installat
 <p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
 <h2 id="kesimpulan-3"><a class="header" href="#kesimpulan-3">Kesimpulan</a></h2>
 <p>Mata kuliah <strong>Bahasa Indonesia</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-lingkungan-lahan-basah"><a class="header" href="#mata-kuliah-pengantar-lingkungan-lahan-basah">Mata Kuliah Pengantar Lingkungan Lahan Basah</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bahasa-inggris"><a class="header" href="#bahasa-inggris">Bahasa Inggris</a></h1>
 <h2 id="kebutuhan-perangkat-lunak-4"><a class="header" href="#kebutuhan-perangkat-lunak-4">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-4"><a class="header" href="#hasil-uji-coba-4">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-4"><a class="header" href="#kesimpulan-4">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Bahasa Inggris</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-lingkungan-lahan-basah"><a class="header" href="#mata-kuliah-pengantar-lingkungan-lahan-basah">Mata Kuliah Pengantar Lingkungan Lahan Basah</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-5"><a class="header" href="#kebutuhan-perangkat-lunak-5">Kebutuhan Perangkat Lunak</a></h2>
 <ul>
 <li>LibreOffice</li>
 </ul>
-<h2 id="hasil-uji-coba-4"><a class="header" href="#hasil-uji-coba-4">Hasil Uji Coba</a></h2>
+<h2 id="hasil-uji-coba-5"><a class="header" href="#hasil-uji-coba-5">Hasil Uji Coba</a></h2>
 <h3 id="--pembuatan-makalah-menggunakan-libreoffice-writer"><a class="header" href="#--pembuatan-makalah-menggunakan-libreoffice-writer">- Pembuatan Makalah Menggunakan LibreOffice Writer</a></h3>
 <p><img src="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/lahan%20basah.png" alt="ppt" /></p>
 <p>Secara bawaan file pada libreOffice writer disimpan dalam format .odt, namun dapat di ekspor ke file docx, pdf, dll.</p>
 <p><a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.odt">Unduh file odt</a> <br>
 <a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.docx">Unduh file docx</a><br>
 <a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.pdf">Unduh file pdf</a></p>
-<h1 id="kesimpulan-4"><a class="header" href="#kesimpulan-4">Kesimpulan</a></h1>
+<h1 id="kesimpulan-5"><a class="header" href="#kesimpulan-5">Kesimpulan</a></h1>
 <p><strong>LibreOffice Writer</strong> pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat makalah akademik. Tidak ditemukan kendala selama proses pembuatan, penyimpanan, maupun ekspor file ke format lain.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-pendidikan"><a class="header" href="#mata-kuliah-pengantar-pendidikan">Mata Kuliah Pengantar Pendidikan</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-6"><a class="header" href="#kebutuhan-perangkat-lunak-6">Kebutuhan Perangkat Lunak</a></h2>
+<ul>
+<li>LibreOffice</li>
+</ul>
+<h2 id="hasil-uji-coba-6"><a class="header" href="#hasil-uji-coba-6">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress-1"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress-1">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
+<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
+<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
+<h1 id="kesimpulan-6"><a class="header" href="#kesimpulan-6">Kesimpulan</a></h1>
+<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Pengantar Pendidikan</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-perkembangan-peserta-didik"><a class="header" href="#mata-kuliah-perkembangan-peserta-didik">Mata Kuliah Perkembangan Peserta Didik</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-7"><a class="header" href="#kebutuhan-perangkat-lunak-7">Kebutuhan Perangkat Lunak</a></h2>
+<ul>
+<li>LibreOffice</li>
+</ul>
+<h2 id="hasil-uji-coba-7"><a class="header" href="#hasil-uji-coba-7">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress-2"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress-2">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
+<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
+<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
+<h1 id="kesimpulan-7"><a class="header" href="#kesimpulan-7">Kesimpulan</a></h1>
+<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Perkembangan Peserta Didik</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-belajar-dan-pembelajaran"><a class="header" href="#mata-kuliah-belajar-dan-pembelajaran">Mata Kuliah Belajar dan Pembelajaran</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-8"><a class="header" href="#kebutuhan-perangkat-lunak-8">Kebutuhan Perangkat Lunak</a></h2>
+<ul>
+<li>LibreOffice</li>
+</ul>
+<h2 id="hasil-uji-coba-8"><a class="header" href="#hasil-uji-coba-8">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress-3"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress-3">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
+<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
+<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
+<h1 id="kesimpulan-8"><a class="header" href="#kesimpulan-8">Kesimpulan</a></h1>
+<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Belajar dan Pembelajaran</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-profesi-kependidikan"><a class="header" href="#mata-kuliah-profesi-kependidikan">Mata Kuliah Profesi Kependidikan</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-9"><a class="header" href="#kebutuhan-perangkat-lunak-9">Kebutuhan Perangkat Lunak</a></h2>
+<ul>
+<li>LibreOffice</li>
+</ul>
+<h2 id="hasil-uji-coba-9"><a class="header" href="#hasil-uji-coba-9">Hasil Uji Coba</a></h2>
+<h3 id="--pembuatan-makalah-menggunakan-libreoffice-writer-1"><a class="header" href="#--pembuatan-makalah-menggunakan-libreoffice-writer-1">- Pembuatan Makalah Menggunakan LibreOffice Writer</a></h3>
+<p><img src="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/lahan%20basah.png" alt="ppt" /></p>
+<p>Secara bawaan file pada libreOffice writer disimpan dalam format .odt, namun dapat di ekspor ke file docx, pdf, dll.</p>
+<p><a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.odt">Unduh file odt</a> <br>
+<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.docx">Unduh file docx</a><br>
+<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.pdf">Unduh file pdf</a></p>
+<h1 id="kesimpulan-9"><a class="header" href="#kesimpulan-9">Kesimpulan</a></h1>
+<p><strong>LibreOffice Writer</strong> pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat makalah akademik. Tidak ditemukan kendala selama proses pembuatan, penyimpanan, maupun ekspor file ke format lain.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="manajemen-dan-administrasi-sekolah"><a class="header" href="#manajemen-dan-administrasi-sekolah">Manajemen dan Administrasi Sekolah</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-10"><a class="header" href="#kebutuhan-perangkat-lunak-10">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-10"><a class="header" href="#hasil-uji-coba-10">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-10"><a class="header" href="#kesimpulan-10">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Manajemen dan Administrasi Sekolah</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="matematika-dasar"><a class="header" href="#matematika-dasar">Matematika Dasar</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-11"><a class="header" href="#kebutuhan-perangkat-lunak-11">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-11"><a class="header" href="#hasil-uji-coba-11">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-11"><a class="header" href="#kesimpulan-11">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Matematika Dasar</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fisika-dasar"><a class="header" href="#fisika-dasar">Fisika Dasar</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-12"><a class="header" href="#kebutuhan-perangkat-lunak-12">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-12"><a class="header" href="#hasil-uji-coba-12">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-12"><a class="header" href="#kesimpulan-12">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Fisika Dasar</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-dasar-1"><a class="header" href="#pemrograman-dasar-1">Pemrograman Dasar 1</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-5"><a class="header" href="#kebutuhan-perangkat-lunak-5">Kebutuhan Perangkat Lunak</a></h2>
+<h2 id="kebutuhan-perangkat-lunak-13"><a class="header" href="#kebutuhan-perangkat-lunak-13">Kebutuhan Perangkat Lunak</a></h2>
 <ol>
 <li>Python</li>
-<li>Idle Python</li>
-<li>Pip Python</li>
 </ol>
-<h2 id="hasil-uji-coba-5"><a class="header" href="#hasil-uji-coba-5">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-program-python-dengan-idle"><a class="header" href="#--membuat-program-python-dengan-idle">- Membuat Program Python dengan Idle</a></h3>
+<h2 id="hasil-uji-coba-13"><a class="header" href="#hasil-uji-coba-13">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-program-python"><a class="header" href="#--membuat-program-python">- Membuat Program Python</a></h3>
+<p>Pada Ubuntu 22.04 LTS secara bawaan sudah terdapat text editor <strong>gedit</strong> versi 41.0, <strong>gedit</strong> dapat digunakan untuk membuat program <strong>Python</strong>.</p>
 <ul>
 <li>Source Code :
-<img src="matkul/../matkul/img/Pemrograman%20Dasar%201/sc.png" alt="Source" /></li>
+<img src="matkul/../matkul/img/Pemrograman%20Dasar%201/sc_2.png" alt="Source" /></li>
 <li>Output :
-<img src="matkul/../matkul/img/Pemrograman%20Dasar%201/out.png" alt="Source" /></li>
+<img src="matkul/../matkul/img/Pemrograman%20Dasar%201/output_2.png" alt="Source" /></li>
 </ul>
+<!-- ### - Membuat Program Python dengan Idle
+- Source Code :
+  ![Source](../matkul/img/Pemrograman%20Dasar%201/sc.png)
+- Output :
+  ![Source](../matkul/img/Pemrograman%20Dasar%201/out.png) -->
 <h3 id="--memasang-library-numpy"><a class="header" href="#--memasang-library-numpy">- Memasang Library Numpy</a></h3>
 <p>Secara bawaan setelah memasang <strong>Pip Python</strong> library seperti numpy sudah otomatis terpasang, untuk melihat library yang sudah terpasang dapat menggunakan perintah <code>pip list</code>. Jika ingin memeasang library yang lain dapat menggunakan perintah <code>pip install &lt;nama library&gt;</code>.</p>
 <p><img src="matkul/../matkul/img/Pemrograman%20Dasar%201/numpy.png" alt="numpy" /></p>
-<h2 id="kesimpulan-5"><a class="header" href="#kesimpulan-5">Kesimpulan</a></h2>
-<p>Semua perangkat lunak bekerja dengan baik untuk kebutuhan mata kuliah Pemrograman Dasar 1. Hasil pengujian menunjukkan bahwa Ubuntu mendukung eksekusi program Python, instalasi library, dan penggunaan Idle.</p>
+<h2 id="kesimpulan-13"><a class="header" href="#kesimpulan-13">Kesimpulan</a></h2>
+<p>Semua perangkat lunak bekerja dengan baik untuk kebutuhan mata kuliah Pemrograman Dasar 1. Hasil pengujian menunjukkan bahwa Ubuntu mendukung pembuatan program Python, eksekusi program Python, dan instalasi library.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pengantar-sistem-dijital"><a class="header" href="#pengantar-sistem-dijital">Pengantar Sistem Dijital</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-14"><a class="header" href="#kebutuhan-perangkat-lunak-14">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-14"><a class="header" href="#hasil-uji-coba-14">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-14"><a class="header" href="#kesimpulan-14">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Pengantar Sistem Dijital</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="matematika-diskrit"><a class="header" href="#matematika-diskrit">Matematika Diskrit</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-15"><a class="header" href="#kebutuhan-perangkat-lunak-15">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-15"><a class="header" href="#hasil-uji-coba-15">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-15"><a class="header" href="#kesimpulan-15">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Matematika Diskrit</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kalkulus"><a class="header" href="#kalkulus">Kalkulus</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-16"><a class="header" href="#kebutuhan-perangkat-lunak-16">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-16"><a class="header" href="#hasil-uji-coba-16">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-16"><a class="header" href="#kesimpulan-16">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Kalkulus</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-pengantar-organisasi-komputer"><a class="header" href="#mata-kuliah-pengantar-pengantar-organisasi-komputer">Mata Kuliah Pengantar Pengantar Organisasi Komputer</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-17"><a class="header" href="#kebutuhan-perangkat-lunak-17">Kebutuhan Perangkat Lunak</a></h2>
+<ul>
+<li>LibreOffice</li>
+</ul>
+<h2 id="hasil-uji-coba-17"><a class="header" href="#hasil-uji-coba-17">Hasil Uji Coba</a></h2>
+<h3 id="--pembuatan-makalah-menggunakan-libreoffice-writer-2"><a class="header" href="#--pembuatan-makalah-menggunakan-libreoffice-writer-2">- Pembuatan Makalah Menggunakan LibreOffice Writer</a></h3>
+<p><img src="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/lahan%20basah.png" alt="ppt" /></p>
+<p>Secara bawaan file pada libreOffice writer disimpan dalam format .odt, namun dapat di ekspor ke file docx, pdf, dll.</p>
+<p><a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.odt">Unduh file odt</a> <br>
+<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.docx">Unduh file docx</a><br>
+<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.pdf">Unduh file pdf</a></p>
+<h1 id="kesimpulan-17"><a class="header" href="#kesimpulan-17">Kesimpulan</a></h1>
+<p><strong>LibreOffice Writer</strong> pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat makalah akademik. Tidak ditemukan kendala selama proses pembuatan, penyimpanan, maupun ekspor file ke format lain.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="struktur-data"><a class="header" href="#struktur-data">Struktur Data</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-18"><a class="header" href="#kebutuhan-perangkat-lunak-18">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>Visual Studio Code</li>
+<li>Python</li>
+<li>Pip Python</li>
+</ol>
+<h2 id="hasil-uji-coba-18"><a class="header" href="#hasil-uji-coba-18">Hasil Uji Coba</a></h2>
+<h3 id="--implementasi-operasi-dasar-pada-list-of-list"><a class="header" href="#--implementasi-operasi-dasar-pada-list-of-list">- Implementasi Operasi Dasar pada List of List</a></h3>
+<ul>
+<li>Source Code :
+<img src="matkul/../matkul/img/Struktur%20Data/src.png" alt="Source" /></li>
+<li>Output :
+<img src="matkul/../matkul/img/Struktur%20Data/out.png" alt="Source" /></li>
+</ul>
+<h2 id="kesimpulan-18"><a class="header" href="#kesimpulan-18">Kesimpulan</a></h2>
+<p>Visual Studio Code, Python, dan Pip Python pada sistem operasi Ubuntu bekerja dengan baik untuk mendukung pembelajaran mata kuliah Struktur Data. Tidak ditemukan kendala dalam penulisan kode maupun eksekusi program dengan menggunakan list of list.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-web-1"><a class="header" href="#pemrograman-web-1">Pemrograman Web 1</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-19"><a class="header" href="#kebutuhan-perangkat-lunak-19">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>Visual Studio Code</li>
+</ol>
+<h2 id="hasil-uji-coba-19"><a class="header" href="#hasil-uji-coba-19">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-halaman-web-sederhana-dengan-html-dan-css"><a class="header" href="#--membuat-halaman-web-sederhana-dengan-html-dan-css">- Membuat Halaman Web Sederhana dengan HTML dan CSS</a></h3>
+<ul>
+<li>Source Code :
+<img src="matkul/../matkul/img/Pemrograman%20Web%201/src.png" alt="Source" /></li>
+<li>Output :
+<img src="matkul/../matkul/img/Pemrograman%20Web%201/out.png" alt="Source" /></li>
+</ul>
+<h2 id="kesimpulan-19"><a class="header" href="#kesimpulan-19">Kesimpulan</a></h2>
+<p>Visual Studio Code pada sistem operasi Ubuntu berfungsi dengan baik untuk mendukung pembelajaran mata kuliah Pemrograman Web 1. Tidak ditemukan kendala dalam proses pembuatan dan pengujian halaman web sederhana menggunakan HTML dan CSS.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="aljabar-linear"><a class="header" href="#aljabar-linear">Aljabar Linear</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-20"><a class="header" href="#kebutuhan-perangkat-lunak-20">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-20"><a class="header" href="#hasil-uji-coba-20">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-20"><a class="header" href="#kesimpulan-20">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Aljabar Linear</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="statistika-dan-probabilitas"><a class="header" href="#statistika-dan-probabilitas">Statistika dan Probabilitas</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-21"><a class="header" href="#kebutuhan-perangkat-lunak-21">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-21"><a class="header" href="#hasil-uji-coba-21">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-21"><a class="header" href="#kesimpulan-21">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Statistika dan Probabilitas</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-dasar-2"><a class="header" href="#pemrograman-dasar-2">Pemrograman Dasar 2</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-22"><a class="header" href="#kebutuhan-perangkat-lunak-22">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>Java</li>
+<li>Netbeans</li>
+</ol>
+<h2 id="hasil-uji-coba-22"><a class="header" href="#hasil-uji-coba-22">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-program-java-sederhana-dengan-netbeans"><a class="header" href="#--membuat-program-java-sederhana-dengan-netbeans">- Membuat Program Java sederhana dengan Netbeans</a></h3>
+<ul>
+<li>Source Code :<br>
+<img src="matkul/../matkul/img/Pemrograman%20Dasar%202/src.png" alt="Source" /></li>
+<li>Output :<br>
+<img src="matkul/../matkul/img/Pemrograman%20Dasar%202/out.png" alt="Source" /></li>
+</ul>
+<h2 id="kesimpulan-22"><a class="header" href="#kesimpulan-22">Kesimpulan</a></h2>
+<p>Java dan NetBeans pada sistem operasi Ubuntu bekerja dengan baik untuk mendukung pembelajaran mata kuliah <strong>Pemrograman Dasar 2</strong>. Tidak ditemukan kendala selama proses pembuatan project, eksekusi program, maupun penggunaan library.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sistem-operasi"><a class="header" href="#sistem-operasi">Sistem Operasi</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-23"><a class="header" href="#kebutuhan-perangkat-lunak-23">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>VirtualBox</li>
+</ol>
+<h2 id="hasil-uji-coba-23"><a class="header" href="#hasil-uji-coba-23">Hasil Uji Coba</a></h2>
+<h3 id="--simulasi-sistem-operasi-pada-virtualbox"><a class="header" href="#--simulasi-sistem-operasi-pada-virtualbox">- Simulasi Sistem Operasi pada VirtualBox</a></h3>
+<p><img src="matkul/../matkul/img/Pemrograman%20Dasar%201/out.png" alt="Source" /></p>
+<h2 id="kesimpulan-23"><a class="header" href="#kesimpulan-23">Kesimpulan</a></h2>
+<p>VirtualBox pada sistem operasi Ubuntu berjalan dengan baik dan mampu mensimulasikan sistem operasi lain untuk mendukung pembelajaran mata kuliah Sistem Operasi. Tidak ditemukan kendala selama proses instalasi dan pengujian mesin virtual.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="disain-dan-analisis-algoritma"><a class="header" href="#disain-dan-analisis-algoritma">Disain dan Analisis Algoritma</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-24"><a class="header" href="#kebutuhan-perangkat-lunak-24">Kebutuhan Perangkat Lunak</a></h2>
+<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
+<h2 id="hasil-uji-coba-24"><a class="header" href="#hasil-uji-coba-24">Hasil Uji Coba</a></h2>
+<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
+<h2 id="kesimpulan-24"><a class="header" href="#kesimpulan-24">Kesimpulan</a></h2>
+<p>Mata kuliah <strong>Disain dan Analisis Algoritma</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrosesan-citra-digital"><a class="header" href="#pemrosesan-citra-digital">Pemrosesan Citra Digital</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-25"><a class="header" href="#kebutuhan-perangkat-lunak-25">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>GNU Octave</li>
+</ol>
+<h2 id="hasil-uji-coba-25"><a class="header" href="#hasil-uji-coba-25">Hasil Uji Coba</a></h2>
+<h3 id="--membuat-program-operasi-convolution-low-pass-filtering-high-pass-filtering-dan-high-boost-filtering-dengan-gnu-octave"><a class="header" href="#--membuat-program-operasi-convolution-low-pass-filtering-high-pass-filtering-dan-high-boost-filtering-dengan-gnu-octave">- Membuat Program Operasi Convolution, Low-Pass Filtering, High-Pass Filtering dan High-Boost Filtering dengan GNU-Octave</a></h3>
+<ul>
+<li>Source Code :<br>
+<img src="matkul/../matkul/img/Pemrosesan%20Citra%20Digital/src.png" alt="Source" /></li>
+<li>Output :<br>
+<img src="matkul/../matkul/img/Pemrosesan%20Citra%20Digital/out.png" alt="Source" /></li>
+</ul>
+<h2 id="kesimpulan-25"><a class="header" href="#kesimpulan-25">Kesimpulan</a></h2>
+<p>GNU Octave pada sistem operasi Ubuntu berfungsi dengan baik untuk mendukung proses pembelajaran mata kuliah <strong>Pemrosesan Citra Digital</strong>. Tidak ditemukan kendala selama proses uji coba pengolahan citra, seperti operasi <strong>Convolution, Low-Pass Filtering, High-Pass Filtering dan High-Boost Filtering</strong>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="basis-data"><a class="header" href="#basis-data">Basis Data</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-26"><a class="header" href="#kebutuhan-perangkat-lunak-26">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>MySQL</li>
+</ol>
+<h2 id="hasil-uji-coba-26"><a class="header" href="#hasil-uji-coba-26">Hasil Uji Coba</a></h2>
+<h3 id="--pembuatan-basis-data-dan-tabel"><a class="header" href="#--pembuatan-basis-data-dan-tabel">- Pembuatan Basis Data dan Tabel</a></h3>
+<p><img src="matkul/../matkul/img/Pemrograman%20Dasar%202/out.png" alt="Source" /></p>
+<h2 id="kesimpulan-26"><a class="header" href="#kesimpulan-26">Kesimpulan</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-perangkat-bergerak"><a class="header" href="#pemrograman-perangkat-bergerak">Pemrograman Perangkat Bergerak</a></h1>
+<h2 id="kebutuhan-perangkat-lunak-27"><a class="header" href="#kebutuhan-perangkat-lunak-27">Kebutuhan Perangkat Lunak</a></h2>
+<ol>
+<li>Android Studio</li>
+</ol>
+<h2 id="hasil-uji-coba-27"><a class="header" href="#hasil-uji-coba-27">Hasil Uji Coba</a></h2>
+<h3 id="--pembuatan-aplikasi-android-sederhana"><a class="header" href="#--pembuatan-aplikasi-android-sederhana">- Pembuatan Aplikasi Android Sederhana</a></h3>
+<p><img src="matkul/../matkul/img/Pemrograman%20Perangkat%20Bergerak/android.png" alt="android studio" /></p>
+<h2 id="kesimpulan-27"><a class="header" href="#kesimpulan-27">Kesimpulan</a></h2>
+<p>Android Studio pada sistem operasi Ubuntu bekerja dengan baik untuk mendukung pembelajaran mata kuliah <strong>Pemrograman Perangkat Bergerak</strong>. Tidak ditemukan kendala selama proses pembuatan, pengujian, dan eksekusi aplikasi Android sederhana.</p>
 
                     </main>
 
