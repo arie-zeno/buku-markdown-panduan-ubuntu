@@ -160,10 +160,12 @@
 <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
 </code></pre>
 <h3 id="2-menambahkan-repository-resmi-gns3"><a class="header" href="#2-menambahkan-repository-resmi-gns3">2. Menambahkan Repository Resmi GNS3</a></h3>
-<p>Tambahkan repository resmi GNS3 untuk mendapatkan versi terbaru:
-<code>sudo add-apt-repository ppa:gns3/ppa -y</code>
-Kemudian perbarui kembali daftar paket:
-<code>sudo apt update</code></p>
+<p>Tambahkan repository resmi GNS3 untuk mendapatkan versi terbaru:</p>
+<pre><code>sudo add-apt-repository ppa:gns3/ppa -y
+</code></pre>
+<p>Kemudian perbarui kembali daftar paket:</p>
+<pre><code>sudo apt update
+</code></pre>
 <h3 id="3-menginstal-gns3-dan-dependensi"><a class="header" href="#3-menginstal-gns3-dan-dependensi">3. Menginstal GNS3 dan Dependensi</a></h3>
 <p>Jalankan perintah berikut untuk menginstal GNS3:
 sudo apt install gns3-gui gns3-server -y
@@ -207,8 +209,8 @@ sudo usermod -aG wireshark $USER
 <ol>
 <li>
 <p><strong>Unduh appliance/perangkat</strong><br>
-Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance yang dapat ditambahkan ke GNS3 : <br>
-<a href="https://drive.google.com/drive/folders/11kxYYAD8n3Cxyt0CfGPoh1dDqR3BnVNu?usp=sharing">GNS3 Appliances</a></p>
+Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance (dalam kasus ini router cisco 2600) : <br>
+[<a href="https://software.cisco.com/download/">GNS3 Appliances</a>](https://software.cisco.com/download/)</p>
 </li>
 <li>
 <p><strong>Import Aplliance File</strong><br>
@@ -229,7 +231,69 @@ Pilih perangkat yang akan di install (pada kasus ini Router Cisco 1700) kemudian
 Jika appliance berhasil di install maka pada menu appliance kategori router akan terdapat appliance yang baru saja ditambahkan.</p>
 <p><img src="img/gns3/verif.png" alt="vm" /></p>
 </li>
+<li>
+<p><strong>Uji Coba Perangkat</strong><br>
+Tambahkan 1 buah router cisco 2600 dan 2 VPCS kedalam workspace kemudian koneksikan setiap VPCS dengan router : <br>
+• PC 1 &gt; ethernet 0/0 <br>
+• PC 2 &gt; ethernet 1/0</p>
+<p><img src="img/gns3/cisco_topologi.png" alt="vm" /></p>
+<p>Kemudian klik kanan pada router lalu pilih console untuk menambahkan konfigurasi. Berikut konfigurasi untuk router cisco 2600 :</p>
+<p><strong>• Masuk mode konfigurasi</strong> <br></p>
+<pre><code class="language-bash">enable
+configure terminal
+</code></pre>
+<p>Jika berhasil maka outputnya akan seperti berikut :</p>
+<pre><code>Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#
+</code></pre>
+<p><strong>• Konfigurasi FastEthernet0/0 (PC 1)</strong><br></p>
+<pre><code>interface FastEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+</code></pre>
+<p>Jika berasil maka outputnya akan seperti berikut :</p>
+<pre><code>*Mar  1 00:14:26.404: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+*Mar  1 00:14:27.405: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+</code></pre>
+<p><strong>• Konfigurasi FastEthernet0/1 (PC 2)</strong><br></p>
+<pre><code>interface FastEthernet0/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+</code></pre>
+<p>Jika berhasil maka outputnya akan seperti berikut :</p>
+<pre><code>*Mar  1 00:20:21.097: %LINK-3-UPDOWN: Interface Ethernet1/0, changed state to up
+*Mar  1 00:20:22.099: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet1/0, changed state to up
+</code></pre>
+<p><strong>• Simpan Konfigurasi</strong><br></p>
+<pre><code>exit
+write memory
+Berikut adalah output setelah menyimpan konfigurasi :
+Overwrite the previous NVRAM configuration?[confirm]
+Building configuration…
+[OK]
+</code></pre>
+<p><strong>• Konfigurasi VPCS</strong><br>
+Pada console PC 1 atur IP dengan :</p>
+<pre><code>ip 192.168.1.2 255.255.255.0 192.168.1.1
+</code></pre>
+<p>PC 2 :</p>
+<pre><code>ip 192.168.2.2 255.255.255.0 192.168.2.1
+</code></pre>
+<p><strong>• Uji Koneksi</strong><br>
+Ping dari PC 1 ke PC 2 :</p>
+<pre><code>PC1&gt; ping 192.168.2.2
+84 bytes from 192.168.2.2 icmp_seq=1 ttl=63 time=12.978 ms
+84 bytes from 192.168.2.2 icmp_seq=2 ttl=63 time=15.709 ms
+84 bytes from 192.168.2.2 icmp_seq=3 ttl=63 time=16.068 ms
+84 bytes from 192.168.2.2 icmp_seq=4 ttl=63 time=15.385 ms
+84 bytes from 192.168.2.2 icmp_seq=5 ttl=63 time=16.071 ms
+</code></pre>
+<p>Jika outputnya seperti diatas maka konfigurasi telah berhasil diterapkan.</p>
+</li>
 </ol>
+<hr />
 <h4 id="menambahkan-appliance-dengan-virtualbox"><a class="header" href="#menambahkan-appliance-dengan-virtualbox">Menambahkan Appliance dengan VirtualBox</a></h4>
 <ol>
 <li>
@@ -254,6 +318,7 @@ Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VirtualBox
 <p>Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.</p>
 </li>
 </ol>
+<hr />
 <h4 id="menambahkan-appliance-dengan-vmware"><a class="header" href="#menambahkan-appliance-dengan-vmware">Menambahkan Appliance dengan VMWare</a></h4>
 <ol>
 <li>
@@ -278,6 +343,98 @@ Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VMWare VMs
 <p>Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.</p>
 </li>
 </ol>
+<h3 id="9-membuat-simulasi-sederhana-mikrotik-chr"><a class="header" href="#9-membuat-simulasi-sederhana-mikrotik-chr">9. Membuat Simulasi Sederhana (Mikrotik CHR)</a></h3>
+<p>Berikut adalah topologi jaringan sederhana yang akan dibuat.</p>
+<p><img src="img/gns3/mikrotik_topologi.png" alt="vm" /></p>
+<ul>
+<li>
+<p><strong>Menambahkan device</strong> <br>
+Untuk menambahkan device dapat dengan melakukan drag device yang tersedia ke ruang kerja kemudian hubungkan tiap device dengan link ke port yang tersedia.</p>
+<p><img src="img/gns3/mikrotik_kabel.png" alt="vm" /></p>
+<p>Disini untuk port 1 (ether1) mikrotik tersambung ke internet, port 2 dan port 3 masing-masing terhubung ke switch. Setelah semua device terhubung jalankan semua device dengan mengklik icon start pada menu bagian atas.</p>
+</li>
+<li>
+<p><strong>Konfigurasi Mikrotik dengan Winbox</strong><br>
+Buka aplikasi winbox yang terinstall pada laptop kemudian klik mac address / ip address yang muncul. Login dengan user defatl mikrotik yaitu user : admin dan passwordnya kosong.</p>
+<p><img src="img/gns3/winbox_login.png" alt="vm" /></p>
+</li>
+<li>
+<p><strong>Konfigurasi IP</strong> <br>
+Pada winbox, klik menu ip &gt; address. Secara otomatis port 1 akan mendapat ip dari internet karena terhubung dengan NAT pada port 1.</p>
+<p><img src="img/gns3/winbox_ip.png" alt="vm" /></p>
+<ul>
+<li>Port 2 : 192.168.2.1/24 <br>
+<img src="img/gns3/mikrotik_port2.png" alt="vm" /></li>
+<li>Port 3 : 192.168.3.1/24 <br>
+<img src="img/gns3/mikrotik_port3.png" alt="vm" /></li>
+</ul>
+</li>
+<li>
+<p><strong>Menambahkan DHCP Server</strong> <br>
+Pada winbox pilih ip &gt; dhcp server. Kemudian klik DHCP Setup, pada jendela selanjutnya pilih interface yang akan dijadikan DHCP Server, disini yang pertama adalah ether 2.</p>
+<p><img src="img/gns3/dhcp_setup1.png" alt="vm" /></p>
+<p>Selanjutnya biarkan secara default. Untuk range ip yang di berikan bisa dimodifikasi pada jendela selanjutnya. Untuk DNS server isi dengan 8.8.8.8. Klik next sampai terdapat pemberitahuan “setup has completed successfully”.</p>
+<p><img src="img/gns3/dhcp_setup2.png" alt="vm" /></p>
+<p>Kemudian dengan cara yang sama lakukan untuk ether 3.</p>
+</li>
+<li>
+<p><strong>Cek IP client</strong> <br>
+Pada semua VPCS buka console dengan cara klik kanan &gt; console, pada console masukkan perintah :</p>
+<pre><code>dhcp
+</code></pre>
+<p>Perintah dhcp digunakan agar pc menerima ip dari dhcp server. Kemudian untuk melihat konfigurasi dhcp yang diterima gunakan perintah berikut :</p>
+<pre><code>show ip
+</code></pre>
+<p>Berikut output untuk PC1 :</p>
+<pre><code>NAME        : PC1[1]
+IP/MASK     : 192.168.2.254/24
+GATEWAY     : 192.168.2.1
+DNS         : 192.168.122.1  
+DHCP SERVER : 192.168.2.1
+DHCP LEASE  : 1650, 1800/900/1575
+MAC         : 00:50:79:66:68:00
+LPORT       : 10014
+RHOST:PORT  : 127.0.0.1:10015
+MTU         : 1500
+Output untuk PC 4 :
+NAME        : PC4[1]
+IP/MASK     : 192.168.3.253/24
+GATEWAY     : 192.168.3.1
+DNS         : 8.8.8.8  
+DHCP SERVER : 192.168.3.1
+DHCP LEASE  : 1614, 1800/900/1575
+MAC         : 00:50:79:66:68:03
+LPORT       : 10036
+RHOST:PORT  : 127.0.0.1:10037
+MTU         : 1500
+</code></pre>
+<p>Hal ini menunjukan bahwa konfigurasi DHCP Server telah berhasil. Kemudian juga dapa menguji koneksi dengan mengubungi PC dengan DHCP Server yang berbeda, contoh PC4 menghubungi PC1 dengan cara ping:</p>
+<pre><code>PC4&gt; ping 192.168.2.254
+
+84 bytes from 192.168.2.254 icmp_seq=1 ttl=63 time=3.874 ms
+84 bytes from 192.168.2.254 icmp_seq=2 ttl=63 time=2.473 ms
+84 bytes from 192.168.2.254 icmp_seq=3 ttl=63 time=0.863 ms
+84 bytes from 192.168.2.254 icmp_seq=4 ttl=63 time=1.328 ms
+84 bytes from 192.168.2.254 icmp_seq=5 ttl=63 time=1.230 ms
+</code></pre>
+</li>
+<li>
+<p><strong>Konfigurasi IP Firewal</strong><br>
+Agar PC dapat terhubung ke internet maka perlu konfigurasi IP Firewal. Pada winbox pilih ip &gt; firewal kemudian klik kolom NAT dan tambah rules baru dengan mengklik icon +.<br>
+Selanjut pada tab Action ubah menjadi “masquerade” kemudian klik ok.</p>
+<p><img src="img/gns3/ip_firewall.png" alt="vm" /></p>
+<p>ji koneksi dengan ping ke 8.8.8.8.</p>
+<pre><code>C4&gt; ping 8.8.8.8
+
+4 bytes from 172.217.194.102 icmp_seq=1 ttl=57 time=47.240 ms
+4 bytes from 172.217.194.102 icmp_seq=2 ttl=57 time=78.903 ms
+4 bytes from 172.217.194.102 icmp_seq=3 ttl=57 time=44.574 ms
+4 bytes from 172.217.194.102 icmp_seq=4 ttl=57 time=61.156 ms
+4 bytes from 172.217.194.102 icmp_seq=5 ttl=57 time=46.509 ms
+</code></pre>
+<p>Jika outputnya seperti diatas maka PC sudah dapat terkoneksi dengan internet.</p>
+</li>
+</ul>
 
                     </main>
 
@@ -287,9 +444,6 @@ Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VMWare VMs
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="matkul/agama.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -301,9 +455,6 @@ Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VMWare VMs
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="matkul/agama.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

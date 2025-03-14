@@ -41,7 +41,7 @@
   - [R](./instalasi_r.md)
   - [Golang](./instalasi_golang.md) -->
 
-# Hasil Uji Coba Perangkat Lunak
+<!-- # Hasil Uji Coba Perangkat Lunak
 - [Agama](./matkul/agama.md)
 - [Pancasila](./matkul/pancasila.md)
 - [Kewarganegaraan](./matkul/kewarganegaraan.md)
@@ -107,7 +107,7 @@
 - [Program Latihan Persekolahan 2 (PLP 2)]()
 - [Metodologi Penelitian]()
 - [Komputer Masyarakat]()
-- [Skripsi]()
+- [Skripsi]() -->
 
 
 

@@ -813,10 +813,12 @@ Setelah dependensi diperbaiki aplikasi siap digunakan. Buka dari menu Applicatio
 <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
 </code></pre>
 <h3 id="2-menambahkan-repository-resmi-gns3"><a class="header" href="#2-menambahkan-repository-resmi-gns3">2. Menambahkan Repository Resmi GNS3</a></h3>
-<p>Tambahkan repository resmi GNS3 untuk mendapatkan versi terbaru:
-<code>sudo add-apt-repository ppa:gns3/ppa -y</code>
-Kemudian perbarui kembali daftar paket:
-<code>sudo apt update</code></p>
+<p>Tambahkan repository resmi GNS3 untuk mendapatkan versi terbaru:</p>
+<pre><code>sudo add-apt-repository ppa:gns3/ppa -y
+</code></pre>
+<p>Kemudian perbarui kembali daftar paket:</p>
+<pre><code>sudo apt update
+</code></pre>
 <h3 id="3-menginstal-gns3-dan-dependensi"><a class="header" href="#3-menginstal-gns3-dan-dependensi">3. Menginstal GNS3 dan Dependensi</a></h3>
 <p>Jalankan perintah berikut untuk menginstal GNS3:
 sudo apt install gns3-gui gns3-server -y
@@ -860,8 +862,8 @@ sudo usermod -aG wireshark $USER
 <ol>
 <li>
 <p><strong>Unduh appliance/perangkat</strong><br>
-Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance yang dapat ditambahkan ke GNS3 : <br>
-<a href="https://drive.google.com/drive/folders/11kxYYAD8n3Cxyt0CfGPoh1dDqR3BnVNu?usp=sharing">GNS3 Appliances</a></p>
+Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance (dalam kasus ini router cisco 2600) : <br>
+[<a href="https://software.cisco.com/download/">GNS3 Appliances</a>](https://software.cisco.com/download/)</p>
 </li>
 <li>
 <p><strong>Import Aplliance File</strong><br>
@@ -882,7 +884,69 @@ Pilih perangkat yang akan di install (pada kasus ini Router Cisco 1700) kemudian
 Jika appliance berhasil di install maka pada menu appliance kategori router akan terdapat appliance yang baru saja ditambahkan.</p>
 <p><img src="img/gns3/verif.png" alt="vm" /></p>
 </li>
+<li>
+<p><strong>Uji Coba Perangkat</strong><br>
+Tambahkan 1 buah router cisco 2600 dan 2 VPCS kedalam workspace kemudian koneksikan setiap VPCS dengan router : <br>
+• PC 1 &gt; ethernet 0/0 <br>
+• PC 2 &gt; ethernet 1/0</p>
+<p><img src="img/gns3/cisco_topologi.png" alt="vm" /></p>
+<p>Kemudian klik kanan pada router lalu pilih console untuk menambahkan konfigurasi. Berikut konfigurasi untuk router cisco 2600 :</p>
+<p><strong>• Masuk mode konfigurasi</strong> <br></p>
+<pre><code class="language-bash">enable
+configure terminal
+</code></pre>
+<p>Jika berhasil maka outputnya akan seperti berikut :</p>
+<pre><code>Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#
+</code></pre>
+<p><strong>• Konfigurasi FastEthernet0/0 (PC 1)</strong><br></p>
+<pre><code>interface FastEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+</code></pre>
+<p>Jika berasil maka outputnya akan seperti berikut :</p>
+<pre><code>*Mar  1 00:14:26.404: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+*Mar  1 00:14:27.405: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+</code></pre>
+<p><strong>• Konfigurasi FastEthernet0/1 (PC 2)</strong><br></p>
+<pre><code>interface FastEthernet0/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+</code></pre>
+<p>Jika berhasil maka outputnya akan seperti berikut :</p>
+<pre><code>*Mar  1 00:20:21.097: %LINK-3-UPDOWN: Interface Ethernet1/0, changed state to up
+*Mar  1 00:20:22.099: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet1/0, changed state to up
+</code></pre>
+<p><strong>• Simpan Konfigurasi</strong><br></p>
+<pre><code>exit
+write memory
+Berikut adalah output setelah menyimpan konfigurasi :
+Overwrite the previous NVRAM configuration?[confirm]
+Building configuration…
+[OK]
+</code></pre>
+<p><strong>• Konfigurasi VPCS</strong><br>
+Pada console PC 1 atur IP dengan :</p>
+<pre><code>ip 192.168.1.2 255.255.255.0 192.168.1.1
+</code></pre>
+<p>PC 2 :</p>
+<pre><code>ip 192.168.2.2 255.255.255.0 192.168.2.1
+</code></pre>
+<p><strong>• Uji Koneksi</strong><br>
+Ping dari PC 1 ke PC 2 :</p>
+<pre><code>PC1&gt; ping 192.168.2.2
+84 bytes from 192.168.2.2 icmp_seq=1 ttl=63 time=12.978 ms
+84 bytes from 192.168.2.2 icmp_seq=2 ttl=63 time=15.709 ms
+84 bytes from 192.168.2.2 icmp_seq=3 ttl=63 time=16.068 ms
+84 bytes from 192.168.2.2 icmp_seq=4 ttl=63 time=15.385 ms
+84 bytes from 192.168.2.2 icmp_seq=5 ttl=63 time=16.071 ms
+</code></pre>
+<p>Jika outputnya seperti diatas maka konfigurasi telah berhasil diterapkan.</p>
+</li>
 </ol>
+<hr />
 <h4 id="menambahkan-appliance-dengan-virtualbox"><a class="header" href="#menambahkan-appliance-dengan-virtualbox">Menambahkan Appliance dengan VirtualBox</a></h4>
 <ol>
 <li>
@@ -907,6 +971,7 @@ Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VirtualBox
 <p>Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.</p>
 </li>
 </ol>
+<hr />
 <h4 id="menambahkan-appliance-dengan-vmware"><a class="header" href="#menambahkan-appliance-dengan-vmware">Menambahkan Appliance dengan VMWare</a></h4>
 <ol>
 <li>
@@ -931,299 +996,98 @@ Pada GNS3 pilih menu edit kemudian preferences. Selanjutnya pada menu VMWare VMs
 <p>Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="agama"><a class="header" href="#agama">Agama</a></h1>
-<h2 id="kebutuhan-perangkat-lunak"><a class="header" href="#kebutuhan-perangkat-lunak">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba"><a class="header" href="#hasil-uji-coba">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan"><a class="header" href="#kesimpulan">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Agama</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pancasila"><a class="header" href="#pancasila">Pancasila</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-1"><a class="header" href="#kebutuhan-perangkat-lunak-1">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-1"><a class="header" href="#hasil-uji-coba-1">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-1"><a class="header" href="#kesimpulan-1">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Pancasila</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-kewarganegaraan"><a class="header" href="#mata-kuliah-kewarganegaraan">Mata Kuliah Kewarganegaraan</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-2"><a class="header" href="#kebutuhan-perangkat-lunak-2">Kebutuhan Perangkat Lunak</a></h2>
+<h3 id="9-membuat-simulasi-sederhana-mikrotik-chr"><a class="header" href="#9-membuat-simulasi-sederhana-mikrotik-chr">9. Membuat Simulasi Sederhana (Mikrotik CHR)</a></h3>
+<p>Berikut adalah topologi jaringan sederhana yang akan dibuat.</p>
+<p><img src="img/gns3/mikrotik_topologi.png" alt="vm" /></p>
 <ul>
-<li>LibreOffice</li>
-</ul>
-<h2 id="hasil-uji-coba-2"><a class="header" href="#hasil-uji-coba-2">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
-<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
-<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
-<h1 id="kesimpulan-2"><a class="header" href="#kesimpulan-2">Kesimpulan</a></h1>
-<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Kewarganegaraan</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="bahasa-indonesia"><a class="header" href="#bahasa-indonesia">Bahasa Indonesia</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-3"><a class="header" href="#kebutuhan-perangkat-lunak-3">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-3"><a class="header" href="#hasil-uji-coba-3">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-3"><a class="header" href="#kesimpulan-3">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Bahasa Indonesia</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="bahasa-inggris"><a class="header" href="#bahasa-inggris">Bahasa Inggris</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-4"><a class="header" href="#kebutuhan-perangkat-lunak-4">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-4"><a class="header" href="#hasil-uji-coba-4">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-4"><a class="header" href="#kesimpulan-4">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Bahasa Inggris</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-lingkungan-lahan-basah"><a class="header" href="#mata-kuliah-pengantar-lingkungan-lahan-basah">Mata Kuliah Pengantar Lingkungan Lahan Basah</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-5"><a class="header" href="#kebutuhan-perangkat-lunak-5">Kebutuhan Perangkat Lunak</a></h2>
+<li>
+<p><strong>Menambahkan device</strong> <br>
+Untuk menambahkan device dapat dengan melakukan drag device yang tersedia ke ruang kerja kemudian hubungkan tiap device dengan link ke port yang tersedia.</p>
+<p><img src="img/gns3/mikrotik_kabel.png" alt="vm" /></p>
+<p>Disini untuk port 1 (ether1) mikrotik tersambung ke internet, port 2 dan port 3 masing-masing terhubung ke switch. Setelah semua device terhubung jalankan semua device dengan mengklik icon start pada menu bagian atas.</p>
+</li>
+<li>
+<p><strong>Konfigurasi Mikrotik dengan Winbox</strong><br>
+Buka aplikasi winbox yang terinstall pada laptop kemudian klik mac address / ip address yang muncul. Login dengan user defatl mikrotik yaitu user : admin dan passwordnya kosong.</p>
+<p><img src="img/gns3/winbox_login.png" alt="vm" /></p>
+</li>
+<li>
+<p><strong>Konfigurasi IP</strong> <br>
+Pada winbox, klik menu ip &gt; address. Secara otomatis port 1 akan mendapat ip dari internet karena terhubung dengan NAT pada port 1.</p>
+<p><img src="img/gns3/winbox_ip.png" alt="vm" /></p>
 <ul>
-<li>LibreOffice</li>
+<li>Port 2 : 192.168.2.1/24 <br>
+<img src="img/gns3/mikrotik_port2.png" alt="vm" /></li>
+<li>Port 3 : 192.168.3.1/24 <br>
+<img src="img/gns3/mikrotik_port3.png" alt="vm" /></li>
 </ul>
-<h2 id="hasil-uji-coba-5"><a class="header" href="#hasil-uji-coba-5">Hasil Uji Coba</a></h2>
-<h3 id="--pembuatan-makalah-menggunakan-libreoffice-writer"><a class="header" href="#--pembuatan-makalah-menggunakan-libreoffice-writer">- Pembuatan Makalah Menggunakan LibreOffice Writer</a></h3>
-<p><img src="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/lahan%20basah.png" alt="ppt" /></p>
-<p>Secara bawaan file pada libreOffice writer disimpan dalam format .odt, namun dapat di ekspor ke file docx, pdf, dll.</p>
-<p><a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.odt">Unduh file odt</a> <br>
-<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.docx">Unduh file docx</a><br>
-<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.pdf">Unduh file pdf</a></p>
-<h1 id="kesimpulan-5"><a class="header" href="#kesimpulan-5">Kesimpulan</a></h1>
-<p><strong>LibreOffice Writer</strong> pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat makalah akademik. Tidak ditemukan kendala selama proses pembuatan, penyimpanan, maupun ekspor file ke format lain.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-pendidikan"><a class="header" href="#mata-kuliah-pengantar-pendidikan">Mata Kuliah Pengantar Pendidikan</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-6"><a class="header" href="#kebutuhan-perangkat-lunak-6">Kebutuhan Perangkat Lunak</a></h2>
-<ul>
-<li>LibreOffice</li>
+</li>
+<li>
+<p><strong>Menambahkan DHCP Server</strong> <br>
+Pada winbox pilih ip &gt; dhcp server. Kemudian klik DHCP Setup, pada jendela selanjutnya pilih interface yang akan dijadikan DHCP Server, disini yang pertama adalah ether 2.</p>
+<p><img src="img/gns3/dhcp_setup1.png" alt="vm" /></p>
+<p>Selanjutnya biarkan secara default. Untuk range ip yang di berikan bisa dimodifikasi pada jendela selanjutnya. Untuk DNS server isi dengan 8.8.8.8. Klik next sampai terdapat pemberitahuan “setup has completed successfully”.</p>
+<p><img src="img/gns3/dhcp_setup2.png" alt="vm" /></p>
+<p>Kemudian dengan cara yang sama lakukan untuk ether 3.</p>
+</li>
+<li>
+<p><strong>Cek IP client</strong> <br>
+Pada semua VPCS buka console dengan cara klik kanan &gt; console, pada console masukkan perintah :</p>
+<pre><code>dhcp
+</code></pre>
+<p>Perintah dhcp digunakan agar pc menerima ip dari dhcp server. Kemudian untuk melihat konfigurasi dhcp yang diterima gunakan perintah berikut :</p>
+<pre><code>show ip
+</code></pre>
+<p>Berikut output untuk PC1 :</p>
+<pre><code>NAME        : PC1[1]
+IP/MASK     : 192.168.2.254/24
+GATEWAY     : 192.168.2.1
+DNS         : 192.168.122.1  
+DHCP SERVER : 192.168.2.1
+DHCP LEASE  : 1650, 1800/900/1575
+MAC         : 00:50:79:66:68:00
+LPORT       : 10014
+RHOST:PORT  : 127.0.0.1:10015
+MTU         : 1500
+Output untuk PC 4 :
+NAME        : PC4[1]
+IP/MASK     : 192.168.3.253/24
+GATEWAY     : 192.168.3.1
+DNS         : 8.8.8.8  
+DHCP SERVER : 192.168.3.1
+DHCP LEASE  : 1614, 1800/900/1575
+MAC         : 00:50:79:66:68:03
+LPORT       : 10036
+RHOST:PORT  : 127.0.0.1:10037
+MTU         : 1500
+</code></pre>
+<p>Hal ini menunjukan bahwa konfigurasi DHCP Server telah berhasil. Kemudian juga dapa menguji koneksi dengan mengubungi PC dengan DHCP Server yang berbeda, contoh PC4 menghubungi PC1 dengan cara ping:</p>
+<pre><code>PC4&gt; ping 192.168.2.254
+
+84 bytes from 192.168.2.254 icmp_seq=1 ttl=63 time=3.874 ms
+84 bytes from 192.168.2.254 icmp_seq=2 ttl=63 time=2.473 ms
+84 bytes from 192.168.2.254 icmp_seq=3 ttl=63 time=0.863 ms
+84 bytes from 192.168.2.254 icmp_seq=4 ttl=63 time=1.328 ms
+84 bytes from 192.168.2.254 icmp_seq=5 ttl=63 time=1.230 ms
+</code></pre>
+</li>
+<li>
+<p><strong>Konfigurasi IP Firewal</strong><br>
+Agar PC dapat terhubung ke internet maka perlu konfigurasi IP Firewal. Pada winbox pilih ip &gt; firewal kemudian klik kolom NAT dan tambah rules baru dengan mengklik icon +.<br>
+Selanjut pada tab Action ubah menjadi “masquerade” kemudian klik ok.</p>
+<p><img src="img/gns3/ip_firewall.png" alt="vm" /></p>
+<p>ji koneksi dengan ping ke 8.8.8.8.</p>
+<pre><code>C4&gt; ping 8.8.8.8
+
+4 bytes from 172.217.194.102 icmp_seq=1 ttl=57 time=47.240 ms
+4 bytes from 172.217.194.102 icmp_seq=2 ttl=57 time=78.903 ms
+4 bytes from 172.217.194.102 icmp_seq=3 ttl=57 time=44.574 ms
+4 bytes from 172.217.194.102 icmp_seq=4 ttl=57 time=61.156 ms
+4 bytes from 172.217.194.102 icmp_seq=5 ttl=57 time=46.509 ms
+</code></pre>
+<p>Jika outputnya seperti diatas maka PC sudah dapat terkoneksi dengan internet.</p>
+</li>
 </ul>
-<h2 id="hasil-uji-coba-6"><a class="header" href="#hasil-uji-coba-6">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress-1"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress-1">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
-<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
-<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
-<h1 id="kesimpulan-6"><a class="header" href="#kesimpulan-6">Kesimpulan</a></h1>
-<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Pengantar Pendidikan</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-perkembangan-peserta-didik"><a class="header" href="#mata-kuliah-perkembangan-peserta-didik">Mata Kuliah Perkembangan Peserta Didik</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-7"><a class="header" href="#kebutuhan-perangkat-lunak-7">Kebutuhan Perangkat Lunak</a></h2>
-<ul>
-<li>LibreOffice</li>
-</ul>
-<h2 id="hasil-uji-coba-7"><a class="header" href="#hasil-uji-coba-7">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress-2"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress-2">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
-<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
-<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
-<h1 id="kesimpulan-7"><a class="header" href="#kesimpulan-7">Kesimpulan</a></h1>
-<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Perkembangan Peserta Didik</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-belajar-dan-pembelajaran"><a class="header" href="#mata-kuliah-belajar-dan-pembelajaran">Mata Kuliah Belajar dan Pembelajaran</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-8"><a class="header" href="#kebutuhan-perangkat-lunak-8">Kebutuhan Perangkat Lunak</a></h2>
-<ul>
-<li>LibreOffice</li>
-</ul>
-<h2 id="hasil-uji-coba-8"><a class="header" href="#hasil-uji-coba-8">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-presentasi-menggunakan-libreoffice-impress-3"><a class="header" href="#--membuat-presentasi-menggunakan-libreoffice-impress-3">- Membuat Presentasi Menggunakan LibreOffice Impress</a></h3>
-<p><img src="matkul/../matkul/img/Kewarganegaraan/ppt.png" alt="ppt" /></p>
-<p><a href="matkul/../matkul/img/Kewarganegaraan/Kelompok_4_Kewarganegaraan(NEW).pptx">Unduh file</a></p>
-<h1 id="kesimpulan-8"><a class="header" href="#kesimpulan-8">Kesimpulan</a></h1>
-<p>LibreOffice Impress pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat presentasi materi mata kuliah <strong>Belajar dan Pembelajaran</strong>. Tidak ditemukan kendala selama proses uji coba dalam pembuatan file presentasi.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-profesi-kependidikan"><a class="header" href="#mata-kuliah-profesi-kependidikan">Mata Kuliah Profesi Kependidikan</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-9"><a class="header" href="#kebutuhan-perangkat-lunak-9">Kebutuhan Perangkat Lunak</a></h2>
-<ul>
-<li>LibreOffice</li>
-</ul>
-<h2 id="hasil-uji-coba-9"><a class="header" href="#hasil-uji-coba-9">Hasil Uji Coba</a></h2>
-<h3 id="--pembuatan-makalah-menggunakan-libreoffice-writer-1"><a class="header" href="#--pembuatan-makalah-menggunakan-libreoffice-writer-1">- Pembuatan Makalah Menggunakan LibreOffice Writer</a></h3>
-<p><img src="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/lahan%20basah.png" alt="ppt" /></p>
-<p>Secara bawaan file pada libreOffice writer disimpan dalam format .odt, namun dapat di ekspor ke file docx, pdf, dll.</p>
-<p><a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.odt">Unduh file odt</a> <br>
-<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.docx">Unduh file docx</a><br>
-<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.pdf">Unduh file pdf</a></p>
-<h1 id="kesimpulan-9"><a class="header" href="#kesimpulan-9">Kesimpulan</a></h1>
-<p><strong>LibreOffice Writer</strong> pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat makalah akademik. Tidak ditemukan kendala selama proses pembuatan, penyimpanan, maupun ekspor file ke format lain.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="manajemen-dan-administrasi-sekolah"><a class="header" href="#manajemen-dan-administrasi-sekolah">Manajemen dan Administrasi Sekolah</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-10"><a class="header" href="#kebutuhan-perangkat-lunak-10">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-10"><a class="header" href="#hasil-uji-coba-10">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-10"><a class="header" href="#kesimpulan-10">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Manajemen dan Administrasi Sekolah</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="matematika-dasar"><a class="header" href="#matematika-dasar">Matematika Dasar</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-11"><a class="header" href="#kebutuhan-perangkat-lunak-11">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-11"><a class="header" href="#hasil-uji-coba-11">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-11"><a class="header" href="#kesimpulan-11">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Matematika Dasar</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="fisika-dasar"><a class="header" href="#fisika-dasar">Fisika Dasar</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-12"><a class="header" href="#kebutuhan-perangkat-lunak-12">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-12"><a class="header" href="#hasil-uji-coba-12">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-12"><a class="header" href="#kesimpulan-12">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Fisika Dasar</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-dasar-1"><a class="header" href="#pemrograman-dasar-1">Pemrograman Dasar 1</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-13"><a class="header" href="#kebutuhan-perangkat-lunak-13">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>Python</li>
-</ol>
-<h2 id="hasil-uji-coba-13"><a class="header" href="#hasil-uji-coba-13">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-program-python"><a class="header" href="#--membuat-program-python">- Membuat Program Python</a></h3>
-<p>Pada Ubuntu 22.04 LTS secara bawaan sudah terdapat text editor <strong>gedit</strong> versi 41.0, <strong>gedit</strong> dapat digunakan untuk membuat program <strong>Python</strong>.</p>
-<ul>
-<li>Source Code :
-<img src="matkul/../matkul/img/Pemrograman%20Dasar%201/sc_2.png" alt="Source" /></li>
-<li>Output :
-<img src="matkul/../matkul/img/Pemrograman%20Dasar%201/output_2.png" alt="Source" /></li>
-</ul>
-<!-- ### - Membuat Program Python dengan Idle
-- Source Code :
-  ![Source](../matkul/img/Pemrograman%20Dasar%201/sc.png)
-- Output :
-  ![Source](../matkul/img/Pemrograman%20Dasar%201/out.png) -->
-<h3 id="--memasang-library-numpy"><a class="header" href="#--memasang-library-numpy">- Memasang Library Numpy</a></h3>
-<p>Secara bawaan setelah memasang <strong>Pip Python</strong> library seperti numpy sudah otomatis terpasang, untuk melihat library yang sudah terpasang dapat menggunakan perintah <code>pip list</code>. Jika ingin memeasang library yang lain dapat menggunakan perintah <code>pip install &lt;nama library&gt;</code>.</p>
-<p><img src="matkul/../matkul/img/Pemrograman%20Dasar%201/numpy.png" alt="numpy" /></p>
-<h2 id="kesimpulan-13"><a class="header" href="#kesimpulan-13">Kesimpulan</a></h2>
-<p>Semua perangkat lunak bekerja dengan baik untuk kebutuhan mata kuliah Pemrograman Dasar 1. Hasil pengujian menunjukkan bahwa Ubuntu mendukung pembuatan program Python, eksekusi program Python, dan instalasi library.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pengantar-sistem-dijital"><a class="header" href="#pengantar-sistem-dijital">Pengantar Sistem Dijital</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-14"><a class="header" href="#kebutuhan-perangkat-lunak-14">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-14"><a class="header" href="#hasil-uji-coba-14">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-14"><a class="header" href="#kesimpulan-14">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Pengantar Sistem Dijital</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="matematika-diskrit"><a class="header" href="#matematika-diskrit">Matematika Diskrit</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-15"><a class="header" href="#kebutuhan-perangkat-lunak-15">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-15"><a class="header" href="#hasil-uji-coba-15">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-15"><a class="header" href="#kesimpulan-15">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Matematika Diskrit</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="kalkulus"><a class="header" href="#kalkulus">Kalkulus</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-16"><a class="header" href="#kebutuhan-perangkat-lunak-16">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-16"><a class="header" href="#hasil-uji-coba-16">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-16"><a class="header" href="#kesimpulan-16">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Kalkulus</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mata-kuliah-pengantar-pengantar-organisasi-komputer"><a class="header" href="#mata-kuliah-pengantar-pengantar-organisasi-komputer">Mata Kuliah Pengantar Pengantar Organisasi Komputer</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-17"><a class="header" href="#kebutuhan-perangkat-lunak-17">Kebutuhan Perangkat Lunak</a></h2>
-<ul>
-<li>LibreOffice</li>
-</ul>
-<h2 id="hasil-uji-coba-17"><a class="header" href="#hasil-uji-coba-17">Hasil Uji Coba</a></h2>
-<h3 id="--pembuatan-makalah-menggunakan-libreoffice-writer-2"><a class="header" href="#--pembuatan-makalah-menggunakan-libreoffice-writer-2">- Pembuatan Makalah Menggunakan LibreOffice Writer</a></h3>
-<p><img src="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/lahan%20basah.png" alt="ppt" /></p>
-<p>Secara bawaan file pada libreOffice writer disimpan dalam format .odt, namun dapat di ekspor ke file docx, pdf, dll.</p>
-<p><a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.odt">Unduh file odt</a> <br>
-<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.docx">Unduh file docx</a><br>
-<a href="matkul/../matkul/img/Pengantar%20Lingkungan%20Lahan%20Basah/Pengantar%20Lingkungan%20Lahan%20Basah.pdf">Unduh file pdf</a></p>
-<h1 id="kesimpulan-17"><a class="header" href="#kesimpulan-17">Kesimpulan</a></h1>
-<p><strong>LibreOffice Writer</strong> pada sistem operasi Ubuntu berfungsi dengan baik untuk membuat makalah akademik. Tidak ditemukan kendala selama proses pembuatan, penyimpanan, maupun ekspor file ke format lain.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="struktur-data"><a class="header" href="#struktur-data">Struktur Data</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-18"><a class="header" href="#kebutuhan-perangkat-lunak-18">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>Visual Studio Code</li>
-<li>Python</li>
-<li>Pip Python</li>
-</ol>
-<h2 id="hasil-uji-coba-18"><a class="header" href="#hasil-uji-coba-18">Hasil Uji Coba</a></h2>
-<h3 id="--implementasi-operasi-dasar-pada-list-of-list"><a class="header" href="#--implementasi-operasi-dasar-pada-list-of-list">- Implementasi Operasi Dasar pada List of List</a></h3>
-<ul>
-<li>Source Code :
-<img src="matkul/../matkul/img/Struktur%20Data/src.png" alt="Source" /></li>
-<li>Output :
-<img src="matkul/../matkul/img/Struktur%20Data/out.png" alt="Source" /></li>
-</ul>
-<h2 id="kesimpulan-18"><a class="header" href="#kesimpulan-18">Kesimpulan</a></h2>
-<p>Visual Studio Code, Python, dan Pip Python pada sistem operasi Ubuntu bekerja dengan baik untuk mendukung pembelajaran mata kuliah Struktur Data. Tidak ditemukan kendala dalam penulisan kode maupun eksekusi program dengan menggunakan list of list.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-web-1"><a class="header" href="#pemrograman-web-1">Pemrograman Web 1</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-19"><a class="header" href="#kebutuhan-perangkat-lunak-19">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>Visual Studio Code</li>
-</ol>
-<h2 id="hasil-uji-coba-19"><a class="header" href="#hasil-uji-coba-19">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-halaman-web-sederhana-dengan-html-dan-css"><a class="header" href="#--membuat-halaman-web-sederhana-dengan-html-dan-css">- Membuat Halaman Web Sederhana dengan HTML dan CSS</a></h3>
-<ul>
-<li>Source Code :
-<img src="matkul/../matkul/img/Pemrograman%20Web%201/src.png" alt="Source" /></li>
-<li>Output :
-<img src="matkul/../matkul/img/Pemrograman%20Web%201/out.png" alt="Source" /></li>
-</ul>
-<h2 id="kesimpulan-19"><a class="header" href="#kesimpulan-19">Kesimpulan</a></h2>
-<p>Visual Studio Code pada sistem operasi Ubuntu berfungsi dengan baik untuk mendukung pembelajaran mata kuliah Pemrograman Web 1. Tidak ditemukan kendala dalam proses pembuatan dan pengujian halaman web sederhana menggunakan HTML dan CSS.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="aljabar-linear"><a class="header" href="#aljabar-linear">Aljabar Linear</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-20"><a class="header" href="#kebutuhan-perangkat-lunak-20">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-20"><a class="header" href="#hasil-uji-coba-20">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-20"><a class="header" href="#kesimpulan-20">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Aljabar Linear</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="statistika-dan-probabilitas"><a class="header" href="#statistika-dan-probabilitas">Statistika dan Probabilitas</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-21"><a class="header" href="#kebutuhan-perangkat-lunak-21">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-21"><a class="header" href="#hasil-uji-coba-21">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-21"><a class="header" href="#kesimpulan-21">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Statistika dan Probabilitas</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-dasar-2"><a class="header" href="#pemrograman-dasar-2">Pemrograman Dasar 2</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-22"><a class="header" href="#kebutuhan-perangkat-lunak-22">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>Java</li>
-<li>Netbeans</li>
-</ol>
-<h2 id="hasil-uji-coba-22"><a class="header" href="#hasil-uji-coba-22">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-program-java-sederhana-dengan-netbeans"><a class="header" href="#--membuat-program-java-sederhana-dengan-netbeans">- Membuat Program Java sederhana dengan Netbeans</a></h3>
-<ul>
-<li>Source Code :<br>
-<img src="matkul/../matkul/img/Pemrograman%20Dasar%202/src.png" alt="Source" /></li>
-<li>Output :<br>
-<img src="matkul/../matkul/img/Pemrograman%20Dasar%202/out.png" alt="Source" /></li>
-</ul>
-<h2 id="kesimpulan-22"><a class="header" href="#kesimpulan-22">Kesimpulan</a></h2>
-<p>Java dan NetBeans pada sistem operasi Ubuntu bekerja dengan baik untuk mendukung pembelajaran mata kuliah <strong>Pemrograman Dasar 2</strong>. Tidak ditemukan kendala selama proses pembuatan project, eksekusi program, maupun penggunaan library.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="sistem-operasi"><a class="header" href="#sistem-operasi">Sistem Operasi</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-23"><a class="header" href="#kebutuhan-perangkat-lunak-23">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>VirtualBox</li>
-</ol>
-<h2 id="hasil-uji-coba-23"><a class="header" href="#hasil-uji-coba-23">Hasil Uji Coba</a></h2>
-<h3 id="--simulasi-sistem-operasi-pada-virtualbox"><a class="header" href="#--simulasi-sistem-operasi-pada-virtualbox">- Simulasi Sistem Operasi pada VirtualBox</a></h3>
-<p><img src="matkul/../matkul/img/Pemrograman%20Dasar%201/out.png" alt="Source" /></p>
-<h2 id="kesimpulan-23"><a class="header" href="#kesimpulan-23">Kesimpulan</a></h2>
-<p>VirtualBox pada sistem operasi Ubuntu berjalan dengan baik dan mampu mensimulasikan sistem operasi lain untuk mendukung pembelajaran mata kuliah Sistem Operasi. Tidak ditemukan kendala selama proses instalasi dan pengujian mesin virtual.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="disain-dan-analisis-algoritma"><a class="header" href="#disain-dan-analisis-algoritma">Disain dan Analisis Algoritma</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-24"><a class="header" href="#kebutuhan-perangkat-lunak-24">Kebutuhan Perangkat Lunak</a></h2>
-<p>Tidak ada perangkat lunak khusus yang digunakan dalam pembelajaran mata kuliah ini.</p>
-<h2 id="hasil-uji-coba-24"><a class="header" href="#hasil-uji-coba-24">Hasil Uji Coba</a></h2>
-<p>Karena mata kuliah ini tidak memerlukan perangkat lunak, hasil uji coba tidak relevan untuk dilakukan.</p>
-<h2 id="kesimpulan-24"><a class="header" href="#kesimpulan-24">Kesimpulan</a></h2>
-<p>Mata kuliah <strong>Disain dan Analisis Algoritma</strong> tidak membutuhkan perangkat lunak tambahan untuk mendukung pembelajaran.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrosesan-citra-digital"><a class="header" href="#pemrosesan-citra-digital">Pemrosesan Citra Digital</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-25"><a class="header" href="#kebutuhan-perangkat-lunak-25">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>GNU Octave</li>
-</ol>
-<h2 id="hasil-uji-coba-25"><a class="header" href="#hasil-uji-coba-25">Hasil Uji Coba</a></h2>
-<h3 id="--membuat-program-operasi-convolution-low-pass-filtering-high-pass-filtering-dan-high-boost-filtering-dengan-gnu-octave"><a class="header" href="#--membuat-program-operasi-convolution-low-pass-filtering-high-pass-filtering-dan-high-boost-filtering-dengan-gnu-octave">- Membuat Program Operasi Convolution, Low-Pass Filtering, High-Pass Filtering dan High-Boost Filtering dengan GNU-Octave</a></h3>
-<ul>
-<li>Source Code :<br>
-<img src="matkul/../matkul/img/Pemrosesan%20Citra%20Digital/src.png" alt="Source" /></li>
-<li>Output :<br>
-<img src="matkul/../matkul/img/Pemrosesan%20Citra%20Digital/out.png" alt="Source" /></li>
-</ul>
-<h2 id="kesimpulan-25"><a class="header" href="#kesimpulan-25">Kesimpulan</a></h2>
-<p>GNU Octave pada sistem operasi Ubuntu berfungsi dengan baik untuk mendukung proses pembelajaran mata kuliah <strong>Pemrosesan Citra Digital</strong>. Tidak ditemukan kendala selama proses uji coba pengolahan citra, seperti operasi <strong>Convolution, Low-Pass Filtering, High-Pass Filtering dan High-Boost Filtering</strong>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="basis-data"><a class="header" href="#basis-data">Basis Data</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-26"><a class="header" href="#kebutuhan-perangkat-lunak-26">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>MySQL</li>
-</ol>
-<h2 id="hasil-uji-coba-26"><a class="header" href="#hasil-uji-coba-26">Hasil Uji Coba</a></h2>
-<h3 id="--pembuatan-basis-data-dan-tabel"><a class="header" href="#--pembuatan-basis-data-dan-tabel">- Pembuatan Basis Data dan Tabel</a></h3>
-<p><img src="matkul/../matkul/img/Pemrograman%20Dasar%202/out.png" alt="Source" /></p>
-<h2 id="kesimpulan-26"><a class="header" href="#kesimpulan-26">Kesimpulan</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pemrograman-perangkat-bergerak"><a class="header" href="#pemrograman-perangkat-bergerak">Pemrograman Perangkat Bergerak</a></h1>
-<h2 id="kebutuhan-perangkat-lunak-27"><a class="header" href="#kebutuhan-perangkat-lunak-27">Kebutuhan Perangkat Lunak</a></h2>
-<ol>
-<li>Android Studio</li>
-</ol>
-<h2 id="hasil-uji-coba-27"><a class="header" href="#hasil-uji-coba-27">Hasil Uji Coba</a></h2>
-<h3 id="--pembuatan-aplikasi-android-sederhana"><a class="header" href="#--pembuatan-aplikasi-android-sederhana">- Pembuatan Aplikasi Android Sederhana</a></h3>
-<p><img src="matkul/../matkul/img/Pemrograman%20Perangkat%20Bergerak/android.png" alt="android studio" /></p>
-<h2 id="kesimpulan-27"><a class="header" href="#kesimpulan-27">Kesimpulan</a></h2>
-<p>Android Studio pada sistem operasi Ubuntu bekerja dengan baik untuk mendukung pembelajaran mata kuliah <strong>Pemrograman Perangkat Bergerak</strong>. Tidak ditemukan kendala selama proses pembuatan, pengujian, dan eksekusi aplikasi Android sederhana.</p>
 
                     </main>
 

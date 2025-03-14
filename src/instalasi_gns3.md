@@ -9,9 +9,13 @@ sudo apt update && sudo apt upgrade -y
 ```
 ### 2. Menambahkan Repository Resmi GNS3
 Tambahkan repository resmi GNS3 untuk mendapatkan versi terbaru: 
-```sudo add-apt-repository ppa:gns3/ppa -y```
+```
+sudo add-apt-repository ppa:gns3/ppa -y
+```
 Kemudian perbarui kembali daftar paket:
-```sudo apt update```
+```
+sudo apt update
+```
 ### 3. Menginstal GNS3 dan Dependensi
 Jalankan perintah berikut untuk menginstal GNS3:
 sudo apt install gns3-gui gns3-server -y 
@@ -63,8 +67,8 @@ Connection to the local GNS3 server has been successful!
 Agar dapat menggunakan berbagai perangkat jaringan tambahan perlu menambahkan appliance ke dalam GNS3.
 #### Menambahkan Appliance dengan KVM/QEMU.
 1. **Unduh appliance/perangkat**<br>
-   Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance yang dapat ditambahkan ke GNS3 : <br>
-   [GNS3 Appliances](https://drive.google.com/drive/folders/11kxYYAD8n3Cxyt0CfGPoh1dDqR3BnVNu?usp=sharing)
+   Unduh appliance/perangkat yang ingin ditambakan dalam bentuk image file, berikut merupakan link untuk mengunduh appliance (dalam kasus ini router cisco 2600) : <br>
+   [[GNS3 Appliances](https://software.cisco.com/download/)](https://software.cisco.com/download/)
 
 2. **Import Aplliance File**<br>
    Klik file pada menu pojok kiri atas kemudian pilih new tamplate.
@@ -92,8 +96,81 @@ Agar dapat menggunakan berbagai perangkat jaringan tambahan perlu menambahkan ap
    Jika appliance berhasil di install maka pada menu appliance kategori router akan terdapat appliance yang baru saja ditambahkan.
    
    ![vm](img/gns3/verif.png)
-   
 
+3. **Uji Coba Perangkat**<br>
+   Tambahkan 1 buah router cisco 2600 dan 2 VPCS kedalam workspace kemudian koneksikan setiap VPCS dengan router : <br>
+   • PC 1 > ethernet 0/0 <br>
+   • PC 2 > ethernet 1/0
+
+   ![vm](img/gns3/cisco_topologi.png)
+
+   Kemudian klik kanan pada router lalu pilih console untuk menambahkan konfigurasi. Berikut konfigurasi untuk router cisco 2600 :
+   
+   **• Masuk mode konfigurasi** <br>
+   ```bash
+   enable
+   configure terminal
+   ```
+   Jika berhasil maka outputnya akan seperti berikut :
+   ```
+   Enter configuration commands, one per line.  End with CNTL/Z.
+   R1(config)#
+   ```
+   **• Konfigurasi FastEthernet0/0 (PC 1)**<br>
+   ```
+   interface FastEthernet0/0
+   ip address 192.168.1.1 255.255.255.0
+   no shutdown
+   exit
+   ```
+   Jika berasil maka outputnya akan seperti berikut :
+   ```
+   *Mar  1 00:14:26.404: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+   *Mar  1 00:14:27.405: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+   ```
+   **• Konfigurasi FastEthernet0/1 (PC 2)**<br>
+   ```
+   interface FastEthernet0/0
+   ip address 192.168.2.1 255.255.255.0
+   no shutdown
+   exit
+   ```
+   Jika berhasil maka outputnya akan seperti berikut :
+   ```
+   *Mar  1 00:20:21.097: %LINK-3-UPDOWN: Interface Ethernet1/0, changed state to up
+   *Mar  1 00:20:22.099: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet1/0, changed state to up
+   ```
+   **• Simpan Konfigurasi**<br>
+   ```
+   exit
+   write memory
+   Berikut adalah output setelah menyimpan konfigurasi :
+   Overwrite the previous NVRAM configuration?[confirm]
+   Building configuration…
+   [OK]
+   ```
+   **• Konfigurasi VPCS**<br>
+   Pada console PC 1 atur IP dengan :
+   ```
+   ip 192.168.1.2 255.255.255.0 192.168.1.1
+   ```
+   PC 2 :
+   ```
+   ip 192.168.2.2 255.255.255.0 192.168.2.1
+   ```
+   **• Uji Koneksi**<br>
+   Ping dari PC 1 ke PC 2 :
+   ```
+   PC1> ping 192.168.2.2
+   84 bytes from 192.168.2.2 icmp_seq=1 ttl=63 time=12.978 ms
+   84 bytes from 192.168.2.2 icmp_seq=2 ttl=63 time=15.709 ms
+   84 bytes from 192.168.2.2 icmp_seq=3 ttl=63 time=16.068 ms
+   84 bytes from 192.168.2.2 icmp_seq=4 ttl=63 time=15.385 ms
+   84 bytes from 192.168.2.2 icmp_seq=5 ttl=63 time=16.071 ms
+   ```
+   Jika outputnya seperti diatas maka konfigurasi telah berhasil diterapkan.
+
+  ---
 #### Menambahkan Appliance dengan VirtualBox
 
 1. **Unduh appliance/perangkat**<br>
@@ -123,6 +200,7 @@ Agar dapat menggunakan berbagai perangkat jaringan tambahan perlu menambahkan ap
    
    Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.
 
+---
 #### Menambahkan Appliance dengan VMWare
 
 1. **Unduh appliance/perangkat**<br>
@@ -151,3 +229,101 @@ Agar dapat menggunakan berbagai perangkat jaringan tambahan perlu menambahkan ap
    ![vm](img/gns3/succ2_vmw.png)
    
    Klik edit pada template tersebut kemudian pilih kategorinya sebagai router.
+
+### 9. Membuat Simulasi Sederhana (Mikrotik CHR)
+Berikut adalah topologi jaringan sederhana yang akan dibuat.
+
+![vm](img/gns3/mikrotik_topologi.png)
+
+- **Menambahkan device** <br>
+  Untuk menambahkan device dapat dengan melakukan drag device yang tersedia ke ruang kerja kemudian hubungkan tiap device dengan link ke port yang tersedia.
+
+  ![vm](img/gns3/mikrotik_kabel.png)
+
+  Disini untuk port 1 (ether1) mikrotik tersambung ke internet, port 2 dan port 3 masing-masing terhubung ke switch. Setelah semua device terhubung jalankan semua device dengan mengklik icon start pada menu bagian atas.
+- **Konfigurasi Mikrotik dengan Winbox**<br>
+  Buka aplikasi winbox yang terinstall pada laptop kemudian klik mac address / ip address yang muncul. Login dengan user defatl mikrotik yaitu user : admin dan passwordnya kosong.
+
+  ![vm](img/gns3/winbox_login.png)
+
+- **Konfigurasi IP** <br>
+  Pada winbox, klik menu ip > address. Secara otomatis port 1 akan mendapat ip dari internet karena terhubung dengan NAT pada port 1.
+
+  ![vm](img/gns3/winbox_ip.png)
+
+   - Port 2 : 192.168.2.1/24 <br>
+  ![vm](img/gns3/mikrotik_port2.png)
+   - Port 3 : 192.168.3.1/24 <br>
+  ![vm](img/gns3/mikrotik_port3.png)
+
+- **Menambahkan DHCP Server** <br>
+  Pada winbox pilih ip > dhcp server. Kemudian klik DHCP Setup, pada jendela selanjutnya pilih interface yang akan dijadikan DHCP Server, disini yang pertama adalah ether 2.
+
+  ![vm](img/gns3/dhcp_setup1.png)
+
+  Selanjutnya biarkan secara default. Untuk range ip yang di berikan bisa dimodifikasi pada jendela selanjutnya. Untuk DNS server isi dengan 8.8.8.8. Klik next sampai terdapat pemberitahuan “setup has completed successfully”.
+
+  ![vm](img/gns3/dhcp_setup2.png)
+
+  Kemudian dengan cara yang sama lakukan untuk ether 3.
+
+- **Cek IP client** <br>
+  Pada semua VPCS buka console dengan cara klik kanan > console, pada console masukkan perintah :
+  ```
+  dhcp
+  ```
+  Perintah dhcp digunakan agar pc menerima ip dari dhcp server. Kemudian untuk melihat konfigurasi dhcp yang diterima gunakan perintah berikut :
+  ```
+  show ip
+  ```
+  Berikut output untuk PC1 :
+  ```
+  NAME        : PC1[1]
+  IP/MASK     : 192.168.2.254/24
+  GATEWAY     : 192.168.2.1
+  DNS         : 192.168.122.1  
+  DHCP SERVER : 192.168.2.1
+  DHCP LEASE  : 1650, 1800/900/1575
+  MAC         : 00:50:79:66:68:00
+  LPORT       : 10014
+  RHOST:PORT  : 127.0.0.1:10015
+  MTU         : 1500
+  Output untuk PC 4 :
+  NAME        : PC4[1]
+  IP/MASK     : 192.168.3.253/24
+  GATEWAY     : 192.168.3.1
+  DNS         : 8.8.8.8  
+  DHCP SERVER : 192.168.3.1
+  DHCP LEASE  : 1614, 1800/900/1575
+  MAC         : 00:50:79:66:68:03
+  LPORT       : 10036
+  RHOST:PORT  : 127.0.0.1:10037
+  MTU         : 1500
+  ```
+  Hal ini menunjukan bahwa konfigurasi DHCP Server telah berhasil. Kemudian juga dapa menguji koneksi dengan mengubungi PC dengan DHCP Server yang berbeda, contoh PC4 menghubungi PC1 dengan cara ping:
+  ```
+  PC4> ping 192.168.2.254
+
+  84 bytes from 192.168.2.254 icmp_seq=1 ttl=63 time=3.874 ms
+  84 bytes from 192.168.2.254 icmp_seq=2 ttl=63 time=2.473 ms
+  84 bytes from 192.168.2.254 icmp_seq=3 ttl=63 time=0.863 ms
+  84 bytes from 192.168.2.254 icmp_seq=4 ttl=63 time=1.328 ms
+  84 bytes from 192.168.2.254 icmp_seq=5 ttl=63 time=1.230 ms
+  ```
+- **Konfigurasi IP Firewal**<br>
+  Agar PC dapat terhubung ke internet maka perlu konfigurasi IP Firewal. Pada winbox pilih ip > firewal kemudian klik kolom NAT dan tambah rules baru dengan mengklik icon +.<br>
+  Selanjut pada tab Action ubah menjadi “masquerade” kemudian klik ok.
+
+  ![vm](img/gns3/ip_firewall.png)
+
+  ji koneksi dengan ping ke 8.8.8.8.
+  ```
+  C4> ping 8.8.8.8
+
+  4 bytes from 172.217.194.102 icmp_seq=1 ttl=57 time=47.240 ms
+  4 bytes from 172.217.194.102 icmp_seq=2 ttl=57 time=78.903 ms
+  4 bytes from 172.217.194.102 icmp_seq=3 ttl=57 time=44.574 ms
+  4 bytes from 172.217.194.102 icmp_seq=4 ttl=57 time=61.156 ms
+  4 bytes from 172.217.194.102 icmp_seq=5 ttl=57 time=46.509 ms
+  ```
+  Jika outputnya seperti diatas maka PC sudah dapat terkoneksi dengan internet.
