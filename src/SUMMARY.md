@@ -1,22 +1,86 @@
 # Summary
-# Panduan Penggunaan
+[Cover](./cover.md)
+# Bab 1
 - [Instalasi Sistem Operasi Ubuntu](./chapter_1.md)
-- [Pengenalan Antarmuka Desktop Ubuntu](./pengenalan_ubuntu_desktop.md)
-- [Proses Instalasi Aplikasi pada Ubuntu](./chapter_2.md)
-# Instalasi Aplikasi menggunakan GUI
-- [Instalasi Aplikasi menggunakan GUI dengan Ubuntu Software](./instalasi_gui_ubuntu_software.md)
-- [Instalasi Aplikasi menggunakan GUI dengan Synaptic Package Manager](./instalasi_gui_synaptic.md)
-# Instalasi Aplikasi menggunakan CLI
-- [Instalasi Aplikasi menggunakan CLI dengan Advanced Packaging Tool (APT)](./instalasi_cli_apt.md)
-- [Instalasi Aplikasi menggunakan CLI dengan Flatpak](./instalasi_cli_flatpak.md) 
-- [Instalasi Aplikasi menggunakan CLI dengan Snap](./instalasi_cli_snap.md)
-# Instalasi Aplikasi menggunakan paket .deb
-- [Instalasi paket .deb menggunakan GUI dengan Ubuntu Software](./instalasi_deb_gui_ubuntu_software.md) 
-- [Instalasi paket .deb menggunakan GUI dengan GDebi](./instalasi_deb_gui_gdebi.md)
-- [Instalasi paket .deb menggunakan CLI](./instalasi_deb_cli.md) |
-# Kebutuhan Aplikasi Pembelajaran
+  - [Persiapan Instalasi](./persiapan_instalasi.md)
+  - [Langkah-Langkah Instalasi](./langkah_instalasi.md)
+  
+  <!-- - [Pengenalan Antarmuka Desktop Ubuntu](./pengenalan_ubuntu_desktop.md)
+  - [Proses Instalasi Aplikasi pada Ubuntu](./chapter_2.md) -->
+
+# Bab 2
+- [Berkenalan dengan Ubuntu](./bab_2.md)
+  - [Top Bar/Panel Atas](./top_bar.md)
+  - [Dock](./dock.md)
+  - [Show Applications](./show_app.md)
+  - [Activities Overview](./activities_overview.md)
+  - [Touchpad Gesture](./touchpad_gesture.md)
+  <!-- - [Persiapan Instalasi](./persiapan_instalasi.md)
+  - [Langkah-Langkah Instalasi](./langkah_instalasi.md)
+   -->
+
+# Bab 3
+- [File System dan File Manager](./bab_3.md)
+  - [Struktur File System di Linux](./filesystem.md)
+  - [Penggunaan File Manager](./nautilus.md)
+
+# Bab 4
+- [Metode Instalasi Program Aplikasi](./bab_4.md)
+  - [Instalasi Aplikasi menggunakan GUI dengan Ubuntu Software](./instalasi_gui_ubuntu_software.md)
+  - [Instalasi Aplikasi menggunakan GUI dengan Synaptic Package Manager](./instalasi_gui_synaptic.md)
+  - [Instalasi Aplikasi menggunakan CLI dengan Advanced Packaging Tool (APT)](./instalasi_cli_apt.md)
+  - [Instalasi Aplikasi menggunakan CLI dengan Flatpak](./instalasi_cli_flatpak.md) 
+  - [Instalasi Aplikasi menggunakan CLI dengan Snap](./instalasi_cli_snap.md)
+  - [Instalasi paket .deb menggunakan GUI dengan Ubuntu Software](./instalasi_deb_gui_ubuntu_software.md) 
+  - [Instalasi paket .deb menggunakan GUI dengan GDebi](./instalasi_deb_gui_gdebi.md)
+  - [Instalasi paket .deb menggunakan CLI](./instalasi_deb_cli.md)
+
+# Bab 5
+- [Instalasi Program Aplikasi](./bab_5.md)
+  - [Instalasi Python](./instalasi_python.md)
+  - [IDLE](./instalasi_idle%20python.md)
+  - [Pip](./instalasi_pip%20python.md)
+  - [Visual Studio Code](./instalasi_vscode.md)
+  - [GNU Octave](./instalasi_octave.md)
+  - [SWI-Prolog](./instalasi_prolog.md)
+  - [Wireshark](./instalasi_wireshark.md)
+  - [VirtualBox](./instalasi_vb.md)
+  - [Android Studio](./instalasi_android.md)
+  - [Winbox](./instalasi_winbox.md)
+  - [kdenlive](./instalasi_kdenlive.md)
+  - [audacity](./instalasi_audacity.md)
+  - [figma](./instalasi_figma.md)
+  - [geogebra](./instalasi_geogebra.md)
+  - [qgis](./instalasi_qgis.md)
+  - [apache2](./instalasi_apache2.md)
+  - [mysql](./instalasi_mysql.md)
+  - [dbeaver](./instalasi_dbeaver.md)
+  - [Java](./instalasi_java.md)
+  - [PHP](./instalasi_php.md)
+  - [composer](./instalasi_composer.md)
+  - [webgl](./instalasi_webgl.md)
+  - [zotero](./instalasi_zotero.md)
+  - [inkscape](./instalasi_php.md)
+  - [gimp](./instalasi_gimp.md)
+  - [openelearning](./instalasi_openelearning.md)
+  - [gns3](./instalasi_gns3.md)
+  - [Google Chrome](./instalasi_chrome.md)
+  - [LibreOffice](./instalasi_libreoffice.md)
+  - [quran](./instalasi_quran.md)
+  - [fet](./instalasi_fet.md)
+  - [logisim](./instalasi_logisim.md)
+  - [sagemath](./instalasi_sagemath.md)
+  - [pspp](./instalasi_pspp.md)
+  - [simphy](./instalasi_simphy.md)
+  - [postman](./instalasi_postman.md)
+  - [jupyterlab](./instalasi_jupyterlab.md)
+  - [Project Libre](./instalasi_projectlibre.md)
+  - [PHP](./instalasi_php.md)
+  - [dbeaver](./instalasi_dbeaver.md)
+  
+<!-- # Kebutuhan Aplikasi Pembelajaran
 - [Daftar Aplikasi Pembelajaran](./daftar_mata_kuliah.md)
-  - [GNS 3](./instalasi_gns3.md)
+  - [GNS 3](./instalasi_gns3.md) -->
   <!-- - [Visual Studio Code](./instalasi_vscode.md)
   - [Python](./instalasi_python.md)
   - [Pip Python](./instalasi_pip%20python.md)
