@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>apache2 -  </title>
+        <title>Instalasi apache2 -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,7 +152,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="apache2"><a class="header" href="#apache2">apache2</a></h1>
+                        <h1 id="instalasi-apache2"><a class="header" href="#instalasi-apache2">Instalasi Apache2</a></h1>
+<p>Apache2 (atau Apache HTTP Server) adalah perangkat lunak server web open-source yang paling banyak digunakan di dunia. Apache2 berfungsi untuk menghosting situs web dengan mengelola permintaan HTTP dari klien dan mengirimkan respons yang sesuai, seperti halaman HTML, gambar, dan file lainnya. Apache2 juga dapat dikonfigurasi untuk bekerja dengan berbagai teknologi pemrograman seperti PHP, Python, dan Perl untuk menyediakan fungsionalitas dinamis pada situs web.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-perbarui-daftar-paket"><a class="header" href="#1-perbarui-daftar-paket">1. Perbarui daftar paket</a></h3>
+<p>Sebelum menginstal Apache2, pastikan sistem diperbarui untuk mencegah masalah kompatibilitas. Gunakan perintah berikut pada terminal untuk memperbarui sistem:</p>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre>
+<h3 id="2-install-apache2"><a class="header" href="#2-install-apache2">2. Install Apache2</a></h3>
+<p>Gunakan perintah berikut untuk menginstal apache2:</p>
+<pre><code class="language-bash">sudo apt install apache2 -y
+</code></pre>
+<p>Jika instalasi berhasil output baris terakhirnya akan seperti berikut :</p>
+<pre><code class="language-bash">Enabling conf serve-cgi-bin.
+Enabling site 000-default.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache2.service → /l
+ib/systemd/system/apache2.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache-htcacheclean.
+service → /lib/systemd/system/apache-htcacheclean.service.
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+</code></pre>
+<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi instalasi</a></h3>
+<p>Setelah instalasi selesai periksa status Apache2 untuk memastikan layanan berjalan, gunakan perintah berikut:</p>
+<pre><code class="language-bash">sudo systemctl status apache2
+</code></pre>
+<p>Outputnya akan seperti berikut:</p>
+<pre><code class="language-bash">● apache2.service - The Apache HTTP Server
+Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor prese&gt;
+Active: active (running) since Fri 2025-01-24 13:39:56 WITA; 2min 4s ago
+</code></pre>
+<h3 id="4-uji-server-web"><a class="header" href="#4-uji-server-web">4. Uji Server Web</a></h3>
+<p>kunjungi http://localhost pada browser, jika instalasi apache2 berhasil maka halaman web default dari web server akan tampil.</p>
+<p><img src="img/apache_run.png" alt="icon" /></p>
 
                     </main>
 

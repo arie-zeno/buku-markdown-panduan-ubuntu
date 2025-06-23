@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>openelearning -  </title>
+        <title>Instalasi openelearning -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,11 +152,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="instalasi-open-elearning"><a class="header" href="#instalasi-open-elearning">Instalasi Open Elearning</a></h1>
-<p>Unduh paket instalasi pada halaman <a href="https://www.openelearning.org/download">Open Elearning</a>. Kemudian install paket tersebut dengan perintah <code>dpkg -i namafile.deb</code>, berikut gambar saat installasi  <strong>Open eLearning</strong> :</p>
-<p><img src="img/openelearning/img_1.png" alt="idle python" /></p>
-<p>Kemudian berikut adalah gambar dari aplikasi <strong>Open eLearning</strong> setelah terinstal yang digunakan untuk membuat slide presentasi interaktif :</p>
-<p><img src="img/openelearning/img_2.png" alt="vscode" /></p>
+                        <h1 id="instalasi-open-elearning"><a class="header" href="#instalasi-open-elearning">Instalasi Open eLearning</a></h1>
+<p>Open eLearning adalah perangkat lunak open-source yang digunakan untuk membuat materi pembelajaran interaktif. Aplikasi ini memungkinkan pengguna untuk membuat kursus e-learning dengan animasi, kuis, video, dan elemen interaktif lainnya tanpa perlu memiliki keahlian pemrograman.
+Software ini sangat cocok bagi pendidik, trainer, dan pengembang konten pembelajaran yang ingin membuat materi edukasi secara efektif.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-unduh-file-instalasi-open-elearning"><a class="header" href="#1-unduh-file-instalasi-open-elearning">1. Unduh File Instalasi Open eLearning</a></h3>
+<p>Kunjungi https://www.openelearning.org/download kemudian unduh file instalasi untuk sistem operasi Linux.</p>
+<h3 id="2-install-open-elearning"><a class="header" href="#2-install-open-elearning">2. Install Open eLearning</a></h3>
+<p>Pada terminal masuk ke direktori tempat file instalasi open eLearning disimpan (biasanya terletak pada direktori Downloads), gunakan perintah berikut untuk berpindah direktori:</p>
+<pre><code class="language-bash">cd Downloads/
+</code></pre>
+<p>Berikut adalah output jika telah berpindah direktori:</p>
+<pre><code class="language-bash">arie@zeno:~/Downloads$ 
+</code></pre>
+<p>Kemudian gunakan perintah berikut untuk melakukan instalasi open eLearning:</p>
+<pre><code class="language-bash">sudo dpkg -i openelearning_1.7.0_amd64.deb
+</code></pre>
+<p>Jika instalasi berhasil output baris terakhirnya akan seperti berikut:</p>
+<pre><code class="language-bash">Preparing to unpack openelearning_1.7.0_amd64.deb ...
+Unpacking openelearning (1.7.0) over (1.7.0) ...
+Setting up openelearning (1.7.0) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu3) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu3) ...
+</code></pre>
+<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi Instalasi</a></h3>
+<p>Open eLearning yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah Open eLearning ketika berjalan di Ubuntu 22.04 LTS.</p>
+<p><img src="img/openelearning_run.png" alt="icon" /></p>
 
                     </main>
 

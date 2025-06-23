@@ -1,96 +1,76 @@
 # Instalasi MySQL
+MySQL adalah sistem manajemen basis data relasional (RDBMS) open-source yang sangat populer dan digunakan oleh berbagai aplikasi untuk menyimpan dan mengelola data. MySQL memungkinkan pengguna untuk mengelola data dalam bentuk tabel yang saling terkait dan menyediakan query untuk manipulasi data dengan menggunakan bahasa SQL (Structured Query Language). MySQL banyak digunakan dalam pengembangan aplikasi berbasis web, termasuk pada platform seperti WordPress, Joomla, dan aplikasi berbasis PHP lainnya.
+## Langkah-Langkah Instalasi
+### 1. Perbarui daftar paket
+Sebelum menginstal MySQL pastikan sistem diperbarui. Gunakan perintah berikut pada terminal untuk memperbarui sistem:
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+### 2. Install MySQL
+Gunakan perintah berikut untuk menginstal MySQL:
+```bash
+sudo apt install mysql-server -y
+```
+Jika instalasi berhasil output baris terakhirnya akan seperti berikut :
+```bash
+mysqld is running as pid 90340
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib
+/systemd/system/mysql.service.
+Setting up mysql-server (8.0.40-0ubuntu0.22.04.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+```
+### 3. Verifikasi instalasi
+Setelah instalasi selesai periksa status MySQL untuk memastikan layanan berjalan, gunakan perintah berikut:
+```bash
+sudo systemctl status mysql
+```
+Jika berhasil akan terlihat status active (running).
+```bash
+● mysql.service - MySQL Community Server
+Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:>
+Active: active (running) since Fri 2025-01-24 13:53:54 WITA; 1min 54s ago
+Process: 90528 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=>
+Main PID: 90536 (mysqld)
+Status: "Server is operational"
+```
+### 4. Amankan Instalasi MySQL
+Setelah MySQL terinstall, jalankan perintah pengamanan untuk meningkatkan keamanan database:
+```bash
+sudo mysql_secure_installation
+```
+Pada pengamanan database akan diminta :
+• Mengatur kata sandi untuk root
+• Menghapus pengguna anonim
+• Menonaktifkan akses root dari jarak jauh.
+• Menghapus database test.
+• Memuat ulang tabel hak istimewa.
+Setelah selesai mengamankan database maka akan terlihat output All done seperti berikut:
+```bash
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+Success.
 
-## 1. Install MySQL Server
-Setelah repository di update, install MySQL dengan perintah `sudo apt install mysql-server`
+All done! 
+```
+### 5. Mengakses MySQL
+Untuk masuk ke antarmuka MySQL, gunakan perintah berikut:
+```bash
+sudo mysql -u root -p
+```
+Masukkan kata sandi yang di atur selama proses pengamanan. Setelah berhasil masuk  akan melihat prompt MySQL seperti berikut:
+```bash
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.40-0ubuntu0.22.04.1 (Ubuntu)
 
-<center>
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
 
-![mysql](img/mysql/img_1.png)
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
 
-</center>
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-Pastikan MySQL sudah terinstall dengan perintah `mysqld --version`
-
-<center>
-
-![mysql](img/mysql/img_2.png)
-
-</center>
-
-## 2. Securing MySQL
-Setelah menginstal MySQL langkah selanjutnya adalah melakukan pengaturan keamanan awal untuk instalasi MySQL. Pengamanan mencakup pengaturan kata sandi yang kuat, menghapus akun dan database yang tidak diperlukan dan membatasi akses untuk meningkatkan keamanan secara keseluruhan.
-Untuk mengamankan installasi jalankan perintah `sudo mysql_secure_installation`.
-
-### Validasi Password
-Bagian pertama mengamankan instllasi adalah validasi password. Tekan y untuk mengkonfirmasi validasi password.
-
-<center>
-
-![mysql](img/mysql/img_3.png)
-
-</center>
-
-Pengguna memiliki tiga opsi untuk kebijakan kata sandi:
-- 0 - low
-- 1 - medium
-- 2 - strong
-
-Pilih salah satu kemudian tekan enter.
-
-<center>
-
-![mysql](img/mysql/img_4.png)
-
-</center>
-
-### Remove Anonymous Users
-Setelah instalasi, MySQL secara otomatis menggabungkan pengguna anonim, memungkinkan akses tidak terbatas tanpa akun pengguna khusus. Meskipun awalnya dirancang untuk pengujian dan instalasi yang disederhanakan, disarankan untuk menghapus pengguna ini demi alasan keamanan.
-
-<center>
-
-![mysql](img/mysql/img_5.png)
-
-</center>
-
-### Disallow Root Login Remotely
-Secara bawaan membatasi koneksi pengguna root ke mesin lokal (localhost) disarankan untuk mengurangi potensi risiko keamanan, seperti serangan brute force kredensial.
-
-<center>
-
-![mysql](img/mysql/img_6.png)
-
-</center>
-
-### Remove Test Database
-
-<center>
-
-![mysql](img/mysql/img_7.png)
-
-</center>
-
-### Reload Privilege Tables
-
-<center>
-
-![mysql](img/mysql/img_8.png)
-
-</center>
-
-## 3. Cek apakah MySQL Service telah berjalan
-Setelah instalasi, layanan MySQL akan dimulai secara otomatis. Untuk memverifikasi bahwa server bekerja, jalankan perintah berikut `sudo systemctl status mysql`
-
-<center>
-
-![mysql](img/mysql/img_9.png)
-
-</center>
-
-## 4. Login MySQL 
-Untuk login ke MySQL gunakan perintah `sudo mysql -u root`
-
-<center>
-
-![mysql](img/mysql/img_10.png)
-
-</center>
+mysql> 
+```

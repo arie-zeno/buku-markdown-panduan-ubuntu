@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>webgl -  </title>
+        <title>Instalasi webgl -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,7 +152,28 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="webgl"><a class="header" href="#webgl">webgl</a></h1>
+                        <h1 id="instalasi-webgl"><a class="header" href="#instalasi-webgl">Instalasi WebGL</a></h1>
+<p>WebGL (Web Graphics Library) adalah API berbasis JavaScript yang digunakan untuk merender grafis 2D dan 3D interaktif di dalam browser web, tanpa memerlukan plugin tambahan. WebGL memanfaatkan kemampuan GPU (Graphics Processing Unit) melalui standar OpenGL ES.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-pastikan-dan-driver-terpasang"><a class="header" href="#1-pastikan-dan-driver-terpasang">1. Pastikan dan Driver Terpasang</a></h3>
+<p>Jalankan perintah berikut untuk memeriksa driver GPU:</p>
+<pre><code class="language-bash">lspci -k | grep -A 2 -i "vga"
+Berikut adalah output jika driver GPU terpasang:
+5:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Picasso/Raven 2 [Radeon Vega Series / Radeon Vega Mobile Series] (rev c4)
+Subsystem: Acer Incorporated [ALI] Picasso
+Kernel driver in use: amdgpu
+</code></pre>
+<p>Jika belum terpasang, gunakan perintah berikut untuk memasang driver yang sesuai:</p>
+<pre><code class="language-bash">sudo ubuntu-drivers autoinstall
+</code></pre>
+<h3 id="2-verifikasi-dukungan-webgl"><a class="header" href="#2-verifikasi-dukungan-webgl">2. Verifikasi Dukungan WebGL</a></h3>
+<p>Buka browser (Chrome, Firefox, Brave, dll.) lalu akses halaman berikut untuk pengujian:</p>
+<p>• https://get.webgl.org/</p>
+<p>Jika WebGL aktif akan terlihat animasi 3D (seperti kubus berputar).</p>
+<p><img src="img/webgl_1.png" alt="icon" /></p>
+<p>• https://webglreport.com/</p>
+<p>Jika WebGL aktif akan terlihat laporan status lengkap WebGL dan WebGL2.</p>
+<p><img src="img/webgl_2.png" alt="icon" /></p>
 
                     </main>
 

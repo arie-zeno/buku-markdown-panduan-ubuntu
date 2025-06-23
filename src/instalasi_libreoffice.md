@@ -1,34 +1,25 @@
 # Instalasi LibreOffice
-Secara bawaan Ubuntu versi 22.04 LTS sudah terpasang **LibreOffice** versi 7.3.2.
-<center> 
+LibreOffice adalah perangkat lunak perkantoran sumber terbuka yang dikembangkan oleh The Document Foundation. Aplikasi ini mencakup berbagai program penting seperti Writer (pengolah kata), Calc (spreadsheet), Impress (presentasi) dan lainnya. Berdasarkan dokumentasinya LibreOffice sepenuhnya kompatibel dengan format dokumen umum seperti .docx, .xlsx dan .pptx.
+## Langkah-Langkah Instalasi
+### 1. Buka Ubuntu Software
+Untuk membuka ubuntu software dapat mengklik icon ubuntu software pada menu applications.
 
-![icon](img/office/libreOffice.png)
+![icon](img/icon_ubuntu_software_small.png)
 
-</center>
+### 2. Cari LibreOffice
+Klik icon search pada pojok kiri atas ubuntu software kemudian masukkan keyword "LibreOffice".
 
-Jika pada sistem operasi linux anda belum terpasang LibreOffice, ikuti langkah-langkah berikut untuk memasangnya.
+![icon](img/LibreOffice_search.png)
 
-1. Buka ***Ubuntu Software***.
-   <center> 
 
-   ![icon](img/ubuntu_software_home.png)
+### 3. Install LibreOffice
+Pilih software yang sesuai kemudian tekan tombol install.
 
-   </center>
-2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "*LibreOffice*".
-   <center> 
+![icon](img/LibreOffice_install.png)
 
-   ![icon](img/android/search.png)
 
-   </center>
-3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
-   <center> 
+### 4. Verifikasi Instalasi
+Tunggu hingga proses instalasi selesai, LibreOffice yang sudah terinstall dapat ditemukan pada menu Applications. Terdapat 4 perangkat lunak yang terinstall yaitu LibreOffice Writer, LibreOffice Calc, LibreOffice Impress, dan LibreOffice Math.
+Berikut adalah LibreOffice ketika berjalan di Ubuntu 22.04 LTS.
 
-   ![icon](img/android/install.png)
-
-   </center>
-4. Tunggu hingga proses instalasi selesai, *LibreOffice* yang sudah terinstall dapat ditemukan pada menu ***Applications***.
-    <center> 
-
-   ![icon](img/android/done.png)
-
-   </center>
+![icon](img/LibreOffice_run.png)

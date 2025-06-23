@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>composer -  </title>
+        <title>Instalasi composer -  </title>
 
 
         <!-- Custom HTML head -->
@@ -153,12 +153,41 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="instalasi-composer"><a class="header" href="#instalasi-composer">Instalasi Composer</a></h1>
-<p>Untuk menginstall <strong>Composer</strong> pastikan <strong>PHP</strong> sudah terinstall terlebih dahulu pada sistem operasi, periksa versi <strong>PHP</strong> yang sudah terinstall dengan perintah <code>php -V</code>.</p>
-<p><img src="img/composer/img_9.png" alt="xampp" /></p>
-<p>Kemudian download <strong>composer</strong> dengan perintah <code>curl -sS https://getcomposer.org/installer -o composer-setup.php</code>, setelah itu install <strong>composer</strong> menggunakan perintah <code>sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer</code>.</p>
-<p><img src="img/composer/img_10.png" alt="xampp" /></p>
-<p>Cek versi <strong>composer</strong> untuk memastikan <strong>composer</strong> sudah terinstall pada sistem operasi dengan perintah <code>composer -V</code>.</p>
-<p><img src="img/composer/img_11.png" alt="composer" /></p>
+<p>Composer adalah dependency manager untuk bahasa pemrograman PHP yang digunakan untuk mengelola pustaka dan dependensi dalam proyek PHP. Composer memungkinkan pengembang untuk mendeklarasikan pustaka yang diperlukan untuk proyek mereka, dan secara otomatis menangani pemasangan serta pembaruan pustaka-pustaka tersebut.
+Dengan Composer, pengelolaan dependensi dalam proyek PHP menjadi lebih mudah dan efisien. Composer juga mendukung integrasi dengan Packagist, yang merupakan repositori utama untuk pustaka PHP, sehingga memudahkan instalasi berbagai paket pihak ketiga yang diperlukan dalam pengembangan aplikasi.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-memastikan-php-terinstal"><a class="header" href="#1-memastikan-php-terinstal">1. Memastikan PHP Terinstal</a></h3>
+<p>Sebelum menginstal Composer, pastikan PHP sudah terinstal di sistem dengan menjalankan perintah berikut:</p>
+<pre><code class="language-bash">php -v
+</code></pre>
+<p>Output akan menunjukkan versi PHP seperti berikut:</p>
+<pre><code class="language-bash">PHP 8.3.16 (cli) (built: Jan 19 2025 13:45:36) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.16, Copyright (c) Zend Technologies
+    with Zend OPcache v8.3.16, Copyright (c), by Zend Technologies
+Jika PHP belum terinstal ikuti langkah instalasi PHP terlebih dahulu.
+</code></pre>
+<h3 id="2-mengunduh-dan-menginstal-composer"><a class="header" href="#2-mengunduh-dan-menginstal-composer">2. Mengunduh dan Menginstal Composer</a></h3>
+<p>Gunakan perintah berikut untuk mengunduh dan menginstal Composer:</p>
+<pre><code class="language-bash">curl -sS https://getcomposer.org/installer | php
+Setelah unduhan selesai outputnya akan seperti berikut:
+All settings correct for using Composer
+Downloading...
+
+Composer (version 2.8.5) successfully installed to: /home/arie/composer.phar
+Use it: php composer.phar
+</code></pre>
+<p>Jalankan perintah berikut untuk memindahkan Composer ke direktori yang dapat diakses secara global:</p>
+<pre><code class="language-bash">sudo mv composer.phar /usr/local/bin/composer
+</code></pre>
+<h3 id="3-memverifikasi-instalasi"><a class="header" href="#3-memverifikasi-instalasi">3. Memverifikasi Instalasi</a></h3>
+<p>Setelah Composer berhasil diinstal, verifikasi dengan menjalankan perintah:</p>
+<pre><code class="language-bash">composer -V
+</code></pre>
+<p>Jika instalasi berhasil akan terlihat output yang menunjukkan versi Composer yang terinstal seperti berikut:</p>
+<pre><code class="language-bash">Composer version 2.8.5 2025-01-21 15:23:40
+PHP version 8.3.16 (/usr/bin/php8.3)
+</code></pre>
 
                     </main>
 

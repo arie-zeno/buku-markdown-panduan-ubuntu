@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Java -  </title>
+        <title>Instalasi Java -  </title>
 
 
         <!-- Custom HTML head -->
@@ -153,18 +153,39 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="instalasi-java"><a class="header" href="#instalasi-java">Instalasi Java</a></h1>
-<p>Untuk menjalankan program <strong>java</strong> diperlukan <strong>JDK (Java Development Kit)</strong>, unduh <strong>JDK</strong> pada halaman <a href="https://www.oracle.com/id/java/technologies/downloads/">Download Java</a>.</p>
-<center> 
-<p><img src="img/java/java_download.png" alt="icon" /></p>
-</center>
-<p>Setelah selesai mengunduh <strong>JDK</strong> install paket tersebut dengan perintah <code>sudo dpkg -i namafile.deb</code>.</p>
-<center> 
-<p><img src="img/java/java_dpkg.png" alt="icon" /></p>
-</center>
-<p>Setelah proses instalasi selesai gunakan perintah <code>java --version</code> untuk memeriksa versi <strong>java</strong> yang telah terinstall.</p>
-<center> 
-<p><img src="img/java/java_version.png" alt="icon" /></p>
-</center>
+<p>Java adalah bahasa pemrograman berorientasi objek yang banyak digunakan dalam pengembangan aplikasi berbasis desktop, web, dan mobile. Java dikenal karena portabilitasnya, yang memungkinkan aplikasi yang ditulis dalam Java dapat dijalankan di berbagai platform tanpa perlu modifikasi. Hal ini tercapai melalui prinsip "Write Once, Run Anywhere" (WORA) yang menjadi salah satu keunggulan utama dari Java.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-periksa-versi-java"><a class="header" href="#1-periksa-versi-java">1. Periksa versi Java</a></h3>
+<p>Sebelum menginstall Java, periksa apakah sudah ada versi yang terpasang:</p>
+<pre><code class="language-bash">java --version
+</code></pre>
+<p>Jika outputnya menunjukkan versi java, maka java sudah terpasang. Namun jika belum terinstall maka outputnya akan seperti berikut:</p>
+<pre><code class="language-bash">bash: java: command not found
+</code></pre>
+<h3 id="2-perbarui-daftar-paket"><a class="header" href="#2-perbarui-daftar-paket">2. Perbarui daftar paket</a></h3>
+<p>Gunakan perintah berikut pada terminal untuk memperbarui paket:</p>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y 
+</code></pre>
+<h3 id="3-install-java"><a class="header" href="#3-install-java">3. Install Java</a></h3>
+<p>Untuk menginstall java gunakan perintah berikut :</p>
+<pre><code class="language-bash">sudo apt install openjdk-21-jdk -y
+Jika instalasi berhasil maka output baris terakhir akan seperti berikut:
+Processing triggers for man-db (2.10.2-1) ...
+Setting up libxdmcp-dev:amd64 (1:1.1.3-0ubuntu5) ...
+Setting up libxcb1-dev:amd64 (1.14-3ubuntu3) ...
+Setting up libx11-dev:amd64 (2:1.7.5-1ubuntu0.3) ...
+Setting up libxt-dev:amd64 (1:1.2.1-1) ...
+</code></pre>
+<h3 id="4-verifikasi-instalasi"><a class="header" href="#4-verifikasi-instalasi">4. Verifikasi instalasi</a></h3>
+<p>Verifikasi instalasi dengan memeriksa versi java yang baru diinstall:</p>
+<pre><code class="language-bash">java --version 
+</code></pre>
+<p>Outputnya akan menunjukkan versi java seperti berikut:</p>
+<pre><code class="language-bash">openjdk 21.0.5 2024-10-15
+OpenJDK Runtime Environment (build 21.0.5+11-Ubuntu-1ubuntu122.04)
+OpenJDK 64-Bit Server VM (build 21.0.5+11-Ubuntu-1ubuntu122.04, mixed mode, sharing)
+</code></pre>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

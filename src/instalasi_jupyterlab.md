@@ -1,26 +1,25 @@
 # Instalasi JupyterLab
+JupyterLab adalah antarmuka berbasis web generasi terbaru dari Jupyter Notebook yang digunakan untuk membuat dan menjalankan kode Python secara interaktif. JupyterLab mendukung visualisasi data, integrasi terminal, teks Markdown, serta eksekusi skrip Python atau bahasa pemrograman lain melalui kernel. JupyterLab sangat cocok untuk pengembangan data science, machine learning, serta eksperimen berbasis notebook interaktif.
+## Langkah-Langkah Instalasi
+### 1. Buka Ubuntu Software
+Untuk membuka ubuntu software dapat mengklik icon ubuntu software pada menu applications.
 
-1. Buka ***Ubuntu Software***.
-   <center> 
+![icon](img/icon_ubuntu_software_small.png)
 
-   ![icon](img/ubuntu_software_home.png)
+### 2. Cari JupyterLab
+Klik icon search pada pojok kiri atas ubuntu software kemudian masukkan keyword "JupyterLab".
 
-   </center>
-2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "***JupyterLab***".
-   <center> 
+![icon](img/JupyterLab_search.png)
 
-   ![icon](img/jupyterLab/jupyter_search.png)
 
-   </center>
-3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
-   <center> 
+### 3. Install JupyterLab
+Pilih software yang sesuai kemudian tekan tombol install.
 
-   ![icon](img/jupyterLab/jupyter_install.png)
+![icon](img/JupyterLab_install.png)
 
-   </center>
-4. Tunggu hingga proses instalasi selesai, ***JupyterLab*** yang sudah terinstall dapat ditemukan pada menu ***Applications***.
-    <center> 
 
-   ![icon](img/jupyterLab/jupyter.png)
+### 4. Verifikasi Instalasi
+Tunggu hingga proses instalasi selesai, JupyterLab yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah JupyterLab ketika berjalan di Ubuntu 22.04 LTS.
 
-   </center>
+![icon](img/JupyterLab_run.png)

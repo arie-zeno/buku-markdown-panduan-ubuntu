@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Visual Studio Code -  </title>
+        <title>Instalasi Visual Studio Code -  </title>
 
 
         <!-- Custom HTML head -->
@@ -170,6 +170,30 @@
 <h3 id="1-unduh-file-instalasi-visual-studio-code"><a class="header" href="#1-unduh-file-instalasi-visual-studio-code">1. Unduh File Instalasi Visual Studio Code</a></h3>
 <p>Kunjungi https://code.visualstudio.com/download kemudian unduh file instalasi untuk sistem operasi ubuntu.</p>
 <p><img src="img/vscode_download.png" alt="icon" /></p>
+<h3 id="2-install-visual-studio-code"><a class="header" href="#2-install-visual-studio-code">2. Install Visual Studio Code</a></h3>
+<p>Pada terminal masuk ke direktori tempat file instalasi visual studio code disimpan (biasanya terletak pada direktori Downloads), gunakan perintah berikut untuk berpindah direktori:</p>
+<pre><code class="language-bash">cd Downloads/
+</code></pre>
+<p>Berikut adalah output jika telah berpindah direktori:</p>
+<pre><code class="language-bash">arie@zeno:~/Downloads$ 
+</code></pre>
+<p>Kemudian gunakan perintah berikut untuk melakukan instalasi visual studio code:</p>
+<pre><code class="language-bash">sudo dpkg -i code_1.96.4-1736991114_amd64.deb
+Jika instalasi berhasil outputnya akan seperti berikut:
+Setting up code (1.96.4-1736991114) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu3) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu3) ...
+Processing triggers for shared-mime-info (2.1-2) ...
+</code></pre>
+<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi Instalasi</a></h3>
+<p>Visual Studio Code yang sudah terinstall dapat ditemukan pada menu Applications.
+Visual studio code yang sudah terinstall juga dapat dijalankan dengan perintah berikut pada terminal:</p>
+<pre><code class="language-bash">code 
+</code></pre>
+<p>Kemudian jendela visual studio code akan muncul.
+Berikut adalah Visual Studio Code ketika berjalan di Ubuntu 22.04 LTS.</p>
+<p><img src="img/run_vscode.png" alt="icon" /></p>
 
                     </main>
 

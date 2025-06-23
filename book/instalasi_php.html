@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>PHP -  </title>
+        <title>Instalasi PHP -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,9 +152,42 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="install-php"><a class="header" href="#install-php">Install PHP</a></h1>
-<p>Untuk menginstall <strong>PHP</strong> gunakan perintah <code>sudo apt install php php-curl</code>. Setelah itu periksa versi <strong>PHP</strong> yang sudah terinstall dengan perintah <code>php -V</code>.</p>
-<p><img src="img/composer/img_9.png" alt="xampp" /></p>
+                        <h1 id="instalasi-php"><a class="header" href="#instalasi-php">Instalasi PHP</a></h1>
+<p>PHP (Hypertext Preprocessor) adalah bahasa pemrograman yang banyak digunakan untuk pengembangan web. PHP sering digunakan untuk membuat aplikasi berbasis web dinamis, seperti situs web, e-commerce, sistem manajemen konten (CMS), dan aplikasi web lainnya. Salah satu keunggulan PHP adalah kemampuannya untuk berintegrasi dengan berbagai database, seperti MySQL dan PostgreSQL, serta mendukung berbagai framework dan CMS seperti Laravel, WordPress, dan Drupal.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-periksa-versi-php"><a class="header" href="#1-periksa-versi-php">1. Periksa versi PHP</a></h3>
+<p>Sebelum menginstall php, periksa apakah sudah ada versi yang terpasang:</p>
+<pre><code class="language-bash">php -v
+</code></pre>
+<p>Jika outputnya menunjukkan versi php, maka php sudah terpasang. Namun jika belum terinstall maka outputnya akan seperti berikut:</p>
+<pre><code class="language-bash">bash: php: command not found
+</code></pre>
+<h3 id="2-perbarui-daftar-paket"><a class="header" href="#2-perbarui-daftar-paket">2. Perbarui daftar paket</a></h3>
+<p>Gunakan perintah berikut pada terminal untuk memperbarui paket:</p>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y 
+</code></pre>
+<h3 id="3-install-php"><a class="header" href="#3-install-php">3. Install PHP</a></h3>
+<p>Untuk menginstall php gunakan perintah berikut :</p>
+<pre><code class="language-bash">sudo apt install php libapache2-mod-php php-cli php-mysql -y
+</code></pre>
+<p>Jika instalasi berhasil maka output baris terakhir akan seperti berikut:</p>
+<pre><code class="language-bash">Setting up php8.3 (8.3.16-1+ubuntu22.04.1+deb.sury.org+1) ...
+Setting up libapache2-mod-php (2:8.3+95+ubuntu22.04.1+deb.sury.org+1) ...
+Setting up php (2:8.3+95+ubuntu22.04.1+deb.sury.org+1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for php8.3-cli (8.3.16-1+ubuntu22.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php8.3 (8.3.16-1+ubuntu22.04.1+deb.sury.org+1) ...
+</code></pre>
+<h3 id="4-verifikasi-instalasi"><a class="header" href="#4-verifikasi-instalasi">4. Verifikasi instalasi</a></h3>
+<p>Verifikasi instalasi dengan memeriksa versi php yang baru diinstall:</p>
+<pre><code class="language-bash">php -v 
+</code></pre>
+<p>Outputnya akan menunjukkan versi php seperti berikut:</p>
+<pre><code class="language-bash">PHP 8.3.16 (cli) (built: Jan 19 2025 13:45:36) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.16, Copyright (c) Zend Technologies
+    with Zend OPcache v8.3.16, Copyright (c), by Zend Technologies
+</code></pre>
 
                     </main>
 

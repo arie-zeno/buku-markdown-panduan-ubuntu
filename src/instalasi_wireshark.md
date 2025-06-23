@@ -1,26 +1,21 @@
 # Instalasi Wireshark
+Wireshark adalah alat pemantauan jaringan open-source yang digunakan untuk menangkap dan menganalisis paket data yang melintasi jaringan komputer. Wireshark memungkinkan pengguna untuk memeriksa lalu lintas jaringan secara real-time, menganalisis protokol jaringan, serta mendeteksi masalah konektivitas dan performa. Wireshark mendukung berbagai protokol jaringan seperti TCP, UDP, HTTP, DNS, dan banyak lagi.
+## Langkah-Langkah Instalasi
+### 1. Buka Ubuntu Software
+Untuk membuka ubuntu software dapat mengklik icon ubuntu software pada menu applications.
+![icon](img/icon_ubuntu_software_small.png)
 
-1. Buka ***Ubuntu Software***.
-   <center> 
+### 2. Cari Wireshark
+Klik icon search pada pojok kiri atas ubuntu software kemudian masukkan keyword "Wireshark".
+![icon](img/wiresark_search.png)
 
-   ![icon](img/ubuntu_software_home.png)
 
-   </center>
-2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "*wireshark*".
-   <center> 
+### 3. Install Wireshark
+Pilih software yang sesuai kemudian tekan tombol install.
+![icon](img/wiresark_install.png)
 
-   ![icon](img/wireshark/search.png)
 
-   </center>
-3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
-   <center> 
-
-   ![icon](img/wireshark/install.png)
-
-   </center>
-4. Tunggu hingga proses instalasi selesai, *wireshark* yang sudah terinstall dapat ditemukan pada menu ***Applications***.
-    <center> 
-
-   ![icon](img/android/done.png)
-
-   </center>
+### 4. Verifikasi Instalasi
+Tunggu hingga proses instalasi selesai, Wireshark yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah Wireshark ketika berjalan di Ubuntu 22.04 LTS.
+![icon](img/wireshark_run.png)

@@ -1,26 +1,21 @@
 # Instalasi VirtualBox
+VirtualBox adalah perangkat lunak open-source yang memungkinkan pengguna untuk menjalankan sistem operasi lain (guest OS) di dalam sistem operasi utama (host OS) secara virtual. VirtualBox mendukung berbagai sistem operasi, seperti Linux, Windows, dan macOS, sehingga pengguna dapat menjalankan banyak sistem operasi dalam satu perangkat keras fisik secara bersamaan
+## Langkah-Langkah Instalasi
+### 1. Buka Ubuntu Software
+Untuk membuka ubuntu software dapat mengklik icon ubuntu software pada menu applications.
+![icon](img/icon_ubuntu_software_small.png)
 
-1. Buka ***Ubuntu Software***.
-   <center> 
+### 2. Cari VirtualBox
+Klik icon search pada pojok kiri atas ubuntu software kemudian masukkan keyword "VirtualBox".
+![icon](img/vb_search.png)
 
-   ![icon](img/ubuntu_software_home.png)
 
-   </center>
-2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "*VirtualBox*".
-   <center> 
+### 3. Install VirtualBox
+Pilih software yang sesuai kemudian tekan tombol install.
+![icon](img/vb_install.png)
 
-   ![icon](img/virtualbox/search.png)
 
-   </center>
-3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
-   <center> 
-
-   ![icon](img/virtualbox/install.png)
-
-   </center>
-4. Tunggu hingga proses instalasi selesai, *VirtualBox* yang sudah terinstall dapat ditemukan pada menu ***Applications***.
-    <center> 
-
-   ![icon](img/virtualbox/done.png)
-
-   </center>
+### 4. Verifikasi Instalasi
+Tunggu hingga proses instalasi selesai, VirtualBox yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah VirtualBox ketika berjalan di Ubuntu 22.04 LTS.
+![icon](img/vb_run.png)

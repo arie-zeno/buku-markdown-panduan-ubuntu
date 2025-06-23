@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>simphy -  </title>
+        <title>Instalasi simphy -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,7 +152,44 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="simphy"><a class="header" href="#simphy">simphy</a></h1>
+                        <h1 id="instalasi-simphy"><a class="header" href="#instalasi-simphy">Instalasi SimPHY</a></h1>
+<p>simPHY adalah aplikasi simulasi interaktif berbasis Java yang digunakan untuk membantu pembelajaran fisika secara visual. Aplikasi ini menyediakan berbagai eksperimen fisika dalam bentuk simulasi yang dapat dimanipulasi pengguna, seperti hukum Newton, gerak proyektil, medan listrik, dan lainnya. Dengan tampilan yang intuitif dan pendekatan berbasis eksperimen, simPHY sangat bermanfaat bagi siswa dan mahasiswa dalam memahami konsep-konsep fisika secara praktis.</p>
+<h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
+<h3 id="1-unduh-file-instalasi-simphy"><a class="header" href="#1-unduh-file-instalasi-simphy">1. Unduh File Instalasi SimPHY</a></h3>
+<p>Kunjungi https://simphy.com/downloads kemudian unduh file instalasi untuk sistem operasi Linux.</p>
+<p><img src="img/simphy_donwload.png" alt="icon" /></p>
+<h3 id="2-ekstrak-file-zip-simphy"><a class="header" href="#2-ekstrak-file-zip-simphy">2. Ekstrak File ZIP SimPHY</a></h3>
+<p>Karena file instalasi SimPHY berekstensi ZIP, maka perlu di ekstrak terlebih dahulu. Pada terminal masuk ke direktori tempat file instalasi SimPHY disimpan (biasanya terletak pada direktori Downloads), gunakan perintah berikut untuk berpindah direktori:</p>
+<pre><code class="language-bash">cd Downloads/
+</code></pre>
+<p>Berikut adalah output jika telah berpindah direktori:</p>
+<pre><code class="language-bash">arie@zeno:~/Downloads$ 
+</code></pre>
+<p>Kemudian gunakan perintah berikut untuk melakukan ekstraksi file ZIP:</p>
+<pre><code class="language-bash">unzip SimPHY-2.0-linux64.zip -d ~/.local/share/
+</code></pre>
+<p>Jika unzip berhasil akan ada output seperti berikut pada baris terakhir.</p>
+<pre><code class="language-bash">iinflating: /home/arie/.local/share/SimPHY-1.6-linux64/simphy.jar  
+inflating: /home/arie/.local/share/SimPHY-1.6-linux64/exp4j-0.4.8.jar  
+inflating: /home/arie/.local/share/SimPHY-1.6-linux64/Logging.html  
+inflating: /home/arie/.local/share/__MACOSX/SimPHY-1.6-linux64/._Logging.html  
+inflating: /home/arie/.local/share/__MACOSX/._SimPHY-1.6-linux64
+</code></pre>
+<h3 id="3-buat-shortcut-menu"><a class="header" href="#3-buat-shortcut-menu">3. Buat Shortcut Menu</a></h3>
+<p>Agar lebih praktis SimPHY dapat ditambahkan ke menu aplikasi sehingga untuk mengaksesnya dapat langsung mengklik ikon Winbox pada menu aplikasi. Gunakan perintah berikut untuk membuat file simphy.desktop sekaligus mengedit isi filenya:</p>
+<pre><code class="language-bash">nano ~/.local/share/applications/simphy.desktop 
+Kemudian isi dengan script berikut:
+[Desktop Entry]
+Name=SimPHY
+Exec=/home/arie/.local/share/SimPHY-1.6-linux64/simphy
+Icon=application
+Type=Application
+Categories=Network; 
+</code></pre>
+<h3 id="4-verifikasi-instalasi"><a class="header" href="#4-verifikasi-instalasi">4. Verifikasi Instalasi</a></h3>
+<p>SimPHY yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah SimPHY ketika berjalan di Ubuntu 22.04 LTS.</p>
+<p><img src="img/simphy_run.png" alt="icon" /></p>
 
                     </main>
 
