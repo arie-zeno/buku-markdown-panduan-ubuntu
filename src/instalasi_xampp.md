@@ -1,25 +1,32 @@
 # Instalasi XAMPP
+XAMPP adalah paket perangkat lunak open-source yang menyediakan server web lokal lengkap yang terdiri dari Apache, MariaDB/MySQL, PHP, dan Perl. XAMPP sangat cocok digunakan untuk pengembangan dan pengujian aplikasi web secara lokal tanpa memerlukan server eksternal. Aplikasi ini mendukung sistem operasi lintas platform dan menyediakan antarmuka kontrol yang mempermudah manajemen layanan server.
+## Langkah-Langkah Instalasi
+### 1. Unduh File Instalasi XAMPP
+Kunjungi https://www.apachefriends.org/download.html kemudian unduh file instalasi untuk sistem operasi Linux.
 
+### 2. Install XAMPP
+Pada terminal masuk ke direktori tempat file instalasi open eLearning disimpan (biasanya terletak pada direktori Downloads), gunakan perintah berikut untuk berpindah direktori: 
+```bash
+cd Downloads/
+```
+Berikut adalah output jika telah berpindah direktori:
+```bash
+arie@zeno:~/Downloads$ 
+```
+Kemudian gunakan perintah berikut untuk memberi izin eksekusi file:
+```bash
+chmod 755 xampp-linux-x64-8.0.30-0-installer.run
+```
+Kemudian jalankan file tersebut dengan perintah berikut:
+```bash
+sudo ./xampp-linux-x64-8.0.30-0-installer.run
+```
+Kemudian wizard instalasi XAMPP akan muncul.
+### 3. Verifikasi Instalasi
+XAMPP yang sudah terinstall dapat dijalankan dengan menggunakan perintah berikut.
+```bash
+sudo /opt/lampp/manager-linux-x64.run
+```
+Berikut adalah XAMPP ketika berjalan di Ubuntu 22.04 LTS.
 
-Kunjungi halaman [XAMPP](https://www.apachefriends.org) untuk mengunduh paket installasi xampp.
-
-![xampp](img/xampp/img_3.png)
-
-Ubah permissions file agar bisa dieksekusi dengan perintah `chmod 755 xampp-linux-*-installer.run`
-
-![xampp](img/xampp/img_4.png)
-
-Kemudian eksekusi installer dengan perintah `sudo ./xampp-linux-*-installer.run` maka jendela setup installasi akan muncul.
-
-![xampp](img/xampp/img_5.png)
-
-Setelah selesai setup, xampp akan terinstall pada folder /opt/lampp
-
-
-Untuk menjalankan service xampp melalui CLI dapat menggunakan perintah `sudo /opt/lampp/lampp start`. Untuk memeriksa service apakah sudah berjalan gunakan perintah ` sudo /opt/lampp/lampp status`. Kemudian untuk menghentikan service xampp dapat menggunakan perintah `sudo /opt/lampp/lampp stop`.
-
-![xampp](img/xampp/img_6.png)
-
-Untuk menjalankan service xampp dengan GUI jalankan perintah `sudo /opt/lampp/manager-linux-x64.run`
-
-![xampp](img/xampp/img_8.png)
+![icon](img/xampp_run.png)

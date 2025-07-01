@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Instalasi mysql -  </title>
+        <title>Instalasi NetBeans -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,83 +152,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="instalasi-mysql"><a class="header" href="#instalasi-mysql">Instalasi MySQL</a></h1>
-<p>MySQL adalah sistem manajemen basis data relasional (RDBMS) open-source yang sangat populer dan digunakan oleh berbagai aplikasi untuk menyimpan dan mengelola data. MySQL memungkinkan pengguna untuk mengelola data dalam bentuk tabel yang saling terkait dan menyediakan query untuk manipulasi data dengan menggunakan bahasa SQL (Structured Query Language). MySQL banyak digunakan dalam pengembangan aplikasi berbasis web, termasuk pada platform seperti WordPress, Joomla, dan aplikasi berbasis PHP lainnya.</p>
+                        <h1 id="instalasi-netbeans"><a class="header" href="#instalasi-netbeans">Instalasi NetBeans</a></h1>
+<p>NetBeans adalah lingkungan pengembangan terintegrasi (IDE) sumber terbuka yang digunakan untuk menulis, mengedit, dan menjalankan program dalam berbagai bahasa pemrograman seperti Java, PHP, HTML, C/C++, dan lainnya. NetBeans menyediakan fitur seperti editor cerdas, debugger, integrasi dengan sistem kontrol versi (seperti Git), serta dukungan proyek berbasis Maven dan Gradle, menjadikannya salah satu IDE yang cocok untuk pengembangan aplikasi desktop, web, dan mobile.</p>
 <h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
-<h3 id="1-perbarui-daftar-paket"><a class="header" href="#1-perbarui-daftar-paket">1. Perbarui daftar paket</a></h3>
-<p>Sebelum menginstal MySQL pastikan sistem diperbarui. Gunakan perintah berikut pada terminal untuk memperbarui sistem:</p>
-<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
-</code></pre>
-<h3 id="2-install-mysql"><a class="header" href="#2-install-mysql">2. Install MySQL</a></h3>
-<p>Gunakan perintah berikut untuk menginstal MySQL:</p>
-<pre><code class="language-bash">sudo apt install mysql-server -y
-</code></pre>
-<p>Jika instalasi berhasil output baris terakhirnya akan seperti berikut :</p>
-<pre><code class="language-bash">mysqld is running as pid 90340
-Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib
-/systemd/system/mysql.service.
-Setting up mysql-server (8.0.40-0ubuntu0.22.04.1) ...
-Processing triggers for man-db (2.10.2-1) ...
-Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
-</code></pre>
-<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi instalasi</a></h3>
-<p>Setelah instalasi selesai periksa status MySQL untuk memastikan layanan berjalan, gunakan perintah berikut:</p>
-<pre><code class="language-bash">sudo systemctl status mysql
-</code></pre>
-<p>Jika berhasil akan terlihat status active (running).</p>
-<pre><code class="language-bash">● mysql.service - MySQL Community Server
-Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:&gt;
-Active: active (running) since Fri 2025-01-24 13:53:54 WITA; 1min 54s ago
-Process: 90528 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=&gt;
-Main PID: 90536 (mysqld)
-Status: "Server is operational"
-</code></pre>
-<h3 id="4-amankan-instalasi-mysql"><a class="header" href="#4-amankan-instalasi-mysql">4. Amankan Instalasi MySQL</a></h3>
-<p>Setelah MySQL terinstall, jalankan perintah pengamanan untuk meningkatkan keamanan database:</p>
-<pre><code class="language-bash">sudo mysql_secure_installation
-</code></pre>
-<p>Pada pengamanan database akan diminta :
-• Mengatur kata sandi untuk root
-• Menghapus pengguna anonim
-• Menonaktifkan akses root dari jarak jauh.
-• Menghapus database test.
-• Memuat ulang tabel hak istimewa.
-Setelah selesai mengamankan database maka akan terlihat output All done seperti berikut:</p>
-<pre><code class="language-bash">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
-Success.
-
-All done! 
-</code></pre>
-<h3 id="5-mengakses-mysql"><a class="header" href="#5-mengakses-mysql">5. Mengakses MySQL</a></h3>
-<p>Untuk masuk ke antarmuka MySQL, gunakan perintah berikut:</p>
-<pre><code class="language-bash">sudo mysql -u root -p
-</code></pre>
-<p>Masukkan kata sandi yang di atur selama proses pengamanan. Setelah berhasil masuk  akan melihat prompt MySQL seperti berikut:</p>
-<pre><code class="language-bash">Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 10
-Server version: 8.0.40-0ubuntu0.22.04.1 (Ubuntu)
-
-Copyright (c) 2000, 2024, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql&gt; 
-</code></pre>
+<h3 id="1-buka-ubuntu-software"><a class="header" href="#1-buka-ubuntu-software">1. Buka Ubuntu Software</a></h3>
+<p>Untuk membuka ubuntu software dapat mengklik icon ubuntu software pada menu applications.</p>
+<p><img src="img/icon_ubuntu_software_small.png" alt="icon" /></p>
+<h3 id="2-cari-netbeans"><a class="header" href="#2-cari-netbeans">2. Cari NetBeans</a></h3>
+<p>Klik icon search pada pojok kiri atas ubuntu software kemudian masukkan keyword "NetBeans".</p>
+<p><img src="img/NetBeans_search.png" alt="icon" /></p>
+<h3 id="3-install-netbeans"><a class="header" href="#3-install-netbeans">3. Install NetBeans</a></h3>
+<p>Pilih software yang sesuai kemudian tekan tombol install.</p>
+<p><img src="img/NetBeans_install.png" alt="icon" /></p>
+<h3 id="4-verifikasi-instalasi"><a class="header" href="#4-verifikasi-instalasi">4. Verifikasi Instalasi</a></h3>
+<p>Tunggu hingga proses instalasi selesai, NetBeans yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah NetBeans ketika berjalan di Ubuntu 22.04 LTS.</p>
+<p><img src="img/NetBeans_run.png" alt="icon" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="instalasi_apache2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="instalasi_git.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="instalasi_java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="instalasi_wxmaxima.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -238,11 +187,11 @@ mysql&gt;
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="instalasi_apache2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="instalasi_git.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="instalasi_java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="instalasi_wxmaxima.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

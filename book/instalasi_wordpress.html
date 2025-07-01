@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Instalasi mysql -  </title>
+        <title>Instalasi WordPress -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,83 +152,44 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="instalasi-mysql"><a class="header" href="#instalasi-mysql">Instalasi MySQL</a></h1>
-<p>MySQL adalah sistem manajemen basis data relasional (RDBMS) open-source yang sangat populer dan digunakan oleh berbagai aplikasi untuk menyimpan dan mengelola data. MySQL memungkinkan pengguna untuk mengelola data dalam bentuk tabel yang saling terkait dan menyediakan query untuk manipulasi data dengan menggunakan bahasa SQL (Structured Query Language). MySQL banyak digunakan dalam pengembangan aplikasi berbasis web, termasuk pada platform seperti WordPress, Joomla, dan aplikasi berbasis PHP lainnya.</p>
+                        <h1 id="instalasi-wordpress"><a class="header" href="#instalasi-wordpress">Instalasi WordPress</a></h1>
+<p>WordPress adalah sistem manajemen konten (Content Management System/CMS) yang paling banyak digunakan di dunia. Aplikasi ini memungkinkan pengguna membangun dan mengelola situs web atau blog dengan mudah tanpa harus menulis kode dari awal. WordPress berbasis PHP dan MySQL/MariaDB, dan sangat fleksibel karena didukung oleh ribuan tema dan plugin. Untuk keperluan pengembangan lokal, WordPress bisa dijalankan di atas stack XAMPP.</p>
 <h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
-<h3 id="1-perbarui-daftar-paket"><a class="header" href="#1-perbarui-daftar-paket">1. Perbarui daftar paket</a></h3>
-<p>Sebelum menginstal MySQL pastikan sistem diperbarui. Gunakan perintah berikut pada terminal untuk memperbarui sistem:</p>
-<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
+<h3 id="1-jalankan-xampp"><a class="header" href="#1-jalankan-xampp">1. Jalankan XAMPP</a></h3>
+<p>Gunakan perintah berikut untuk menjalankan XAMPP.</p>
+<pre><code class="language-bash">sudo ./xampp-linux-x64-8.0.30-0-installer.run
 </code></pre>
-<h3 id="2-install-mysql"><a class="header" href="#2-install-mysql">2. Install MySQL</a></h3>
-<p>Gunakan perintah berikut untuk menginstal MySQL:</p>
-<pre><code class="language-bash">sudo apt install mysql-server -y
+<p>Kemudian pada jendela XAMPP jalankan service Apache Web Server dan MySQL Database.
+<img src="img/xampp_run.png" alt="icon" /></p>
+<h3 id="2-unduh-wordpress"><a class="header" href="#2-unduh-wordpress">2. Unduh WordPress</a></h3>
+<p>Kunjungi https://wordpress.org/download/ kemudian unduh file instalasi untuk sistem operasi Linux. File yang didownload berekstensi .zip.</p>
+<h3 id="3-ekstrak-wordpress"><a class="header" href="#3-ekstrak-wordpress">3. Ekstrak WordPress</a></h3>
+<p>Pada terminal masuk ke direktori tempat file instalasi Wordpress disimpan (biasanya terletak pada direktori Downloads), gunakan perintah berikut untuk berpindah direktori:</p>
+<pre><code class="language-bash">cd Downloads/
 </code></pre>
-<p>Jika instalasi berhasil output baris terakhirnya akan seperti berikut :</p>
-<pre><code class="language-bash">mysqld is running as pid 90340
-Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib
-/systemd/system/mysql.service.
-Setting up mysql-server (8.0.40-0ubuntu0.22.04.1) ...
-Processing triggers for man-db (2.10.2-1) ...
-Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+<p>Berikut adalah output jika telah berpindah direktori:</p>
+<pre><code class="language-bash">arie@zeno:~/Downloads$ 
 </code></pre>
-<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi instalasi</a></h3>
-<p>Setelah instalasi selesai periksa status MySQL untuk memastikan layanan berjalan, gunakan perintah berikut:</p>
-<pre><code class="language-bash">sudo systemctl status mysql
+<p>Kemudian gunakan perintah berikut untuk mengekstrak file wordpress:</p>
+<pre><code class="language-bash">unzip wordpress-6.8.1-id_ID.zip
 </code></pre>
-<p>Jika berhasil akan terlihat status active (running).</p>
-<pre><code class="language-bash">● mysql.service - MySQL Community Server
-Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:&gt;
-Active: active (running) since Fri 2025-01-24 13:53:54 WITA; 1min 54s ago
-Process: 90528 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=&gt;
-Main PID: 90536 (mysqld)
-Status: "Server is operational"
+<p>Pindahkan folder hasil ekstraksi ke direktori XAMPP:</p>
+<pre><code class="language-bash">sudo mv wordpress /opt/lampp/htdocs/
 </code></pre>
-<h3 id="4-amankan-instalasi-mysql"><a class="header" href="#4-amankan-instalasi-mysql">4. Amankan Instalasi MySQL</a></h3>
-<p>Setelah MySQL terinstall, jalankan perintah pengamanan untuk meningkatkan keamanan database:</p>
-<pre><code class="language-bash">sudo mysql_secure_installation
-</code></pre>
-<p>Pada pengamanan database akan diminta :
-• Mengatur kata sandi untuk root
-• Menghapus pengguna anonim
-• Menonaktifkan akses root dari jarak jauh.
-• Menghapus database test.
-• Memuat ulang tabel hak istimewa.
-Setelah selesai mengamankan database maka akan terlihat output All done seperti berikut:</p>
-<pre><code class="language-bash">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
-Success.
-
-All done! 
-</code></pre>
-<h3 id="5-mengakses-mysql"><a class="header" href="#5-mengakses-mysql">5. Mengakses MySQL</a></h3>
-<p>Untuk masuk ke antarmuka MySQL, gunakan perintah berikut:</p>
-<pre><code class="language-bash">sudo mysql -u root -p
-</code></pre>
-<p>Masukkan kata sandi yang di atur selama proses pengamanan. Setelah berhasil masuk  akan melihat prompt MySQL seperti berikut:</p>
-<pre><code class="language-bash">Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 10
-Server version: 8.0.40-0ubuntu0.22.04.1 (Ubuntu)
-
-Copyright (c) 2000, 2024, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql&gt; 
-</code></pre>
+<h3 id="4-konfigurasi-wordpress"><a class="header" href="#4-konfigurasi-wordpress">4. Konfigurasi Wordpress</a></h3>
+<p>Untuk mengakses wordpress kunjungi http://localhost/wordpress pada browser.</p>
+<p><img src="img/wordpress_run.png" alt="icon" /></p>
+<p>Kemudian silahkan konfigurasi wordpress sesuai kebutuhan.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="instalasi_apache2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="instalasi_xampp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="instalasi_java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="instalasi_moodle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -238,11 +199,11 @@ mysql&gt;
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="instalasi_apache2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="instalasi_xampp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="instalasi_java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="instalasi_moodle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

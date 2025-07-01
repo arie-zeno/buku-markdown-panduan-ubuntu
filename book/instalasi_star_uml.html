@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Instalasi mysql -  </title>
+        <title>Instalasi StarUML -  </title>
 
 
         <!-- Custom HTML head -->
@@ -152,83 +152,44 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="instalasi-mysql"><a class="header" href="#instalasi-mysql">Instalasi MySQL</a></h1>
-<p>MySQL adalah sistem manajemen basis data relasional (RDBMS) open-source yang sangat populer dan digunakan oleh berbagai aplikasi untuk menyimpan dan mengelola data. MySQL memungkinkan pengguna untuk mengelola data dalam bentuk tabel yang saling terkait dan menyediakan query untuk manipulasi data dengan menggunakan bahasa SQL (Structured Query Language). MySQL banyak digunakan dalam pengembangan aplikasi berbasis web, termasuk pada platform seperti WordPress, Joomla, dan aplikasi berbasis PHP lainnya.</p>
+                        <h1 id="instalasi-star-uml"><a class="header" href="#instalasi-star-uml">Instalasi Star UML</a></h1>
+<p>StarUML adalah aplikasi perancangan perangkat lunak berbasis model yang digunakan untuk membuat diagram UML (Unified Modeling Language), seperti class diagram, use case diagram, activity diagram, dan lain-lain. Aplikasi ini mendukung pendekatan pemodelan berbasis MDA (Model-Driven Architecture), serta menyediakan antarmuka modern dan dukungan plugin untuk pengembangan sistem perangkat lunak skala kecil hingga besar. StarUML populer di kalangan mahasiswa dan profesional untuk dokumentasi dan desain sistem.</p>
 <h2 id="langkah-langkah-instalasi"><a class="header" href="#langkah-langkah-instalasi">Langkah-Langkah Instalasi</a></h2>
-<h3 id="1-perbarui-daftar-paket"><a class="header" href="#1-perbarui-daftar-paket">1. Perbarui daftar paket</a></h3>
-<p>Sebelum menginstal MySQL pastikan sistem diperbarui. Gunakan perintah berikut pada terminal untuk memperbarui sistem:</p>
-<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
+<h3 id="1-unduh-file-instalasi-star-uml"><a class="header" href="#1-unduh-file-instalasi-star-uml">1. Unduh File Instalasi Star UML</a></h3>
+<p>Kunjungi https://staruml.io/ kemudian unduh file instalasi untuk sistem operasi Linux.</p>
+<h3 id="2-install-star-uml"><a class="header" href="#2-install-star-uml">2. Install Star UML</a></h3>
+<p>Pada terminal masuk ke direktori tempat file instalasi Star UML disimpan (biasanya terletak pada direktori Downloads), gunakan perintah berikut untuk berpindah direktori:</p>
+<pre><code class="language-bash">cd Downloads/
 </code></pre>
-<h3 id="2-install-mysql"><a class="header" href="#2-install-mysql">2. Install MySQL</a></h3>
-<p>Gunakan perintah berikut untuk menginstal MySQL:</p>
-<pre><code class="language-bash">sudo apt install mysql-server -y
+<p>Berikut adalah output jika telah berpindah direktori:</p>
+<pre><code class="language-bash">arie@zeno:~/Downloads$ 
 </code></pre>
-<p>Jika instalasi berhasil output baris terakhirnya akan seperti berikut :</p>
-<pre><code class="language-bash">mysqld is running as pid 90340
-Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib
-/systemd/system/mysql.service.
-Setting up mysql-server (8.0.40-0ubuntu0.22.04.1) ...
-Processing triggers for man-db (2.10.2-1) ...
-Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+<p>Kemudian gunakan perintah berikut untuk melakukan instalasi Sta UML:</p>
+<pre><code class="language-bash">sudo dpkg -i StarUML_6.3.3_amd64.deb
 </code></pre>
-<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi instalasi</a></h3>
-<p>Setelah instalasi selesai periksa status MySQL untuk memastikan layanan berjalan, gunakan perintah berikut:</p>
-<pre><code class="language-bash">sudo systemctl status mysql
+<p>Jika instalasi berhasil output baris terakhirnya akan seperti berikut:</p>
+<pre><code class="language-bash">Setting up staruml (6.3.3) ...
+update-alternatives is /usr/bin/update-alternatives
+update-alternatives: using /opt/StarUML/staruml to provide /usr/bin/staruml (staruml) in auto mode
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu3) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu3) ...
 </code></pre>
-<p>Jika berhasil akan terlihat status active (running).</p>
-<pre><code class="language-bash">● mysql.service - MySQL Community Server
-Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:&gt;
-Active: active (running) since Fri 2025-01-24 13:53:54 WITA; 1min 54s ago
-Process: 90528 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=&gt;
-Main PID: 90536 (mysqld)
-Status: "Server is operational"
-</code></pre>
-<h3 id="4-amankan-instalasi-mysql"><a class="header" href="#4-amankan-instalasi-mysql">4. Amankan Instalasi MySQL</a></h3>
-<p>Setelah MySQL terinstall, jalankan perintah pengamanan untuk meningkatkan keamanan database:</p>
-<pre><code class="language-bash">sudo mysql_secure_installation
-</code></pre>
-<p>Pada pengamanan database akan diminta :
-• Mengatur kata sandi untuk root
-• Menghapus pengguna anonim
-• Menonaktifkan akses root dari jarak jauh.
-• Menghapus database test.
-• Memuat ulang tabel hak istimewa.
-Setelah selesai mengamankan database maka akan terlihat output All done seperti berikut:</p>
-<pre><code class="language-bash">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
-Success.
-
-All done! 
-</code></pre>
-<h3 id="5-mengakses-mysql"><a class="header" href="#5-mengakses-mysql">5. Mengakses MySQL</a></h3>
-<p>Untuk masuk ke antarmuka MySQL, gunakan perintah berikut:</p>
-<pre><code class="language-bash">sudo mysql -u root -p
-</code></pre>
-<p>Masukkan kata sandi yang di atur selama proses pengamanan. Setelah berhasil masuk  akan melihat prompt MySQL seperti berikut:</p>
-<pre><code class="language-bash">Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 10
-Server version: 8.0.40-0ubuntu0.22.04.1 (Ubuntu)
-
-Copyright (c) 2000, 2024, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql&gt; 
-</code></pre>
+<h3 id="3-verifikasi-instalasi"><a class="header" href="#3-verifikasi-instalasi">3. Verifikasi Instalasi</a></h3>
+<p>Star UML yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah Star UML ketika berjalan di Ubuntu 22.04 LTS.</p>
+<p><img src="img/staruml_run.png" alt="icon" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="instalasi_apache2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="instalasi_jmetrik.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="instalasi_java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="instalasi_spyder.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -238,11 +199,11 @@ mysql&gt;
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="instalasi_apache2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="instalasi_jmetrik.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="instalasi_java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="instalasi_spyder.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

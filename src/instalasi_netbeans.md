@@ -1,26 +1,25 @@
 # Instalasi NetBeans
+NetBeans adalah lingkungan pengembangan terintegrasi (IDE) sumber terbuka yang digunakan untuk menulis, mengedit, dan menjalankan program dalam berbagai bahasa pemrograman seperti Java, PHP, HTML, C/C++, dan lainnya. NetBeans menyediakan fitur seperti editor cerdas, debugger, integrasi dengan sistem kontrol versi (seperti Git), serta dukungan proyek berbasis Maven dan Gradle, menjadikannya salah satu IDE yang cocok untuk pengembangan aplikasi desktop, web, dan mobile.
+## Langkah-Langkah Instalasi
+### 1. Buka Ubuntu Software
+Untuk membuka ubuntu software dapat mengklik icon ubuntu software pada menu applications.
 
-1. Buka ***Ubuntu Software***.
-   <center> 
+![icon](img/icon_ubuntu_software_small.png)
 
-   ![icon](img/ubuntu_software_home.png)
+### 2. Cari NetBeans
+Klik icon search pada pojok kiri atas ubuntu software kemudian masukkan keyword "NetBeans".
 
-   </center>
-2. Klik ***icon*** ***search*** pada pojok kiri atas aplikasi kemudian masukkan *keyword* "*Netbeans*".
-   <center> 
+![icon](img/NetBeans_search.png)
 
-   ![icon](img/netbeans/search.png)
 
-   </center>
-3. Pilih aplikasi yang sesuai kemudian tekan tombol **install**.
-   <center> 
+### 3. Install NetBeans
+Pilih software yang sesuai kemudian tekan tombol install.
 
-   ![icon](img/netbeans/install.png)
+![icon](img/NetBeans_install.png)
 
-   </center>
-4. Tunggu hingga proses instalasi selesai, *Netbeans* yang sudah terinstall dapat ditemukan pada menu ***Applications***.
-    <center> 
 
-   ![icon](img/netbeans/done.png)
+### 4. Verifikasi Instalasi
+Tunggu hingga proses instalasi selesai, NetBeans yang sudah terinstall dapat ditemukan pada menu Applications.
+Berikut adalah NetBeans ketika berjalan di Ubuntu 22.04 LTS.
 
-   </center>
+![icon](img/NetBeans_run.png)
